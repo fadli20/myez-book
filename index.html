@@ -1,0 +1,3441 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link href="https://protopiaempire.com/kksbjroom/LOGOKKSBJ.jpg" rel="shortcut icon" type="image/x-icon" />-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous">  </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="logo.png" rel="shortcut icon" type="image/x-icon" />
+        <title>KKSBJ Booking System</title>
+    <style>
+    
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}    
+    
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}    
+        h1{
+            text-align: center;
+            font-size: 36px;
+        }
+        .mainbox{
+            text-align:center;
+            margin: auto;
+        }
+        .box{
+            width:300px;
+            height: 120px;
+            display: inline-block;
+            margin: 10px 10px 10px 10px;
+            border: solid grey 5px;
+            opacity: 0.8;
+            color: white;
+            font-size: 34px;
+            text-shadow: 2px 2px black;
+        }
+        .vbox{
+            width:300px;
+            height: 180px;
+            display: inline-block;
+            margin: 10px 10px 10px 10px;
+            border: solid grey 5px;
+            opacity: 0.8;
+            color: black;
+            font-size: 20px;
+            /*text-shadow: 2px 2px grey;*/            
+        }
+        .blue{
+            background-color: #6699ff;
+        }
+        .red{
+            background-color: #ff0066;
+        }
+        .green{
+            background-color: #66ff99;
+        }
+        .orange{
+            background-color: #ff9966;
+        }
+        .yellow{
+            background-color: #e6e600;
+        }
+        .white{
+            background-color: white;
+            color:black;
+            text-shadow:0px 0px black;
+        }        
+        .reading{
+            font-size:38px;
+        }
+        .unit{
+            font-size:24px;
+        }
+        .ctrl{
+            width:120px;
+            height: 120px;
+            display: inline-block;
+            margin: 10px 10px 10px 10px;
+            border: solid grey 5px;
+            opacity: 0.8;
+            color: white;
+            font-size: 20px;
+            text-shadow: 2px 2px black;
+            border-radius: 50%;
+        }
+        .ctrl:hover{
+            background-color:white;
+            color:black;
+            text-shadow: 0px 0px black;
+        }
+        .nav{
+            text-align:center;
+            position:absolute;
+            margin: auto;
+            width:100vw;
+            left:0px;
+            right:0px;
+            background-color:black;
+        }
+        .opt{
+            width:120px;
+            height:40px;
+            font-size:20px;
+            background-color:#99ccff;
+            border:2px solid black;
+            margin: 10px;
+        }
+        .opt:hover{
+            background-color:gray;
+            color:white;
+        }
+        .feedbox{
+            width:100%;
+            position:absolute;
+            left:0;
+            right:0;
+            text-align:center;
+            background-color:black;
+            color: #00e68a;
+            font-size:20px;
+        }
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0a8af2;
+  color: white;
+}   
+
+@media only screen and (max-width: 960px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    .tablemobile {
+        overflow-x: auto;
+        display: block;
+    }
+}
+
+.indicator{
+    width:20px;
+    height:20px;
+    background-color:#ff0066;
+    border: solid 1px black;
+    border-radius:50%;
+    display: inline-block;
+    margin:auto;
+}
+
+      .btn2{
+        display:inline block;
+        width:80px;
+        height: 20px;
+        color: #ffffff;
+        background-color: #3f5f8f; 
+        border-radius: 5px;
+        padding:none;
+        border: solid 0px;
+        cursor:pointer;
+      }
+      .btn3{
+        display:inline block;
+        width:200px;
+        height: 60px;
+        color: #ffffff;
+        background-color: #3f5f8f; 
+        border-radius: 5px;
+        padding:10px;
+        margin: 5px;
+        border: solid 0px;
+        cursor:pointer;
+      }        
+      
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(12px);
+  -ms-transform: translateX(12px);
+  transform: translateX(12px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 12px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}   
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  /*padding-top: 100px; /* Location of the box */
+  left: 5%;
+  top: 5%;
+  right:5%;
+  bottom:5%;
+  /*width: 100%; /* Full width */
+  /*height: 100%; /* Full height */
+  width: auto;
+  height: auto;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  /*width: 80vw;*/
+  width: auto;
+  height:92.5%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+      
+.infotext{
+    
+    font-style: italic;
+    font-size:9pt;
+    width:320px;
+}      
+
+      
+    </style>
+    </head>
+    <body>
+        <h1 class="bebas-neue-regular"><img src="logo.png" height="300px" width="auto"></h1>
+<div class="topnav" id="myTopnav">
+  <a href="#" class="btn active" onclick="showData()">Home</a>
+  <a id="menuListTempahan" href="#" class="btn" onclick="showTempahan()" style="display:none;">Senarai Tempahan</a>
+  <!--<a id="menuListTempahBilik" href="#" class="btn" onclick="showHistory()" style="display:none;">Jadual Tempahan Bilik</a>
+  <a id="menuListKursusPendek" href="#" class="btn" onclick="showKursusPendek()" style="display:none;">Jadual Kursus Pendek</a>-->
+  <a href="#" class="btn" id="logmasuk" onclick="showManualCtrl()" >Log Masuk</a>
+  <a href="#" class="btn" id="logkeluar" style="display:none;" onclick="logout()" >Log Keluar</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>        
+        <!--<div class="nav">
+            <span class="opt" onclick="showData()"> Realtime Data </span>
+            <span  class="opt" onclick="showMode()"> Mode Select </span>
+            <span  class="opt" onclick="showValveCtrl()"> Valve Control </span>
+            <span  class="opt" onclick="showHistory()"> Historical Data </span>
+        </div><br><br><br>-->
+        <p style="text-align:center;font-size:20px;display:none">Feedback</p>
+        <div class="feedbox" id="feeds" style="display:none">
+            No update yet
+        </div><br><br>
+        
+        <div class="mainbox" id="guard_dashboard" style="background-color: white; text-align: center; border: 10px solid black; padding: 2px;">
+            <!--<p class="bebas-neue-regular" style="font-size:24pt;">DASHBOARD PENGAWAL</p>--->
+            <h2 id="tajukJadualKursusPendek" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Senarai Tempahan</h2>
+                        <br>
+            <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDateTempahan" type="date">&nbsp;&nbsp;</div><br><div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDateTempahan" type="date">&nbsp;&nbsp;</div><br><br><button  class="btn2" id="filterDateK" onclick="getDataTempahanByDate()">Submit</button><br><br>
+                  <table class="tablemobile"> 
+      <thead id="header-tempahan" style="width:80vw;"></thead>
+      <tbody id="data-tempahan" style="width:80vw;">      
+      </tbody>
+      </table>
+              <br>
+        <center>
+        <button class="btn2" id="prevButtonTempahan">Previous</button> 
+        <button class="btn2" id="nextButtonTempahan">Next</button>
+        <br> 
+        <span id="pageNum" style="display:none;"></span>
+        </center>
+
+            
+        </div>
+
+        <div class="mainbox" id="admin_dashboard" style="display: none; background-color: white; text-align: center; border: 10px solid black; padding: 2px;">
+            <p class="bebas-neue-regular" style="font-size:24pt;">DASHBOARD ADMIN</p>
+            <button class="btn3" onclick="urusPenggunaDisp()" id="btn_pengguna" style="background-color:#00cc7a;">URUS PENGGUNA</button><button class="btn3" onclick="urusBilikDisp()" id="btn_bilik">URUS BILIK</button><button class="btn3" onclick="urusKursusDisp()" id="btn_kursus">URUS KURSUS</button><button class="btn3" onclick="urusTujuanDisp()" id="btn_tujuan">URUS TUJUAN</button><br>
+            
+            <br>
+            <div id = "urus_pengguna" style="display:block;">
+              <p class="bebas-neue-regular" style="font-size:18pt;">URUS PENGGUNA</p> 
+              <button class="btn3" onclick="tambahPengguna()" id="btnTambahPengguna"><i class="fa fa-plus"></i> Pengguna</button><br>
+              <table class="tablemobile"> 
+              <thead><tr><th style="width:5vw;">Index</th><th style="width:10vw;">Nama Pengguna</th><th style="width:5vw;">Kategori Pengguna</th><th style="width:10vw;">Institusi</th><th style="width:10vw;">Telefon</th><th style="width:10vw;">Tetapan</th></tr></thead>
+              <tbody id="data-urus-pengguna" style="width:80vw;">      
+              </tbody>
+              </table> 
+            <br>
+            <center>
+            <button class="btn2" id="prevButtonPengguna">Previous</button> 
+            <button class="btn2" id="nextButtonPengguna">Next</button>
+            <br> 
+            <span id="pageNum" style="display:none;"></span>
+            </center>
+            </div>
+            <div id = "urus_bilik" style="display:none;">
+              <p class="bebas-neue-regular" style="font-size:18pt;">URUS BILIK</p>
+              <button class="btn3" onclick="tambahBilik()" id="btnTambahBilik"><i class="fa fa-plus"></i> Bilik</button><br>
+              <table class="tablemobile"> 
+              <thead><tr><th style="width:5vw;">Index</th><th style="width:10vw;">Nama Bilik</th><th style="width:10vw;">Tetapan</th></tr></thead>
+              <tbody id="data-urus-bilik" style="width:80vw;">      
+              </tbody>
+              </table>
+            <br>
+            <center>
+            <button class="btn2" id="prevButtonBilik">Previous</button> 
+            <button class="btn2" id="nextButtonBilik">Next</button>
+            <br> 
+            <span id="pageNum" style="display:none;"></span>
+            </center>              
+            </div>
+            <div id = "urus_kursus" style="display:none;">
+                <p class="bebas-neue-regular" style="font-size:18pt;">URUS KURSUS</p>
+                <button class="btn3" onclick="tambahKursus()" id="btnTambahKursus"><i class="fa fa-plus"></i> Kursus</button><br>
+                <table class="tablemobile"> 
+              <thead><tr><th style="width:5vw;">Index</th><th style="width:10vw;">Nama Kursus</th><th style="width:10vw;">Tetapan</th></tr></thead>
+              <tbody id="data-urus-kursus" style="width:80vw;">      
+              </tbody>
+              </table>
+            <br>
+            <center>
+            <button class="btn2" id="prevButtonNamaKursus">Previous</button> 
+            <button class="btn2" id="nextButtonNamaKursus">Next</button>
+            <br> 
+            <span id="pageNum" style="display:none;"></span>
+            </center>              
+            </div>
+            <div id = "urus_tujuan" style="display:none;">
+                <p class="bebas-neue-regular" style="font-size:18pt;">URUS TUJUAN</p>
+                <button class="btn3" onclick="tambahTujuan()" id="btnTambahTujuan"><i class="fa fa-plus"></i> Tujuan</button><br>
+                <table class="tablemobile"> 
+              <thead><tr><th style="width:5vw;">Index</th><th style="width:10vw;">Tujuan</th><th style="width:10vw;">Tetapan</th></tr></thead>
+              <tbody id="data-urus-tujuan" style="width:80vw;">      
+              </tbody>
+              </table>
+            <br>
+            <center>
+            <button class="btn2" id="prevButtonTujuan">Previous</button> 
+            <button class="btn2" id="nextButtonTujuan">Next</button>
+            <br> 
+            <span id="pageNum" style="display:none;"></span>
+            </center>              
+            </div>     
+        </div>        
+
+        <div class="mainbox" id="sensordata" style="display:none">
+        <div  style="display:none;">  
+        <div class="box blue">Turbidity <br><span class="reading" id="tss"></span> <span class="unit">mg/L</span></div>
+        <div class="box yellow">BOD <br><span class="reading" id="bod"></span> <span class="unit">mg/L</span></div>
+        <div class="box orange">COD <br><span class="reading" id="cod"></span> <span class="unit">mg/L</span></div>
+        <div class="box green">PH <br><span class="reading" id="ph"></span> <span class="unit">PH</span></div>
+        <div class="box red">Temperature <br><span class="reading" id="temp"></span> <span class="unit">&deg;C</span></div>
+        </div>
+        <div id="borangTempahBilik" style="text-align:justify;border:10px solid black;padding: 2px;">
+            <h2 id="tajukBorang" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Borang Tempahan Bilik</h2>
+            <div style="margin-left:25%;margin-right:25%;width:50%;">
+            <br>
+            <span style="font-style:italic;font-size:12pt;text-align:center">Sila ubah tujuan kepada kursus atau kursus pendek untuk pendaftaran kursus pendek. Pilih lain-lain untuk tambah tujuan lain.</span><br>
+            <span style="font-style:bold italic;font-size:18pt;text-align:center;color:red;background:black;">PASTIKAN SEMUA TEMPAT KOSONG DI ISI.</span>
+            <br>
+            <label for="namapegawai" style="padding:10px;width:300px;border:10px;display: inline-block;">Nama Pegawai: </label>
+            <input type="text" id="namapegawai" name="namapegawai" placeholder="Nama Pegawai" style="width:200px;" required>
+            <br>
+            <label for="namabilik" style="padding:10px;width:300px;border:10px;display: inline-block;">Nama Bilik: </label>
+            <select name="namabilik" id="namabilik"  style="width:200px;">
+            </select>
+            <br>
+            <label for="tujuan" style="padding:10px;width:300px;border:10px;display: inline-block;">Kategori Tujuan: </label>
+            <select name="tujuan" id="tujuan" onchange="checkTujuan(this.value);"  style="width:200px;">
+            </select>
+            <input type="text" id="customtujuan" name="customtujuan" placeholder="Lain lain" style="display:none;width:200px;">
+            <br>
+            <label for="kursuspendek" style="padding:10px;width:300px;border:10px;display:inline-block;"> Tajuk Program: </label>
+            <select name="kursuspendek" id="kursuspendek" onchange="checkKursus(this.value);" style="width:200px;"></select>
+            <input type="text" id="customkursus" name="customkursus" value="Nama Program" placeholder="Nama Program"  style="display:none;width:200px;">
+            <br>  
+            <label for="institusipeserta" style="padding: 10px; width: 300px; border:10px; display:inline-block;">Institusi Peserta: </label>
+            <input type="text" id="institusipeserta" name="institusipeserta" placeholder="Institusi" value ="Kolej Komuniti"  style="width:200px">
+            <br>
+            <label for="bilpeserta" style="padding: 10px; width: 300px; border:10px; display:inline-block;">Bilangan Peserta: </label>
+            <input type="number" id="bilpeserta" name="bilpeserta" value = "0" placeholder="0" style="width:200px">
+            <br>                      
+            <!--<div id="inputkursus" style="display:none;">
+            <label for ="tarikh_kursus_mula" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Kursus Mula: </label>
+            <input type="date" name="tarikh_kursus_mula" id="tarikh_kursus_mula" style="width:200px;">
+            <br>
+            <label for="masa_kursus_mula" style="padding: 10px; width:300px; border:10px;display:inline-block;">Masa Kursus Mula: </label>
+            <input type="time" name="masa_kursus_mula" id="masa_kursus_mula" style="width:200px;">
+            <br>
+            <label for ="tarikh_kursus_tamat" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Kursus Tamat: </label>
+            <input type="date" name="tarikh_kursus_tamat" id="tarikh_kursus_tamat" style="width:200px;">
+            <br>
+            <label for="masa_kursus_tamat" style="padding: 10px; width:300px; border:10px;display:inline-block;">Masa Kursus Tamat: </label>
+            <input type="time" name="masa_kursus_tamat" id="masa_kursus_tamat" style="width:200px;">
+            <br>            
+            </div>-->
+            <label for="hari" style="padding:10px;width:300px;border:10px;display: none;">Hari: </label>
+            <select name="hari" id="hari"  style="width:200px;display:none;">
+            </select>
+            <!--<br>-->
+            <label for ="tarikh_tempah_mula" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Tempah Mula: </label>
+            <input type="date" name="tarikh_tempah_mula" id="tarikh_tempah_mula" style="width:200px;"></input>
+            <br>
+            <label for ="tarikh_tempah_tamat" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Tempah Tamat: </label>
+            <input type="date" name="tarikh_tempah_tamat" id="tarikh_tempah_tamat" style="width:200px;"></input>
+            <br>            
+            <label for ="masa_tempah_mula" style="padding:10px;width:300px;border:10px;display: inline-block;">Masa Tempah Mula: </label>
+            <input type="time" name="masa_tempah_mula" id="masa_tempah_mula" style="width:200px;"></input>
+            <br>
+            <label for ="masa_tempah_tamat" style="padding:10px;width:300px;border:10px;display: inline-block;">Masa Tempah Tamat: </label>
+            <input type="time" name="masa_tempah_tamat" id="masa_tempah_tamat" style="width:200px;"></input>
+            <br><br>    
+        </div>
+            <center><button  class="btn2" onclick="tempahBilik();">Tempah</button></center>
+            <br><br>        
+        </div>
+           
+        </div>
+        <div class="mainbox" id="modeselect" style="display:none;">
+            
+<div id="mainPage">
+  <center>
+    <div id="loginForm" class="center" style="background-color:white;text-align:center;border:10px solid black;padding: 2px;">
+      <p class="bebas-neue-regular" style="font-size:24pt;">LOG MASUK</p>
+      <span style="font-style:italic;font-size:12pt;text-align:center">Nama Pengguna adalah case sensitive.</span><br><br>
+    <label for="username" style="width:200px;">Nama Pengguna:</label><br>
+<input type="text" id="username" name="username" 
+    placeholder="Masukkan Nama Pengguna" required><br><br>
+
+<label for="password" style="width:200px;">Katalaluan:</label><br>
+<input type="password" id="password" name="password" 
+    placeholder="Masukkan Katalaluan" required>
+        <br>
+        <br>
+        <div style="width:200px;"></div>
+        <input type="checkbox" onclick="showPass()"> &nbsp;Tunjuk Katalaluan
+        <br><br>
+    <button class='btn2' value="register" id="loginBtn" onclick="login()">Log Masuk</button><br>
+        <div id="maklumbalasLg"></div>
+        <br>
+          <p>Belum berdaftar?
+            <a href="#" style="text-decoration: none;" onclick="crAccForm()">
+                Cipta akaun
+            </a>
+        </p>  
+          <p>Lupa katalaluan?
+            <a href="#" style="text-decoration: none;" onclick="restPwdForm()">
+                Set semula katalaluan
+            </a>
+        </p>          
+  </div>
+    <div id="createAccForm" style="display: none;background-color:white;text-align:center;border:10px solid black;padding: 2px;" class="center">
+      <p class="bebas-neue-regular" style="font-size:24pt;">CIPTA AKAUN</p>
+    <label for="usernameReg" style="width:200px;">Nama Pengguna:</label><br>
+    <input type="text" id="usernameReg" name="usernameReg" 
+    placeholder="Masukkan Nama Pengguna" style="width:200px;" required><br><br>
+
+<label for="passwordReg" style="width:200px;">Katalaluan:</label><br>
+<input type="password" id="passwordReg" name="passwordReg" 
+    placeholder="Masukkan Katalaluan"  style="width:200px;" required>
+        <br><br>
+<label for="telefon" style="width:200px;">Telefon:</label><br>
+<input type="number" id="telefon" name="telefon" placeholder="0123456789" style="width:200px;" required><br><br>
+<label for="kategori"  style="width:200px;">Kategori:</label><br>
+<select name="kategori" id="kategori" style="width:200px;">
+    <option value="Kakitangan">Kakitangan</option>
+    <option value="Pelajar">Pelajar</option>
+    <option value="Pengawal">Pengawal</option>
+</select>
+        <br><br>
+<label for="institusi" style="width:200px;">Institusi:</label><br>
+<select name="institusi" id="institusi"  style="width:200px;">
+    <option value="Kolej Komuniti">Kolej Komuniti</option>
+    <option value="Lain-lain">Lain-lain</option>
+</select>        
+        <br><br>
+        <div style="width:200px;"></div>
+        <input type="checkbox" onclick="showPassReg()"> &nbsp;Tunjuk Katalaluan
+        <br><br>
+    <center>
+    <button class='btn2' value="register" onclick="registerAcc()">Hantar</button><div style="width:20px;display:inline-block;"></div><button class='btn2' value="cancel" onclick="createAcc()">Batal</button>
+    </center>
+    <br>
+    <div id="maklumbalasReg"></div>
+  </div>
+      <div id="resetPwdForm" style="display: none;background-color:white;text-align:center;border:10px solid black;padding: 2px;" class="center">
+      <p class="bebas-neue-regular" style="font-size:24pt;">SET SEMULA KATALALUAN</p>
+    <label for="usernameRest" style="width:200px;">Nama Pengguna:</label><br>
+    <input type="text" id="usernameRest" name="usernameRest" 
+    placeholder="Masukkan Nama Pengguna"  style="width:200px;" required><br><br>
+
+<label for="passwordRest" style="width:200px;">Katalaluan:</label><br>
+<input type="password" id="passwordRest" name="passwordRest" 
+    placeholder="Masukkan Katalaluan Baru"  style="width:200px;" required>
+        <br><br>
+        <div style="width:200px;"></div>
+        <input type="checkbox" onclick="showPassRest()"> &nbsp;Tunjuk Katalaluan
+        <br><br>
+    <center>
+    <button class='btn2' value="register" onclick="resetPwd()">Hantar</button><div style="width:20px;display:inline-block;"></div><button class='btn2' value="cancel" onclick="resetAcc()">Batal</button>
+    </center>
+    <br>
+    <div id="maklumbalasRest"></div>
+  </div><br><br><br><br><br><br>
+  </center>
+  </div>            
+            
+        </div>
+        
+        <div class="mainbox" id="valvectrl" style="display: none; background-color:white;text-align:center;border:10px solid black;padding: 2px;">
+            <h2 id="tajukJadualKursusPendek" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Jadual Kursus Pendek</h2>
+                        <br>
+            <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDateK" type="date">&nbsp;&nbsp;</div><br><div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDateK" type="date">&nbsp;&nbsp;</div><br><br><button  class="btn2" id="filterDateK" onclick="getDataByDateK()">Submit</button><br><br>
+                  <table class="tablemobile"> 
+      <thead><tr><th style="width:5vw;">Index</th><th style="width:10vw;">Nama Pegawai</th><th style="width:5vw;">Nama Kursus </th><th style="width:10vw;">Tarikh Mula</th><th style="width:10vw;">Masa Mula</th><th style="width:5vw;">Tarikh Tamat</th><th style="width:5vw;">Masa Tamat</th><th style="width:5vw;">Tempat Kursus</th><th style="width:5vw;">Institusi</th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Status</th><th id="batalHeadKursus" style="width:5vw;">Batal</th></tr></thead>
+      <tbody id="data-history-kursus" style="width:80vw;">      
+      </tbody>
+      </table>
+              <br>
+        <center>
+        <button class="btn2" id="prevButtonKursus">Previous</button> 
+        <button class="btn2" id="nextButtonKursus">Next</button>
+        <br> 
+        <span id="pageNum" style="display:none;"></span>
+        </center>
+            
+        </div>
+        
+        <div class="mainbox" id="historydata" style="display:none;background-color:white;text-align:center;border:10px solid black;padding: 2px;">
+            <h2 id="tajukJadualTempahanBilik" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Jadual Tempahan Bilik</h2>
+            <br>
+            <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDate" type="date">&nbsp;&nbsp;</div><br><div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDate" type="date">&nbsp;&nbsp;</div><br><br><button  class="btn2" id="filterDate" onclick="getDataByDate()">Submit</button><br><br>
+                  <table class="tablemobile"> 
+      <thead><tr><th style="width:5vw;">Index</th><th style="width:10vw;">Nama Pegawai</th><th style="width:5vw;">Nama Bilik </th><th style="width:10vw;">Tujuan Tempah</th><th style="width:5vw;">Tarikh Tempah Mula</th><th style="width:5vw;">Masa Tempah Mula</th><th style="width:5vw;">Tarikh Tempah Tamat</th><th style="width:5vw;">Masa Tempah Tamat</th><th style="width:5vw;">Status</th><th id="batalHead" style="width:5vw;">Batal</th></tr></thead>
+      <tbody id="data-history" style="width:80vw;">      
+      </tbody>
+      </table>
+              <br>
+        <center>
+        <button class="btn2" id="prevButton">Previous</button> 
+        <button class="btn2" id="nextButton">Next</button>
+        <br> 
+        <span id="pageNum" style="display:none;"></span>
+        </center>
+        </div>
+  <div id="myDIV">
+  <button class='btn' onclick='displayModal();' style="display:none;">Senarai</button>
+  </div>        
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <center>
+	<div id="output">
+    <p class="butiran-kod" >Senarai individu </p>
+	</div>
+	<button class='button-29' onclick="closeModal();" style="display:none;">OK</button>
+	</center>
+  </div>
+</div>  
+
+        <script>
+
+            function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+        // Get the modal
+var modal = document.getElementById("myModal");
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+var butiranKod =  document.getElementsByClassName("butiran-kod")[0];
+function addLeadingZero(num) {
+  return num.toString().padStart(2, '0');
+}
+async function kemaskiniTempahan(id){
+    var kat = '';
+    var bilik= '';
+    var prog = '';
+    var stat = '';
+    var url='https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CJ%2CK%2CL%2CM%2CN%2CO%2CP%2CQ%2CR%2CS%2CT%2CU%2CV+WHERE+A='+id+'+order by A+desc'
+    
+    fetch(url).then(response => response.text()).then(data =>{
+        const json = JSON.parse(data.substring(47, data.length-2));
+        const rows = json.table.rows;
+        console.log(rows);
+        let id = rows[0].c[0].f;
+        let namaPenempah = rows[0].c[1].v;
+        let katalaluan = rows[0].c[2].v;
+        let telefon = rows[0].c[3].f;        
+        let tajukProgram = rows[0].c[4].v;
+        let kategoriTujuan = rows[0].c[5].v;
+        let namaBilik = rows[0].c[6].v;
+        let institusiPeserta = rows[0].c[7].v;
+        let bilanganPeserta = rows[0].c[8].v;
+        let tarikhTempahanMula = rows[0].c[9].f;
+        let masaTempahanMula = rows[0].c[10].f;
+        const arrMasaMula = masaTempahanMula.split(':');
+        let masaMula = addLeadingZero(arrMasaMula[0])+':'+arrMasaMula[1];
+        let tarikhTempahanTamat = rows[0].c[11].f;
+        let masaTempahanTamat = rows[0].c[12].f;
+        const arrMasaTamat = masaTempahanTamat.split(':');
+        let masaTamat = addLeadingZero(arrMasaTamat[0])+':'+arrMasaTamat[1];
+        
+        let status = rows[0].c[15].v;
+
+        var context = ''
+
+        if (((katalaluan == sessionStorage.getItem('KataLaluan'))&&(namaPenempah == sessionStorage.getItem('NamaPegawai'))) || (sessionStorage.getItem('peranan')== "Admin")){
+
+        context = '<div id="borangKemaskiniTempahan" style="text-align:justify;border:10px solid black;padding: 2px;">';
+        context += '<h2 id="tajukBorang" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Kemaskini Tempahan</h2>'; 
+        context += '<div style="margin-left:25%;margin-right:25%;width:50%;"><br>';   
+        context += '<label for="namaPenempahKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Nama Penempah: </label><input type="text" id="namaPenempahKT" name="namaPenempahKT" value="'+namaPenempah+'" placeholder="Nama Pegawai" style="width:200px;" required>';
+        context += '<label for ="katalaluanKT" style="width:200px;display:none;">Katalaluan: </label><br><input type="password" name="katalaluanKT" id="katalaluanKT" value="'+katalaluan+'" style="display:none;">';
+        context += '<label for="telefonKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Telefon: </label><input type="number" name="telefonKT" value="'+telefon+'" id="telefonKT" style="width:200px;"><br>';        
+        context += '<label for="namaBilikKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Nama Bilik: </label><select name="namaBilikKT" id="namaBilikKT"  style="width:200px;"></select><br>';
+        context += '<label for="kategoriTujuanKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Kategori Tujuan: </label><select name="kategoriTujuanKT" id="kategoriTujuanKT" onchange="checkTujuan(this.value);"  style="width:200px;"></select>';
+        context += '<input type="text" id="customtujuanKT" name="customtujuanKT" placeholder="Lain lain" style="display:none;width:200px;"><br>';
+        context += '<label for="tajukProgramKT" style="padding:10px;width:300px;border:10px;display:inline-block;"> Tajuk Program: </label><select name="tajukProgramKT" id="tajukProgramKT" onchange="checkKursus(this.value);" style="width:200px;"></select><input type="text" id="customkursusKT" name="customkursusKT"  placeholder="Nama Program"  style="display:none;width:200px;"><br>';
+        context += '<label for="institusiPesertaKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Institusi: </label><input type="text" id="institusiPesertaKT" name="institusiPesertaKT" value="'+institusiPeserta+'" placeholder="Institusi Peserta" style="width:200px;" ><br>';
+        context += '<label for="bilanganPesertaKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Bilangan Peserta: </label><input type="number" name="bilanganPesertaKT" value="'+bilanganPeserta+'" id="bilanganPesertaKT" placeholder="0" style="width:200px;" ><br>';
+        context += '<label for ="tarikh_tempah_mulaKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Tempah Mula: </label><input type="date" name="tarikh_tempah_mulaKT" id="tarikh_tempah_mulaKT" value="'+tarikhTempahanMula+'" style="width:200px;"></input><br>';
+        context += '<label for ="tarikh_tempah_tamatKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Tempah Tamat: </label><input type="date" name="tarikh_tempah_tamatKT" id="tarikh_tempah_tamatKT" value="'+tarikhTempahanTamat+'" style="width:200px;"></input><br>';    
+        context += '<label for ="masa_tempah_mulaKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Masa Tempah Mula: </label><input type="time" name="masa_tempah_mulaKT" id="masa_tempah_mulaKT" value="'+masaMula+'" style="width:200px;"></input><br>';               
+        context += '<label for ="masa_tempah_tamatKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Masa Tempah Tamat: </label><input type="time" name="masa_tempah_tamatKT" id="masa_tempah_tamatKT" value="'+masaTamat+'"  style="width:200px;"></input><br>';                  
+        //tarikh mula masa mula tarikh tamat masa tamat
+        context += '<label for="statusKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Status: </label><select id="statusKT" name="statusKT" style="width:200px;"><option value="Ditempah">Ditempah</option><option value="Selesai">Selesai</option><option value="Batal">Batal</option></select><br>';
+        context += '<center><button class="btn2" onclick="updateTempahan('+id+')">Hantar</button></center>'; 
+        context += '</div>';
+        modal.style.display = "block";
+        butiranKod.innerHTML = '';
+        butiranKod.innerHTML = context;
+        kat = kategoriTujuan;
+        bilik = namaBilik;
+        prog = tajukProgram;
+        stat = status;
+        }else{
+            context = 'Harap maaf, tempahan ini hanya boleh diedit oleh penempah sahaja.';
+            alert(context);
+        }
+    })
+
+    await sleep(1000);
+        fetch(urlKursusList).then(response => response.text().then(data => {
+            const json = JSON.parse(data.substring(47, data.length-2));
+            const rows = json.table.rows;
+            let kursusList = document.getElementById('tajukProgramKT');
+            for (var i=0; i<rows.length; i++){
+                var opt = rows[i];
+                kursusArr.push(opt);
+            }
+            console.log(kursusArr);
+            for (let i = 0;i < kursusArr.length; i++){
+                let optn = '';
+                optn = kursusArr[i].c[0].v;
+                let el = document.createElement("option");
+                //tujuanList.removeChild(el);
+                el.textContent = '';
+                el.value = '';
+                el.textContent = optn;
+                el.value = optn;
+                kursusList.appendChild(el);
+            }
+        }))
+
+    await sleep(1000);
+        fetch(urlTujuanList).then(response => response.text().then(data => {
+            const json = JSON.parse(data.substring(47, data.length-2));
+            const rows = json.table.rows;
+            let tujuanList = document.getElementById('kategoriTujuanKT');
+            for (var i=0; i<rows.length; i++){
+                var opt = rows[i];
+                tujuanArr.push(opt);
+            }
+            console.log(tujuanArr);
+            for (let i = 0;i < tujuanArr.length; i++){
+                let optn = '';
+                optn = tujuanArr[i].c[0].v;
+                let el = document.createElement("option");
+                //tujuanList.removeChild(el);
+                el.textContent = '';
+                el.value = '';
+                el.textContent = optn;
+                el.value = optn;
+                tujuanList.appendChild(el);
+            }
+        }))
+
+    await sleep(1000);
+                fetch(urlBilikList).then(response => response.text().then(data => {
+            const json = JSON.parse(data.substring(47, data.length-2));
+            const rows = json.table.rows;
+            let bilikList = document.getElementById('namaBilikKT');
+            for (var i=0; i<rows.length; i++){
+                var opt = rows[i];
+                bilikArr.push(opt);
+            }
+            console.log(bilikArr);
+            for (let i = 0;i < bilikArr.length; i++){
+                let optn = '';
+                optn = bilikArr[i].c[0].v;
+                let el = document.createElement("option");
+                //bilikList.removeChild(el);
+                el.textContent = '';
+                el.value = '';
+                el.textContent = optn;
+                el.value = optn;
+                bilikList.appendChild(el);
+            }
+        }))
+
+
+
+
+    var selectKat = document.getElementById('kategoriTujuanKT');
+    var selectBilik = document.getElementById('namaBilikKT');
+    var selectProgram = document.getElementById('tajukProgramKT');
+    var selectStatus = document.getElementById('statusKT');
+await sleep(1000);
+    for (let i = 0; i<selectKat.options.length; i++){
+        const option = selectKat.options[i];
+        if (option.value === kat){
+            option.selected = true;
+            break;
+        }
+    }
+
+    for (let i = 0; i<selectBilik.options.length; i++){
+        const option = selectBilik.options[i];
+        if (option.value === bilik){
+            option.selected = true;
+            break;
+        }
+    }
+    for (let i = 0; i<selectProgram.options.length; i++){
+        const option = selectProgram.options[i];
+        if (option.value === prog){
+            option.selected = true;
+            break;
+        }
+    }
+
+    for (let i = 0; i<selectStatus.options.length; i++){
+        const option = selectStatus.options[i];
+        if (option.value === stat){
+            option.selected = true;
+            break;
+        }
+    }
+
+}
+
+
+async function kemaskiniPengguna(id){
+    var kat = '';
+    var ins = '';
+    var url='https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=DataPengguna&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI+WHERE+A='+id+'+order by A+desc'
+    
+    fetch(url).then(response => response.text()).then(data =>{
+        const json = JSON.parse(data.substring(47, data.length-2));
+        const rows = json.table.rows;
+        console.log(rows);
+        let id = rows[0].c[0].f;
+        let namaPengguna = rows[0].c[1].v;
+        let katalaluan = rows[0].c[2].v;
+        let kategori = rows[0].c[3].v;
+        let institusi = rows[0].c[4].v;
+        let telefon = rows[0].c[8].f;
+
+        var context = '<p class="bebas-neue-regular" style="font-size:24pt;">Kemaskini Pengguna</p><br><label for="namaPenggunaAF" style="width:200px">Nama Pengguna: </label><br><input type="text" name="namaPenggunaAF" id="namaPenggunaAF" value="'+namaPengguna+'" style="width:200px"></input><br><br><label for ="katalaluanAF" style="width:200px">Katalaluan: </label><br><input type="password" name="katalaluanAF" id="katalaluanAF" value="'+katalaluan+'"><br><br><label for ="kategoriAF" style="width:200px">Kategori: </label><br><select name="kategoriAF" id="kategoriAF"><option value="Kakitangan">Kakitangan</option><option value="Pelajar">Pelajar</option><option value="Pengawal">Pengawal</option><option value="Admin">Admin</option></select><br><br><label for="institusiAF">Institusi: </label><br><select name="institusiAF" id="institusiAF"><option value="Kolej Komuniti">Kolej Komuniti</option><option value="Lain-lain">Lain-lain</option></select><br><br><label for="telefonAF">Telefon: </label><br><input type="number" name="telefonAF" value="'+telefon+'" id="telefonAF"><br><br><button class="btn2" onclick="updateUser('+id+')">Hantar</button>'; 
+        modal.style.display = "block";
+        butiranKod.innerHTML = '';
+        butiranKod.innerHTML = context;
+        kat = kategori;
+        ins = institusi;
+    })
+
+    await sleep(1000);
+
+    var selectKat = document.getElementById('kategoriAF');
+    var selectIns = document.getElementById('institusiAF');
+
+    for (let i = 0; i<selectKat.options.length; i++){
+        const option = selectKat.options[i];
+        if (option.value === kat){
+            option.selected = true;
+            break;
+        }
+    }
+
+    for (let i = 0; i<selectIns.options.length; i++){
+        const option = selectIns.options[i];
+        if (option.value === ins){
+            option.selected = true;
+            break;
+        }
+    }
+
+}
+
+async function kemaskiniBilik(id){
+    var url='https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaBilik&tq=SELECT+A%2CB%2CC+WHERE+A='+id+'+order by A+desc'
+    
+    fetch(url).then(response => response.text()).then(data =>{
+        const json = JSON.parse(data.substring(47, data.length-2));
+        const rows = json.table.rows;
+        console.log(rows);
+        let id = rows[0].c[0].f;
+        let namaBilik = rows[0].c[1].v;
+
+        var context = '<p class="bebas-neue-regular" style="font-size:24pt;">Kemaskini Bilik</p><br><label for="namaBilikAF">Nama Bilik: </label><input type="text" name="namaBilikAF" id="namaBilikAF" value="'+namaBilik+'"></input><br><br><button class="btn2" onclick="updateBilik('+id+')">Hantar</button>'; 
+        modal.style.display = "block";
+        butiranKod.innerHTML = '';
+        butiranKod.innerHTML = context;
+    })
+}
+
+async function kemaskiniKursus(id){
+    var url='https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaKursusPendek&tq=SELECT+A%2CB%2CC+WHERE+A='+id+'+order by A+desc'
+    
+    fetch(url).then(response => response.text()).then(data =>{
+        const json = JSON.parse(data.substring(47, data.length-2));
+        const rows = json.table.rows;
+        console.log(rows);
+        let id = rows[0].c[0].f;
+        let namaKursus = rows[0].c[1].v;
+
+        var context = '<p class="bebas-neue-regular" style="font-size:24pt;">Kemaskini Kursus</p><br><label for="namaKursusAF">Nama Kursus: </label><input type="text" name="namaKursusAF" id="namaKursusAF" value="'+namaKursus+'"></input><br><br><button class="btn2" onclick="updateKursus('+id+')">Hantar</button>'; 
+        modal.style.display = "block";
+        butiranKod.innerHTML = '';
+        butiranKod.innerHTML = context;
+    })
+}
+
+async function kemaskiniTujuan(id){
+    var url='https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=Tujuan&tq=SELECT+A%2CB%2CC+WHERE+A='+id+'+order by A+desc'
+    
+    fetch(url).then(response => response.text()).then(data =>{
+        const json = JSON.parse(data.substring(47, data.length-2));
+        const rows = json.table.rows;
+        console.log(rows);
+        let id = rows[0].c[0].f;
+        let tujuan = rows[0].c[1].v;
+
+        var context = '<p class="bebas-neue-regular" style="font-size:24pt;">Kemaskini Tujuan</p><br><label for="tujuanAF">Tujuan: </label><input type="text" name="tujuanAF" id="tujuanAF" value="'+tujuan+'"></input><br><br><button class="btn2" onclick="updateTujuan('+id+')">Hantar</button>'; 
+        modal.style.display = "block";
+        butiranKod.innerHTML = '';
+        butiranKod.innerHTML = context;
+    })
+}
+
+function tambahPengguna(){
+
+    var context = '<p class="bebas-neue-regular" style="font-size:24pt;">Tambah Pengguna</p><br><label for="namaPenggunaBaru" style="width:200px">Nama Pengguna: </label><br><input type="text" id="namaPenggunaBaru" name="namaPenggunaBaru" placeholder="Nama Pengguna" style="width:200px" required><br><br><label for="katalaluanPenggunaBaru" style="width:200px">Katalaluan: </label><br><input type="password" name="katalaluanPenggunaBaru" id="katalaluanPenggunaBaru" style="width:200px"><br><br><label for="kategoriPenggunaBaru" style="width:200px">Kategori: </label><br><select name="kategoriPenggunaBaru" id="kategoriPenggunaBaru" style="width:200px"><option value="Kakitangan">Kakitangan</option><option value="Pelajar">Pelajar</option><option value="Pengawal">Pengawal</option><option value="Admin">Admin</option></select><br><br><label for="institusiPenggunaBaru" style="width:200px">Institusi: </label><br><select name="institusiPenggunaBaru" id="institusiPenggunaBaru" style="width:200px"><option value="Kolej Komuniti">Kolej Komuniti</option><option value="Lain-lain">Lain-lain</option></select><br><br><label for="telefonPenggunaBaru" style="width:200px">Telefon: </label><br><input type="number" name="telefonPenggunaBaru" id="telefonPenggunaBaru"><br><br><button class="btn2" onclick="sendTambahPengguna()">Tambah</button>' ;
+    modal.style.display = "block";
+    butiranKod.innerHTML = '';
+    butiranKod.innerHTML = context; 
+}
+
+function tambahBilik(){
+
+    var context = '<p class="bebas-neue-regular" style="font-size:24pt;">Tambah Bilik</p><br><label for="namaBilikBaru" style="width:200px">Nama Bilik: </label><br><input type="text" id="namaBilikBaru" name="namaBilikBaru" placeholder="Nama Bilik" style="width:200px" required><br><br><button class="btn2" onclick="sendTambahBilik()">Tambah</button>';
+    modal.style.display = "block";
+    butiranKod.innerHTML = '';
+    butiranKod.innerHTML = context; 
+}
+
+function tambahKursus(){
+
+    var context = '<p class="bebas-neue-regular" style="font-size:24pt;">Tambah Kursus</p><br><label for="namaKursusBaru" style="width:200px">Nama Kursus/Kursus Pendek: </label><br><input type="text" id="namaKursusBaru" name="namaKursusBaru" placeholder="Nama Kursus/Kursus Pendek" style="width:200px" required><br><br><button class="btn2" onclick="sendTambahKursus()">Tambah</button>';
+    modal.style.display = "block";
+    butiranKod.innerHTML = '';
+    butiranKod.innerHTML = context; 
+}
+
+function tambahTujuan(){
+
+    var context = '<p class="bebas-neue-regular" style="font-size:24pt;">Tambah Tujuan</p><br><label for="tujuanBaru" style="width:200px">Tujuan: </label><br><input type="text" id="tujuanBaru" name="tujuanBaru" placeholder="Tujuan" style="width:200px" required><br><br><button class="btn2" onclick="sendTambahTujuan()">Tambah</button>';
+    modal.style.display = "block";
+    butiranKod.innerHTML = '';
+    butiranKod.innerHTML = context; 
+}
+
+
+function sendTambahPengguna(){
+
+    var namaPengguna = document.getElementById('namaPenggunaBaru').value;
+    var katalaluan = document.getElementById('katalaluanPenggunaBaru').value;
+    var kategori = document.getElementById('kategoriPenggunaBaru').value;
+    var institusi = document.getElementById('institusiPenggunaBaru').value;
+    var telefon = document.getElementById('telefonPenggunaBaru').value;
+
+    var url = 'https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=DaftarPengguna&Nama='+namaPengguna+'&Katalaluan='+katalaluan+'&Kategori='+kategori+'&Institusi='+institusi+'&Telefon='+telefon;
+
+    if (namaPengguna == ''){
+        var msg = 'Nama hendaklah di isi';
+        alert(msg);
+    } else if (katalaluan == ''){
+        var msg = 'Katalaluan hendaklah di isi';
+        alert(msg);
+    } else if(telefon == ''){
+        var msg = 'Telefon hendaklah di isi';
+        alert(msg);    
+    }else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsUser();
+            loadTablePenggunaAdmin();
+        })
+    }
+
+}
+
+function sendTambahBilik(){
+    var namaBilik = document.getElementById('namaBilikBaru').value;
+
+    var url = 'https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=CreateBilik&NamaBilik='+namaBilik;
+
+    if (namaBilik == ''){
+        var msg = 'Nama bilik hendaklah di isi';
+        alert(msg);   
+    }else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsBilik();
+            loadTableBilikAdmin();
+        })
+    }
+}
+
+function sendTambahKursus(){
+    var namaKursus = document.getElementById('namaKursusBaru').value;
+
+    var url = 'https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=CreateKursusPendek&NamaKursusPendek='+namaKursus;
+
+    if (namaKursus == ''){
+        var msg = 'Nama kursus/kursus pendek hendaklah di isi';
+        alert(msg);   
+    }else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsNamaKursus();
+            loadTableKursusAdmin();            
+        })
+    }
+}
+
+function sendTambahTujuan(){
+    var tujuan = document.getElementById('tujuanBaru').value;
+
+    var url = 'https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=CreateTujuan&Tujuan='+tujuan;
+
+    if (tujuan == ''){
+        var msg = 'Tujuan hendaklah di isi';
+        alert(msg);   
+    }else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsTujuan();
+            loadTableTujuanAdmin();            
+        })
+    }
+}
+
+
+function updateTempahan(id){
+    var namaPenempah = document.getElementById('namaPenempahKT').value;
+    var katalaluan = document.getElementById('katalaluanKT').value;
+    var telefon = document.getElementById('telefonKT').value;
+    var tajukProgram = document.getElementById('tajukProgramKT').value;
+    var kategoriTujuan = document.getElementById('kategoriTujuanKT').value;
+    var namaBilik = document.getElementById('namaBilikKT').value;
+    var institusiPeserta = document.getElementById('institusiPesertaKT').value;
+    var bilanganPeserta = document.getElementById('bilanganPesertaKT').value;
+    var tarikhTempahanMula = document.getElementById('tarikh_tempah_mulaKT').value;
+    var masaTempahanMula =  document.getElementById('masa_tempah_mulaKT').value;
+    var tarikhTempahanTamat = document.getElementById('tarikh_tempah_tamatKT').value;
+    var masaTempahanTamat =  document.getElementById('masa_tempah_tamatKT').value;
+    var status = document.getElementById('statusKT').value;
+    
+
+    var url='https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=KemaskiniTempahan&Id='+id+'&NamaPenempah='+namaPenempah+'&Katalaluan='+katalaluan+'&Telefon='+telefon+'&TajukProgram='+tajukProgram+'&KategoriTujuan='+kategoriTujuan+'&NamaBilik='+namaBilik+'&InstitusiPeserta='+institusiPeserta+'&BilanganPeserta='+bilanganPeserta+'&TarikhTempahanMula='+tarikhTempahanMula+'&MasaTempahanMula='+masaTempahanMula+'&TarikhTempahanTamat='+tarikhTempahanTamat+'&MasaTempahanTamat='+masaTempahanTamat+'&Status='+status;
+    //UPDATE SAT LAGI [060925 10:06 AM]
+    if (namaPenempah == ''){
+        var msg = 'Nama hendaklah di isi';
+        alert(msg);
+    } else if(telefon == ''){
+        var msg = 'Telefon hendaklah di isi';
+        alert(msg);    
+    } else if (tajukProgram == ''){
+        var msg = 'Tajuk program hendaklah di isi';   
+    }//UPDATE SAT LAGI [060925 11:04 AM] 
+    else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsTempahan();
+            loadTableTempahan();
+        })
+    }
+}
+
+function updateUser(id){
+    var namaPengguna = document.getElementById('namaPenggunaAF').value;
+    var katalaluan = document.getElementById('katalaluanAF').value;
+    var kategori = document.getElementById('kategoriAF').value;
+    var institusi = document.getElementById('institusiAF').value;
+    var telefon = document.getElementById('telefonAF').value;
+
+    var url = 'https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=KemaskiniPengguna&Id='+id+'&Nama='+namaPengguna+'&Katalaluan='+katalaluan+'&Kategori='+kategori+'&Institusi='+institusi+'&Telefon='+telefon;
+
+    if (namaPengguna == ''){
+        var msg = 'Nama hendaklah di isi';
+        alert(msg);
+    } else if(telefon == ''){
+        var msg = 'Telefon hendaklah di isi';
+        alert(msg);    
+    }else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsUser();
+            loadTablePenggunaAdmin();
+        })
+    }
+}
+
+function updateKursus(id){
+    var namaKursus = document.getElementById('namaKursusAF').value;
+
+    var url = 'https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=EditKursusPendek&Id='+id+'&NamaKursusPendek='+namaKursus;
+
+    if (namaKursus == ''){
+        var msg = 'Nama kursus/kursus pendek hendaklah di isi';
+        alert(msg);    
+    }else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsNamaKursus();
+            loadTableKursusAdmin();
+        })
+    }
+}
+
+function updateBilik(id){
+    var namaBilik = document.getElementById('namaBilikAF').value;
+
+    var url = 'https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=EditBilik&Id='+id+'&NamaBilik='+namaBilik;
+
+    if (namaBilik == ''){
+        var msg = 'Nama bilik hendaklah di isi';
+        alert(msg);    
+    }else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsBilik();
+            loadTableBilikAdmin();
+        })
+    }
+}
+
+function updateTujuan(id){
+    var tujuan = document.getElementById('tujuanAF').value;
+
+    var url = 'https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=EditTujuan&Id='+id+'&Tujuan='+tujuan;
+
+    if (tujuan == ''){
+        var msg = 'Tujuan hendaklah di isi';
+        alert(msg);    
+    }else {
+        $.post(url,function(data){
+            console.log(url);
+            alert(data);
+            getLogsTujuan();
+            loadTableTujuanAdmin();
+        })
+    }
+}
+
+
+function displayModal(){
+modal.style.display = "block";
+butiranKod.innerHTML = "<center><span>Senarai individu akan dipaparkan disini mengikut tarikh hari semasa untuk semakan pegawai keselamatan.</span></center>";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+function closeModal(){
+    
+    modal.style.display = "none";
+    
+}
+        
+            var urusPengguna = document.getElementById('urus_pengguna');
+            var urusBilik = document.getElementById('urus_bilik');
+            var urusKursus = document.getElementById('urus_kursus');
+            var urusTujuan = document.getElementById('urus_tujuan');
+            var btnPengguna = document.getElementById('btn_pengguna');
+            var btnBilik = document.getElementById('btn_bilik');
+            var btnKursus = document.getElementById('btn_kursus');
+            var btnTujuan = document.getElementById('btn_tujuan');
+            
+            function urusPenggunaDisp(){
+            urusPengguna.style.display = 'block';
+            urusBilik.style.display = 'none';
+            urusKursus.style.display = 'none';
+            urusTujuan.style.display = 'none';
+            btnPengguna.style.backgroundColor = '#00cc7a';
+            btnBilik.style.backgroundColor = '#3f5f8f';
+            btnKursus.style.backgroundColor = '#3f5f8f';
+            btnTujuan.style.backgroundColor = '#3f5f8f';
+            getLogsUser();
+            }
+            
+            function urusBilikDisp(){
+            urusPengguna.style.display = 'none';
+            urusBilik.style.display = 'block';
+            urusKursus.style.display = 'none';
+            urusTujuan.style.display = 'none';  
+            btnPengguna.style.backgroundColor = '#3f5f8f';
+            btnBilik.style.backgroundColor = '#00cc7a';
+            btnKursus.style.backgroundColor = '#3f5f8f';
+            btnTujuan.style.backgroundColor = '#3f5f8f';   
+            getLogsBilik();
+            }
+            
+            function urusKursusDisp(){
+            urusPengguna.style.display = 'none';
+            urusBilik.style.display = 'none';
+            urusKursus.style.display = 'block';
+            urusTujuan.style.display = 'none'; 
+            btnPengguna.style.backgroundColor = '#3f5f8f';
+            btnBilik.style.backgroundColor = '#3f5f8f';
+            btnKursus.style.backgroundColor = '#00cc7a';
+            btnTujuan.style.backgroundColor = '#3f5f8f';  
+            getLogsNamaKursus();
+            }
+            
+            function urusTujuanDisp(){
+            urusPengguna.style.display = 'none';
+            urusBilik.style.display = 'none';
+            urusKursus.style.display = 'none';
+            urusTujuan.style.display = 'block';
+            btnPengguna.style.backgroundColor = '#3f5f8f';
+            btnBilik.style.backgroundColor = '#3f5f8f';
+            btnKursus.style.backgroundColor = '#3f5f8f';
+            btnTujuan.style.backgroundColor = '#00cc7a';
+            getLogsTujuan();
+            }        
+        
+        
+ 
+      var mainPage = document.getElementById("mainPage");
+      var loginPage = document.getElementById("loginPage");
+      var loginForm = document.getElementById("loginForm");
+      var createAccForm = document.getElementById("createAccForm");
+      var resetPwdForm = document.getElementById("resetPwdForm");  
+      var dashboardGuard = document.getElementById("guard_dashboard");
+      var dashboardAdmin = document.getElementById("admin_dashboard");
+      
+      
+      var deployID = "AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT";
+      
+      sessionStorage.setItem('login',false);
+      sessionStorage.setItem('NamaPegawai','BelumLogmasuk');
+      sessionStorage.setItem('KataLaluan','BelumLogmasuk');
+        
+      function crAccForm(){
+        loginForm.style.display = "none";
+        createAccForm.style.display = "block";
+        $("input[type=text]").val("");
+        $("input[type=password]").val("");
+      }
+      
+      function restPwdForm(){
+          loginForm.style.display = "none";
+          resetPwdForm.style.display = "block";
+          $("input[type=text]").val("");
+          $("input[type=password]").val("");
+      }
+
+      function createAcc(){
+        loginForm.style.display = "block";
+        createAccForm.style.display = "none";
+        $("input[type=text]").val("");
+        $("input[type=password]").val("");
+      }
+      function resetAcc(){
+        loginForm.style.display = "block";
+        resetPwdForm.style.display = "none";
+        $("input[type=text]").val("");
+        $("input[type=password]").val("");
+      }      
+      function showPass(){
+          var x = document.getElementsByName('password')[0];
+          if (x.type === "password"){
+              x.type = "text";
+          }else{
+              x.type = "password";
+          }
+      }
+      function showPassReg(){
+          var x = document.getElementsByName('passwordReg')[0];
+          if (x.type === "password"){
+              x.type = "text";
+          }else{
+              x.type = "password";
+          }
+      }
+      function showPassRest(){
+          var x = document.getElementsByName('passwordRest')[0];
+          if (x.type === "password"){
+              x.type = "text";
+          }else{
+              x.type = "password";
+          }
+      }      
+	  
+      function login(){
+        var gasURL = "https://script.google.com/macros/s/"+deployID+"/exec";
+        var logMasuk = "?func=LogMasuk";
+        var userName =  document.getElementsByName('username')[0].value;
+        var password =  document.getElementsByName('password')[0].value;
+        var mesejGagal = "Log masuk gagal";
+        if (userName == ''){
+        var msg = "User Name cannot empty";	
+        document.getElementById('maklumbalasLg').style.color ='red';
+        $( "#maklumbalasLg" ).html( msg );		
+		setTimeout(function(){document.getElementById("maklumbalasLg").innerHTML = "";}, 3000);
+        return false;   
+        }
+        else if (password == ''){
+        var msg = "Password cannot empty";	
+        document.getElementById('maklumbalasLg').style.color ='red';
+        $( "#maklumbalasLg" ).html( msg );		
+		setTimeout(function(){document.getElementById("maklumbalasLg").innerHTML = "";}, 3000); 
+		return false; 
+        }
+        else{
+        updateStat();    
+        $.post( gasURL+logMasuk+"&Nama="+userName+"&Katalaluan="+password, function(data){
+          console.log(gasURL+logMasuk+"&Nama="+userName+"&Katalaluan="+password);
+          if (data == mesejGagal){
+            document.getElementById('maklumbalasLg').style.color = 'red';
+            $("#maklumbalasLg").html(data);
+            setTimeout(function(){document.getElementById("maklumbalasLg").innerHTML = "";}, 3000); 
+          }
+		  if (data != mesejGagal){
+          urlLogsTempahan ="https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CJ%2CK%2CL%2CM%2CN%2CO%2CP%2CQ%2CR%2CS%2CT%2CU%2CV+order by A+desc";
+		  console.log(data);      
+		  var obj = JSON.parse(data);
+		  console.log(obj);
+          console.log(obj.id);
+          console.log(obj.kategori);
+          console.log(obj.status);
+          console.log(obj.telefon);
+          sessionStorage.setItem('peranan',obj.kategori);
+          sessionStorage.setItem('statusAktif',obj.status);
+		  //document.getElementById("welcomeText").innerHTML = '<span><b>Hi! <i>'+userName+'</i></b></span>';	  
+          document.getElementById('maklumbalasLg').style.color ='blue';
+          $( "#maklumbalasLg" ).html( data ); 
+          setTimeout(function(){document.getElementById("maklumbalasLg").innerHTML = "";},1); 
+          document.getElementsByName('username')[0].value = '';
+          document.getElementsByName('password')[0].value = '';
+          
+          if (sessionStorage.getItem('statusAktif') == 'Aktif'){
+          
+                $("input[type=text]").val("");
+                $("input[type=password]").val("");
+                sessionStorage.setItem('NamaPegawai', userName);
+                sessionStorage.setItem('KataLaluan', password);
+                sessionStorage.setItem('Telefon',obj.telefon);
+                sessionStorage.setItem('login',true);
+                document.getElementById('namapegawai').value = sessionStorage.getItem('NamaPegawai');
+                document.getElementById('logkeluar').style.display = "block"; 
+                document.getElementById('logmasuk').style.display = "none"; 
+                document.getElementById('menuListTempahan').style.display = "block";
+                // document.getElementById('menuListTempahBilik').style.display = "block"; 
+                // document.getElementById('menuListKursusPendek').style.display = "block";
+                document.getElementById('institusipeserta').value = 'Kolej Komuniti';
+                document.getElementById('customkursus').value = 'Program';
+                document.getElementById('customtujuan').value = 'Tujuan';
+          
+            if((sessionStorage.getItem('peranan') == 'Kakitangan')||(sessionStorage.getItem('peranan') == 'Pelajar')){
+                showMode();   
+            }
+            else if(sessionStorage.getItem('peranan') == 'Pengawal'){
+                guardPage();
+            }else{
+                adminPage();
+            }
+          }
+          
+          else{
+              alert("Akaun telah dinyahaktif. Sila hubungi pentadbir untuk pengaktifan semula akaun.");
+          }
+          
+		 }          
+        })   
+        }     
+      }
+
+      // Get the input field
+var inputPwd = document.getElementsByName('password')[0];
+
+// Execute a function when the user presses a key on the keyboard
+inputPwd.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("loginBtn").click();
+  }
+});         
+        
+    
+
+      function registerAcc(){
+        var gasURL = "https://script.google.com/macros/s/"+deployID+"/exec";
+        var daftarAcc = "?func=DaftarPengguna";
+        var userName =  document.getElementsByName('usernameReg')[0].value;
+        var password =  document.getElementsByName('passwordReg')[0].value;
+        var telefon = document.getElementsByName('telefon')[0].value;
+        var kategori = document.getElementsByName('kategori')[0].value;
+        var institusi = document.getElementsByName('institusi')[0].value;
+        var mesejGagal = "Pendaftaran gagal. Sila daftar gunakan Nama Pengguna yang lain.";
+        if (userName == ''){
+        var msg = "Nama hendaklah di isi"; 	
+        document.getElementById('maklumbalasReg').style.color ='red';
+        $( "#maklumbalasReg" ).html( msg );		
+		setTimeout(function(){document.getElementById("maklumbalasReg").innerHTML = "";}, 3000);
+		return false;
+        }
+        else if(password == ''){           
+        var msg = "Katalaluan hendaklah di isi"; 	
+        document.getElementById('maklumbalasReg').style.color ='red';
+        $( "#maklumbalasReg" ).html( msg );		
+		setTimeout(function(){document.getElementById("maklumbalasReg").innerHTML = "";}, 3000);
+		return false;
+        }  
+        else if (telefon == ''){
+        var msg = "Telefon hendaklah di isi";	
+        document.getElementById('maklumbalasReg').style.color ='red';
+        $( "#maklumbalasReg" ).html( msg );		
+		setTimeout(function(){document.getElementById("maklumbalasReg").innerHTML = "";}, 3000); 
+		return false; 
+        }        
+        else{
+        $.post( gasURL+daftarAcc+"&Nama="+userName+"&Katalaluan="+password+"&Kategori="+kategori+"&Institusi="+institusi+"&Telefon="+telefon, function(data){
+          console.log(gasURL+daftarAcc+"&UserName="+userName+"&Password="+password+"&Kategori="+kategori+"&Institusi="+institusi+"&Telefon="+telefon);
+          if (data == mesejGagal){
+            document.getElementById('maklumbalasReg').style.color = 'red';
+            $("#maklumbalasReg").html(data);
+            setTimeout(function(){document.getElementById("maklumbalasReg").innerHTML = "";}, 3000); 
+          }
+		      if (data != mesejGagal){
+          document.getElementById('maklumbalasReg').style.color ='blue';
+          $( "#maklumbalasReg" ).html( data ); 
+          setTimeout(function(){document.getElementById("maklumbalasReg").innerHTML = "";}, 3000); 
+          document.getElementsByName('usernameReg')[0].value = '';
+          document.getElementsByName('passwordReg')[0].value = '';
+          setTimeout(createAcc,3000);
+          $("input[type=text]").val("");
+		 }          
+        })
+      }
+      }
+      
+      function resetPwd(){
+        var gasURL = "https://script.google.com/macros/s/"+deployID+"/exec";
+        var resetPwd = "?func=ResetKatalaluan";
+        var userName =  document.getElementsByName('usernameRest')[0].value;
+        var password =  document.getElementsByName('passwordRest')[0].value;
+        var mesejGagal = "Reset Katalaluan gagal. Nama Pengguna tidak wujud.";
+        if (userName == ''){
+        var msg = "User Name must be filled out"; 	
+        document.getElementById('maklumbalasRest').style.color ='red';
+        $( "#maklumbalasRest" ).html( msg );		
+		setTimeout(function(){document.getElementById("maklumbalasRest").innerHTML = "";}, 3000);
+		return false;
+        }
+        else if(password == ''){         
+        var msg = "Password must be filled out"; 	
+        document.getElementById('maklumbalasRest').style.color ='red';
+        $( "#maklumbalasRest" ).html( msg );		
+		setTimeout(function(){document.getElementById("maklumbalasRest").innerHTML = "";}, 3000);
+		return false;
+        }  
+        else{
+        $.post( gasURL+resetPwd+"&Nama="+userName+"&Katalaluan="+password, function(data){
+          console.log(gasURL+resetPwd+"&Nama="+userName+"&Katalaluan="+password);
+          if (data == mesejGagal){
+            document.getElementById('maklumbalasReg').style.color = 'red';
+            $("#maklumbalasRest").html(data);
+            setTimeout(function(){document.getElementById("maklumbalasRest").innerHTML = "";}, 3000); 
+          }
+		      if (data != mesejGagal){
+          document.getElementById('maklumbalasRest').style.color ='blue';
+          $( "#maklumbalasRest" ).html( data ); 
+          setTimeout(function(){document.getElementById("maklumbalasRest").innerHTML = "";}, 3000); 
+          document.getElementsByName('usernameRest')[0].value = '';
+          document.getElementsByName('passwordRest')[0].value = '';
+          setTimeout(resetAcc,3000);
+          $("input[type=text]").val("");
+		 }          
+        })
+      }
+      }      
+        
+            function checkTujuan(val){
+                var customTujuan = document.getElementById("customtujuan");
+                var customkursusPendek = document.getElementById("inputkursus");
+                var tajukborang = document.getElementById("tajukBorang");
+
+                if (val == "Lain lain"){
+                    customTujuan.style.display = "inline-block";
+                    customkursusPendek.style.display = "none";
+                    //tajukborang.innerText = "Borang Tempahan Bilik";
+                    tajukborang.innerText = "Borang Tempahan Bilik dan Kursus Pendek";        
+                }else if ((val == "Kursus Pendek")||(val == "Kursus")){
+                    //customkursusPendek.style.display = "block";
+                    customTujuan.style.display = "none";
+                    tajukborang.innerText = "Borang Tempahan Bilik dan Kursus Pendek";
+                    
+                }
+                else {
+                    customTujuan.style.display = "none";
+                    customkursusPendek.style.display = "none";
+                    //tajukborang.innerText = "Borang Tempahan Bilik";
+                    tajukborang.innerText = "Borang Tempahan Bilik dan Kursus Pendek";
+                }
+            }    
+            
+            function checkKursus(val){
+                var kursusPendekInput = document.getElementById("customkursus");
+                
+                if(val == "Program baru"){
+                    kursusPendekInput.style.display = "inline-block";
+                    kursusPendekinput.required = "true";
+                    kursusPendekInput.value = "Nama Program";
+                }else{
+                    kursusPendekInput.style.display = "none";
+                }
+            }
+            
+            function logout(){
+                urlLogsTempahan ="https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CJ%2CK%2CL%2CM%2CN%2CO%2CP%2CQ%2CR%2CS%2CT%2CU%2CV+Where%20P!='Batal'+order by A+desc";
+                sessionStorage.setItem('login',false);
+                sessionStorage.setItem('NamaPegawai','BelumLogmasuk');
+                sessionStorage.setItem('KataLaluan','BelumLogmasuk');
+                document.getElementById('logkeluar').style.display = "none";
+                document.getElementById('logmasuk').style.display = "block";
+                showData();
+            }
+
+            
+            function showData(){
+                if (sessionStorage.getItem('login') == 'true'){
+                document.getElementById('menuListTempahan').style.display = "block";    
+                // document.getElementById('menuListTempahBilik').style.display = "block";
+                // document.getElementById('menuListKursusPendek').style.display = "block";
+                document.getElementById('logkeluar').style.display = "block";
+                document.getElementById('logmasuk').style.display = "none";
+                document.getElementById('institusipeserta').value = 'Kolej Komuniti';
+                document.getElementById('bilpeserta').value = '0'  
+                getLogsKursus();
+                getLogsTempahan();
+                if((sessionStorage.getItem('peranan')== 'Kakitangan')||(sessionStorage.getItem('peranan')== 'Pelajar')){
+                document.getElementById("sensordata").style.display = "block";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "none"; 
+                dashboardGuard.style.display = 'none';
+                dashboardAdmin.style.display = 'none';                                       
+                    }else if((sessionStorage.getItem('peranan')== 'Pengawal')){
+                document.getElementById("sensordata").style.display = "none";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "none"; 
+                dashboardGuard.style.display = 'block';
+                dashboardAdmin.style.display = 'none';                                      
+                }else{
+                document.getElementById("sensordata").style.display = "none";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "none"; 
+                dashboardGuard.style.display = 'none';
+                dashboardAdmin.style.display = 'block';                                      
+                }
+                }else if (sessionStorage.getItem('login') == 'false'){
+                document.getElementById("sensordata").style.display = "none";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "none";                    
+                document.getElementById('logkeluar').style.display = "none";
+                document.getElementById('logmasuk').style.display = "block";
+                document.getElementById('menuListTempahan').style.display = "none";
+                // document.getElementById('menuListTempahBilik').style.display = "none";
+                // document.getElementById('menuListKursusPendek').style.display = "none";
+                dashboardGuard.style.display = 'block';
+                dashboardAdmin.style.display = 'none';    
+                getLogsTempahan();
+                }
+            }
+            
+            function guardPage(){
+                dashboardGuard.style.display = 'block';
+                dashboardAdmin.style.display = 'none';
+                document.getElementById("modeselect").style.display = "none";
+                getLogsTempahan();
+            }
+            
+            function adminPage(){
+                dashboardGuard.style.display = 'none';
+                dashboardAdmin.style.display = 'block';
+                document.getElementById("modeselect").style.display = "none";
+                getLogsUser();
+            }
+            
+            function showMode(){
+                document.getElementById("sensordata").style.display = "block";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "none";
+                dashboardGuard.style.display = 'none';
+                dashboardAdmin.style.display = 'none';                
+            }
+            function showManualCtrl(){
+                document.getElementById("sensordata").style.display = "none";
+                document.getElementById("modeselect").style.display = "block";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "none";
+                dashboardGuard.style.display = 'none';
+                dashboardAdmin.style.display = 'none';
+                $("input[type=date]").val(""); 
+                getLogsKursus();
+            }
+            function showTempahan(){
+                document.getElementById("sensordata").style.display = "none";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "none";
+                dashboardGuard.style.display = 'block';
+                dashboardAdmin.style.display = 'none';                
+                $("input[type=date]").val(""); 
+                getLogsTempahan();
+            }
+            function showHistory(){
+                document.getElementById("sensordata").style.display = "none";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "block";
+                dashboardGuard.style.display = 'none';
+                dashboardAdmin.style.display = 'none';                
+                $("input[type=date]").val(""); 
+                getLogs();
+            }
+            function showKursusPendek(){
+                document.getElementById("sensordata").style.display = "none";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "block";
+                document.getElementById("historydata").style.display = "none";
+                dashboardGuard.style.display = 'none';
+                dashboardAdmin.style.display = 'none';
+                $("input[type=date]").val(""); 
+                getLogsKursus();                
+            }
+            var url = "https://script.google.com/macros/s/AKfycbzN-2xgrW2jfgb--6zJwCr9RYIkRV97rb8-JK1txzXor5UWwUOSnVDDkcUQk2c4w_t-/exec?func=getSensorData";
+            
+            
+            var datas;
+            var datas2;
+            var datas3;
+            var datas4;
+            var datas5;
+            var datas6;
+            var datas7;
+            
+            let table1 = document.getElementById("data-history");
+            let table2 =  document.getElementById("data-history-kursus");
+            let table3 = document.getElementById("data-urus-pengguna");
+            let table4 = document.getElementById("data-urus-bilik");
+            let table5 = document.getElementById("data-urus-kursus");
+            let table6 = document.getElementById("data-urus-tujuan");
+            let table7 = document.getElementById("data-tempahan");
+            let tablehead7 = document.getElementById("header-tempahan");
+            
+            const pageSize = 30;
+            let curPage = 1;
+
+            document.querySelector('#nextButton').addEventListener('click', nextPage, false);
+            document.querySelector('#prevButton').addEventListener('click', previousPage, false);            
+            
+            document.querySelector('#nextButtonKursus').addEventListener('click', nextPageKursus, false);
+            document.querySelector('#prevButtonKursus').addEventListener('click', previousPageKursus, false);  
+            
+            document.querySelector('#nextButtonPengguna').addEventListener('click', nextPagePenggunaAdmin, false);
+            document.querySelector('#prevButtonPengguna').addEventListener('click', previousPagePenggunaAdmin, false);
+            
+            document.querySelector('#nextButtonBilik').addEventListener('click', nextPageBilikAdmin, false);
+            document.querySelector('#prevButtonBilik').addEventListener('click', previousPageBilikAdmin, false);
+            
+            document.querySelector('#nextButtonNamaKursus').addEventListener('click', nextPageKursusAdmin, false);
+            document.querySelector('#prevButtonNamaKursus').addEventListener('click', previousPageKursusAdmin, false);
+            
+            document.querySelector('#nextButtonTujuan').addEventListener('click', nextPageTujuanAdmin, false);
+            document.querySelector('#prevButtonTujuan').addEventListener('click', previousPageTujuanAdmin, false);
+            
+            document.querySelector('#nextButtonTempahan').addEventListener('click',nextPageTempahan, false);
+            document.querySelector('#prevButtonTempahan').addEventListener('click',previousPageTempahan, false);
+            
+            function clearLogTempahan(){
+            $("#header-tempahan tr").html('');    
+            $("#data-tempahan tr").html('');
+            
+            }
+
+            function clearLog(){
+
+            $("#data-history tr").html('');
+
+            }
+
+            function clearLogKursus(){
+
+            $("#data-history-kursus tr").html('');
+
+            }  
+            
+            function clearLogPenggunaAdmin(){
+            $("#data-urus-pengguna tr").html('');    
+            }
+            
+            function clearLogBilikAdmin(){
+            $("#data-urus-bilik tr").html('');    
+            }
+            
+            function clearLogKursusAdmin(){
+            $("#data-urus-kursus tr").html('');    
+            }
+            
+            function clearLogTujuanAdmin(){
+            $("#data-urus-tujuan tr").html('');    
+            }
+
+            
+            function previousPageTempahan() {
+                if(curPage > 1) curPage--;
+                //renderTable();
+                loadTableTempahan();
+                //getLogs();
+            }
+
+            function nextPageTempahan(){
+                if((curPage * pageSize) <= datas7.length) curPage++;
+                //renderTable();
+                loadTableTempahan();
+                //getLogs();
+            }   
+
+
+            function previousPage() {
+                if(curPage > 1) curPage--;
+                //renderTable();
+                loadTable();
+                //getLogs();
+            }
+
+            function nextPage() {
+                if((curPage * pageSize) <= datas.length) curPage++;
+                //renderTable();
+                loadTable();
+                //getLogs();
+            }            
+    
+
+            function previousPageKursus() {
+                if(curPage > 1) curPage--;
+                //renderTable();
+                loadTableKursus();
+                //getLogs();
+            }
+
+            function nextPageKursus() {
+                if((curPage * pageSize) <= datas2.length) curPage++;
+                //renderTable();
+                loadTableKursus();
+                //getLogs();
+            }    
+            
+            function previousPagePenggunaAdmin(){
+                clearLogPenggunaAdmin();
+                if(curPage > 1) curPage--;
+                loadTablePenggunaAdmin();
+            }
+            
+            function nextPagePenggunaAdmin(){
+                clearLogPenggunaAdmin();
+                if((curPage * pageSize) <= datas3.length) curPage++;
+                loadTablePenggunaAdmin();
+            }
+            
+            function previousPageBilikAdmin(){
+                clearLogBilikAdmin();
+                if(curPage > 1) curPage--;
+                loadTableBilikAdmin();
+            }
+            
+            function nextPageBilikAdmin(){
+                clearLogBilikAdmin();
+                if((curPage * pageSize) <= datas4.length) curPage++;
+                loadTableBilikAdmin();
+            }            
+    
+            function previousPageKursusAdmin(){
+                clearLogKursusAdmin();
+                if(curPage > 1) curPage--;
+                loadTableKursusAdmin();
+            }
+            
+            function nextPageKursusAdmin(){
+                clearLogKursusAdmin();
+                if((curPage * pageSize) <= datas5.length) curPage++;
+                loadTableKursusAdmin();
+            }
+            function previousPageTujuanAdmin(){
+                clearLogTujuanAdmin();
+                if(curPage > 1) curPage--;
+                loadTableTujuanAdmin();
+            }
+            
+            function nextPageTujuanAdmin(){
+                clearLogTujuanAdmin();
+                if((curPage * pageSize) <= datas6.length) curPage++;
+                console.log("curpagePageSize: "+curPage * pageSize+" datas6 length: "+datas6.length+" curpage: "+curPage);
+                loadTableTujuanAdmin();
+            }
+            
+            var urlLogs = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahBilik&tq=SELECT+A%2CC%2CD%2CE%2CI%2CJ%2CF%2CG%2CH%2CM%2CT+WHERE%20M!='Batal'+order by A+desc";
+            //id,nama_pegawai,nama_bilik,hari_tempah,tarikh_tempahan,masa_tempahan,status
+            
+            var urlLogsKursus = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodKursusPendek&tq=SELECT+A%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CL%2CS%2CT%2CU+WHERE%20L!='Batal'order by A+desc";            
+            //id,nama_pegawai,nama_kursus,tarikh_mula,tarikh_habis,masa_mula,masa_habis,tempat_kursus,status
+            
+            var urlLogsUser = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=DataPengguna&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI+order by A+desc";
+            
+            var urlLogsBilik =  "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaBilik&tq=SELECT+A%2CB%2CC+order by A+desc";
+            
+            var urlLogsNamaKursus = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaKursusPendek&tq=SELECT+A%2CB%2CC+order by A+desc";
+            
+            var urlLogsTujuan = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=Tujuan&tq=SELECT+A%2CB%2CC+order by A+desc";
+            
+            //var urlLogsTempahan = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CJ%2CK%2CL%2CM%2CN%2CO%2CP%2CQ%2CR%2CS%2CT%2CU%2CV+WHERE%20P!='Batal'+order by A+desc";
+
+            var urlLogsTempahan = '';
+
+            
+            function getLogsUser(){
+                clearLogPenggunaAdmin();
+                
+                fetch(urlLogsUser).then(response => response.text()).then(data => {
+                    const json = JSON.parse(data.substring(47, data.length-2));
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas3 = rows;
+                    
+                    if (rows.length >0){
+                        for(let i=0;i<pageSize;i++){
+                            let id= i+1;
+                            let index = id;
+                            let namaPengguna = rows[i].c[1].v;
+                            let kategori = rows[i].c[3].v;
+                            let institusi = rows[i].c[4].v;
+                            let status = rows[i].c[7].v;
+                            let telefon =rows[i].c[8].f;
+                            let row = table3.insertRow();
+                            row.insertCell().innerText = index;
+                            row.insertCell().innerText = namaPengguna;
+                            row.insertCell().innerText = kategori;
+                            row.insertCell().innerText = institusi;
+                            row.insertCell().innerText = '+60'+telefon;
+                            let toggleSw = '';
+                            if (status == 'Aktif'){
+                            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitch'+rows[i].c[0].f+'" value="'+status+'" onchange="ubahUserFlag('+rows[i].c[0].f+')" checked><span class="slider round"></span></label>'
+                            }if (status == 'Nyahaktif'){
+                            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitch'+rows[i].c[0].f+'" value="'+status+'" onchange="ubahUserFlag('+rows[i].c[0].f+')"><span class="slider round"></span></label>'
+                            }
+                            row.insertCell().innerHTML = ' '+toggleSw +' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniPengguna('+rows[i].c[0].f+')"><i class=\'fa fa-edit\'></i></span>';
+                            document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize).toFixed();
+                            
+                        }
+                    }
+            if (rows.length < 1){
+
+            let txt = "Not Available";
+            let row = table3.insertRow();
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;  
+            row.insertCell().innerText = txt;   
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            }})
+            .catch(error => console.error(error));
+        }
+
+            function ubahUserFlag(id){
+                if(document.getElementById('flagSwitch'+id+'').value == 'Aktif'){
+                    document.getElementById('flagSwitch'+id+'').value = 'Nyahaktif';
+                    console.log('userFlag'+id+' NYAHAKTIF');
+                    var url = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=DisablePengguna&Id="+id;
+                    console.log(url);
+                    fetch(url).then(response => response.text()).then(data=>{
+                        console.log("response nyahaktif: "+data);
+                        alert(data);
+                    })
+
+                } else if (document.getElementById('flagSwitch'+id+'').value == 'Nyahaktif'){
+                    document.getElementById('flagSwitch'+id+'').value = 'Aktif';
+                    console.log('userFlag'+id+' AKTIF');
+                    var url = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=EnablePengguna&Id="+id;
+                    console.log(url);
+                    fetch(url).then(response => response.text()).then(data=>{
+                        console.log("response aktif: "+data);
+                        alert(data);
+                    })
+                }
+            }
+            
+            function ubahBilikFlag(id){
+                if(document.getElementById('flagSwitchBilik'+id+'').value == 'Aktif'){
+                    document.getElementById('flagSwitchBilik'+id+'').value = 'Nyahaktif';
+                    console.log('bilikFlag'+id+' NYAHAKTIF');
+                    var url = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=DisableBilik&Id="+id;
+                    console.log(url);
+                    fetch(url).then(response => response.text()).then(data=>{
+                        console.log("response nyahaktif: "+data);
+                        alert(data);
+                    })
+
+                } else if (document.getElementById('flagSwitchBilik'+id+'').value == 'Nyahaktif'){
+                    document.getElementById('flagSwitchBilik'+id+'').value = 'Aktif';
+                    console.log('bilikFlag'+id+' AKTIF');
+                    var url = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=EnableBilik&Id="+id;
+                    console.log(url);
+                    fetch(url).then(response => response.text()).then(data=>{
+                        console.log("response aktif: "+data);
+                        alert(data);
+                    })
+                }
+            }
+
+            function ubahKursusFlag(id){
+                if(document.getElementById('flagSwitchKursus'+id+'').value == 'Aktif'){
+                    document.getElementById('flagSwitchKursus'+id+'').value = 'Nyahaktif';
+                    console.log('kursusFlag'+id+' NYAHAKTIF');
+                    var url = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=DisableKursusPendek&Id="+id;
+                    console.log(url);
+                    fetch(url).then(response => response.text()).then(data=>{
+                        console.log("response nyahaktif: "+data);
+                        alert(data);
+                    })
+
+                } else if (document.getElementById('flagSwitchKursus'+id+'').value == 'Nyahaktif'){
+                    document.getElementById('flagSwitchKursus'+id+'').value = 'Aktif';
+                    console.log('kursusFlag'+id+' AKTIF');
+                    var url = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=EnableKursusPendek&Id="+id;
+                    console.log(url);
+                    fetch(url).then(response => response.text()).then(data=>{
+                        console.log("response aktif: "+data);
+                        alert(data);
+                    })
+                }
+            }            
+
+            function ubahTujuanFlag(id){
+                if(document.getElementById('flagSwitchTujuan'+id+'').value == 'Aktif'){
+                    document.getElementById('flagSwitchTujuan'+id+'').value = 'Nyahaktif';
+                    console.log('tujuanFlag'+id+' NYAHAKTIF');
+                    var url = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=DisableTujuan&Id="+id;
+                    console.log(url);
+                    fetch(url).then(response => response.text()).then(data=>{
+                        console.log("response nyahaktif: "+data);
+                        alert(data);
+                    })
+
+                } else if (document.getElementById('flagSwitchTujuan'+id+'').value == 'Nyahaktif'){
+                    document.getElementById('flagSwitchTujuan'+id+'').value = 'Aktif';
+                    console.log('tujuanFlag'+id+' AKTIF');
+                    var url = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=EnableTujuan&Id="+id;
+                    console.log(url);
+                    fetch(url).then(response => response.text()).then(data=>{
+                        console.log("response aktif: "+data);
+                        alert(data);
+                    })
+                }
+            }
+
+            function getLogsBilik(){
+                clearLogBilikAdmin();
+                
+                fetch(urlLogsBilik).then(response => response.text()).then(data => {
+                    const json = JSON.parse(data.substring(47, data.length-2));
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas4 = rows;
+                    
+                    if (rows.length >0){
+                        for(let i=0;i<pageSize;i++){
+                            let id= i+1;
+                            let index = id;
+                            let namaBilik = rows[i].c[1].v;
+                            let status = rows[i].c[2].v;
+                            let row = table4.insertRow();
+                            row.insertCell().innerText = index;
+                            row.insertCell().innerText = namaBilik;
+                            let toggleSw = '';
+                            if (status == 'Aktif'){
+                            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchBilik'+rows[i].c[0].f+'" value="'+status+'" onchange="ubahBilikFlag('+rows[i].c[0].f+')" checked><span class="slider round"></span></label>'
+                            }if (status == 'Nyahaktif'){
+                            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchBilik'+rows[i].c[0].f+'" value="'+status+'" onchange="ubahBilikFlag('+rows[i].c[0].f+')"><span class="slider round"></span></label>'
+                            }
+                            row.insertCell().innerHTML = ' '+toggleSw +' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniBilik('+rows[i].c[0].f+')"><i class=\'fa fa-edit\'></i></span>';
+                            document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize).toFixed();
+                            
+                        }
+                    }
+            if (rows.length < 1){
+
+            let txt = "Not Available";
+            let row = table4.insertRow();
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;  
+            row.insertCell().innerText = txt;   
+            row.insertCell().innerText = txt;
+            }})
+            .catch(error => console.error(error));
+        }
+        
+            function getLogsNamaKursus(){
+                clearLogKursusAdmin();
+                
+                fetch(urlLogsNamaKursus).then(response => response.text()).then(data => {
+                    const json = JSON.parse(data.substring(47, data.length-2));
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas5 = rows;
+                    
+                    if (rows.length >0){
+                        for(let i=0;i<pageSize;i++){
+                            let id= i+1;
+                            let index = id;
+                            let namaKursus = rows[i].c[1].v;
+                            let status = rows[i].c[2].v;
+                            let row = table5.insertRow();
+                            row.insertCell().innerText = index;
+                            row.insertCell().innerText = namaKursus;
+                            let toggleSw = '';
+                            if (status == 'Aktif'){
+                            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchKursus'+rows[i].c[0].f+'" value="'+status+'" onchange="ubahKursusFlag('+rows[i].c[0].f+')" checked><span class="slider round"></span></label>'
+                            }if (status == 'Nyahaktif'){
+                            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchKursus'+rows[i].c[0].f+'" value="'+status+'" onchange="ubahKursusFlag('+rows[i].c[0].f+')"><span class="slider round"></span></label>'
+                            }
+                            row.insertCell().innerHTML = ' '+toggleSw +' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniKursus('+rows[i].c[0].f+')"><i class=\'fa fa-edit\'></i></span>';
+                            document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize).toFixed();
+                            
+                        }
+                    }
+            if (rows.length < 1){
+
+            let txt = "Not Available";
+            let row = table5.insertRow();
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;  
+            row.insertCell().innerText = txt;   
+            row.insertCell().innerText = txt;
+            }})
+            .catch(error => console.error(error));
+        }            
+            
+            function getLogsTujuan(){
+                clearLogTujuanAdmin();
+                
+                fetch(urlLogsTujuan).then(response => response.text()).then(data => {
+                    const json = JSON.parse(data.substring(47, data.length-2));
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas6 = rows;
+                    
+                    if (rows.length >0){
+                        for(let i=0;i<pageSize;i++){
+                            let id= i+1;
+                            let index = id;
+                            let tujuan = rows[i].c[1].v;
+                            let status = rows[i].c[2].v;
+                            let row = table6.insertRow();
+                            row.insertCell().innerText = index;
+                            row.insertCell().innerText = tujuan;
+                            let toggleSw = '';
+                            if (status == 'Aktif'){
+                            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchTujuan'+rows[i].c[0].f+'" value="'+status+'" onchange="ubahTujuanFlag('+rows[i].c[0].f+')" checked><span class="slider round"></span></label>'
+                            }if (status == 'Nyahaktif'){
+                            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchTujuan'+rows[i].c[0].f+'" value="'+status+'" onchange="ubahTujuanFlag('+rows[i].c[0].f+')"><span class="slider round"></span></label>'
+                            }
+                            row.insertCell().innerHTML = ' '+toggleSw +' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniTujuan('+rows[i].c[0].f+')"><i class=\'fa fa-edit\'></i></span>';
+                            document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize).toFixed();
+                            
+                        }
+                    }
+            if (rows.length < 1){
+
+            let txt = "Not Available";
+            let row = table6.insertRow();
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;  
+            row.insertCell().innerText = txt;   
+            row.insertCell().innerText = txt;
+            }})
+            .catch(error => console.error(error));
+        }    
+            
+                  function getLogs(){
+                    clearLog();
+                    
+                    fetch(urlLogs)
+                    .then(response => response.text())
+                    .then(data => {
+                    // Parse the JSON data
+                    const json = JSON.parse(data.substring(47, data.length-2));
+
+                    // Access the data rows
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas = rows;
+
+                    if (rows.length > 0){
+
+                    //for (let i = 0; i < rows.length; i++) { //ganti pageSize
+                    for (let i = 0; i < pageSize; i++) {
+                    let id = i+1;
+                    //let index = rows[i].c[0].v;
+                    let index = id;
+                    let namaPegawai = rows[i].c[1].v;
+                    let namaBilik = rows[i].c[2].v;
+                    let tujuanTempah = rows[i].c[8].v;
+                    let hariTempah = rows[i].c[3].v;
+	                let tarikhTempahMula = rows[i].c[4].f;
+	                let tarikhTempahTamat = rows[i].c[5].f;
+                    let masaTempahMula = rows[i].c[6].f;
+                    let masaTempahTamat = rows[i].c[7].f;   
+                    let status = rows[i].c[9].v; 
+                    let telefon = rows[i].c[10].f;
+                    let row = table1.insertRow();
+                    row.insertCell().innerText = index;
+                    row.insertCell().innerText = namaPegawai+' [+60'+telefon+']';  
+                    row.insertCell().innerText = namaBilik;
+                    row.insertCell().innerText = tujuanTempah;   
+                    //row.insertCell().innerText = hariTempah;
+                    row.insertCell().innerText = tarikhTempahMula;
+                    row.insertCell().innerText = masaTempahMula;
+                    row.insertCell().innerText = tarikhTempahTamat;
+                    row.insertCell().innerText = masaTempahTamat;	
+                    row.insertCell().innerText = status;
+                    if (sessionStorage.getItem('login') == 'true'){
+                    row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="batalBilik('+rows[i].c[0].f+')"><i class=\'fa fa-times\'></i> Batal </span>';
+                    //document.getElementById('batalHead').style.display = 'block';
+                    } else{     
+                    //row.insertCell().innerHTML = '';    
+                    //document.getElementById('batalHead').style.display = 'none';
+                    row.insertCell().innerHTML = '<i>Log masuk terlebih dahulu untuk batalkan tempahan.</i>';
+                    }
+                    document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize).toFixed();
+                    /*row.insertCell().innerHTML = '<i class="fa fa-eye" style="font-size:18px;color:grey" onclick="viewSubconDetail(\''+companyName+'\')"></i>';*/ 
+                    /*document.getElementById("pageNumR").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize);*/
+                    }
+                    //loadTableM();
+    
+                    // Do something with the data
+                    /*rows.forEach(row => {
+                    console.log(row.c[0].f, row.c[1].v, row.c[2].v,row.c[3].v,row.c[4].v,row.c[5].v,row.c[6].v,row.c[7].f);
+                    });*/
+            }
+  
+            if (rows.length < 1){
+
+            let txt = "Not Available";
+            let row = table1.insertRow();
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;  
+            row.insertCell().innerText = txt;   
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            //row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            }})
+            .catch(error => console.error(error));
+}            
+
+function getLogsTempahan(){
+    clearLogTempahan();
+    
+    if(sessionStorage.getItem('login') == 'false'){
+    urlLogsTempahan ="https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CJ%2CK%2CL%2CM%2CN%2CO%2CP%2CQ%2CR%2CS%2CT%2CU%2CV+Where%20P!='Batal'+order by A+desc";
+    }else{   
+    urlLogsTempahan ="https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CJ%2CK%2CL%2CM%2CN%2CO%2CP%2CQ%2CR%2CS%2CT%2CU%2CV+order by A+desc";
+    }
+    fetch(urlLogsTempahan).then(response => response.text()).then (data => {
+        const json = JSON.parse(data.substring(47, data.length-2));
+
+        const rows = json.table.rows;
+        console.log(rows);
+        datas7 = rows;
+
+        if(rows.length >0){
+            let rowhead = tablehead7.insertRow();
+            if(sessionStorage.getItem('login') == 'true'){
+                rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th><th style="width:5vw;">Tetapan</th></tr>'; 
+            } else{
+                rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th></tr>';
+            }
+            for (let i = 0; i < pageSize; i++){
+                let id = i + 1;
+                let index = id;
+                let idRekod = rows[i].c[0].f;
+                let namaPenempah = rows[i].c[1].v;
+                let katalaluan = rows[i].c[2].v;
+                let telefon = rows[i].c[3].f;
+                let tajukProgram = rows[i].c[4].v;
+                let kategoriTujuan = rows[i].c[5].v;
+                let namaBilik = rows[i].c[6].v;
+                let institusiPeserta = rows[i].c[7].v;
+                let bilanganPeserta = rows[i].c[8].f;
+                let tarikhTempahMula = rows[i].c[9].f;
+                let masaTempahMula = rows[i].c[10].f;
+                let tarikhTempahTamat = rows[i].c[11].f;
+                let masaTempahTamat = rows[i].c[12].f;
+                let tarikhTempahan = rows[i].c[13].f;
+                let masaTempahan = rows[i].c[14].f;
+                let statusTempah = rows[i].c[15].v;
+                let row = table7.insertRow();
+                
+                if (sessionStorage.getItem('login') == 'false'){    
+                row.insertCell().innerText = index;
+                row.insertCell().innerText = tajukProgram;
+                row.insertCell().innerText = namaBilik;
+                row.insertCell().innerHTML = statusTempah;
+                row.insertCell().innerText = institusiPeserta;
+                row.insertCell().innerText = bilanganPeserta;
+                var tarikhDisp;
+                var masaDisp;
+                if (tarikhTempahMula == tarikhTempahTamat){
+                   tarikhDisp = tarikhTempahMula; 
+                   masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
+                } else {
+                    tarikhDisp = tarikhTempahMula +" - "+tarikhTempahTamat;  
+                    masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")"; 
+                }
+                row.insertCell().innerHTML = tarikhDisp + "<br>"+ masaDisp;
+                row.insertCell().innerText = kategoriTujuan;
+                row.insertCell().innerHTML = namaPenempah + "<br>Tel: 60"+telefon+""; 
+                }
+                if (sessionStorage.getItem('login') == 'true'){
+                   
+                row.insertCell().innerText = index;
+                row.insertCell().innerText = tajukProgram;
+                row.insertCell().innerText = namaBilik;
+                row.insertCell().innerHTML = statusTempah;
+                row.insertCell().innerText = institusiPeserta;
+                row.insertCell().innerText = bilanganPeserta;
+                var tarikhDisp;
+                var masaDisp;
+                if (tarikhTempahMula == tarikhTempahTamat){
+                   tarikhDisp = tarikhTempahMula; 
+                   masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
+                } else {
+                    tarikhDisp = tarikhTempahMula +" - "+tarikhTempahTamat;  
+                    masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
+                }
+                row.insertCell().innerHTML = tarikhDisp + "<br>"+ masaDisp;
+                row.insertCell().innerText = kategoriTujuan;
+                row.insertCell().innerHTML = namaPenempah + "<br>Tel: 60"+telefon+""; 
+                if(statusTempah == 'Ditempah' ){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="batalTempahan('+idRekod+')"><i class=\'fa fa-times\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';
+                } else if (statusTempah == 'Batal'){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="restoreTempahan('+idRekod+')"><i class=\'fa fa-undo\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';
+                } else if (statusTempah == 'Selesai'){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="showData()"><i class=\'fa fa-file\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';    
+                }
+                
+                }                
+                //sambung sat lagi 04092025 lepas bangun tidoq
+
+
+            }
+        }
+    })
+}
+
+function loadTableTempahan(){
+    
+    let start = (curPage-1)*pageSize;
+    
+    console.log("start: "+start);
+    
+    let end =curPage*pageSize;
+    
+    //let end = datas.length;
+    
+    console.log("end: "+end);  
+    
+    let i = datas7.length;
+    
+    console.log("datas7 length: "+i);    
+    
+    if(i >= start && i <= end) return true;
+    let rowhead = tablehead7.insertRow();
+            if(sessionStorage.getItem('login') == 'true'){
+                rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th><th style="width:5vw;">Tetapan</th></tr>'; 
+            } else{
+                rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th></tr>';
+            }
+            for (let j = 0; j < end; j++){
+                let id = j + 1;
+                let index = id;
+                let idRekod = datas7[j].c[0].f;
+                let namaPenempah = datas7[j].c[1].v;
+                let katalaluan = datas7[j].c[2].v;
+                let telefon = datas7[j].c[3].f;
+                let tajukProgram = datas7[j].c[4].v;
+                let kategoriTujuan = datas7[j].c[5].v;
+                let namaBilik = datas7[j].c[6].v;
+                let institusiPeserta = datas7[j].c[7].v;
+                let bilanganPeserta = datas7[j].c[8].f;
+                let tarikhTempahMula = datas7[j].c[9].f;
+                let masaTempahMula = datas7[j].c[10].f;
+                let tarikhTempahTamat = datas7[j].c[11].f;
+                let masaTempahTamat = datas7[j].c[12].f;
+                let tarikhTempahan = datas7[j].c[13].f;
+                let masaTempahan = datas7[j].c[14].f;
+                let statusTempah = datas7[j].c[15].v;
+                let row = table7.insertRow();
+                
+                if (sessionStorage.getItem('login') == 'false'){    
+                row.insertCell().innerText = index;
+                row.insertCell().innerText = tajukProgram;
+                row.insertCell().innerText = namaBilik;
+                row.insertCell().innerHTML = statusTempah;
+                row.insertCell().innerText = institusiPeserta;
+                row.insertCell().innerText = bilanganPeserta;
+                var tarikhDisp;
+                var masaDisp;
+                if (tarikhTempahMula == tarikhTempahTamat){
+                   tarikhDisp = tarikhTempahMula; 
+                   masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
+                } else {
+                    tarikhDisp = tarikhTempahMula +" - "+tarikhTempahTamat;  
+                    masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")"; 
+                }
+                row.insertCell().innerHTML = tarikhDisp + "<br>"+ masaDisp;
+                row.insertCell().innerHTML = namaPenempah + "<br>Tel: 60"+telefon+""; 
+                row.insertCell().innerText = kategoriTujuan;
+                
+                }
+                if (sessionStorage.getItem('login') == 'true'){
+                   
+                row.insertCell().innerText = index;
+                row.insertCell().innerText = tajukProgram;
+                row.insertCell().innerText = namaBilik;
+                row.insertCell().innerHTML = statusTempah;                
+                row.insertCell().innerText = institusiPeserta;
+                row.insertCell().innerText = bilanganPeserta;
+                var tarikhDisp;
+                var masaDisp;
+                if (tarikhTempahMula == tarikhTempahTamat){
+                   tarikhDisp = tarikhTempahMula; 
+                   masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
+                } else {
+                    tarikhDisp = tarikhTempahMula +" - "+tarikhTempahTamat; 
+                    masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")"; 
+                }
+                row.insertCell().innerHTML = tarikhDisp + "<br>"+ masaDisp;
+                row.insertCell().innerHTML = namaPenempah + "<br>Tel: 60"+telefon+""; 
+                row.insertCell().innerText = kategoriTujuan;
+                if(statusTempah == 'Ditempah' ){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="batalTempahan('+idRekod+')"><i class=\'fa fa-times\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';
+                } else if (statusTempah == 'Batal'){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="restoreTempahan('+idRekod+')"><i class=\'fa fa-undo\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';
+                } else if (statusTempah == 'Selesai'){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="showData()"><i class=\'fa fa-file\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';    
+                }
+                }  
+        document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas7.length/pageSize).toFixed();      
+}
+} 
+
+
+function getLogsKursus(){
+                    clearLogKursus();
+                    
+                    fetch(urlLogsKursus)
+                    .then(response => response.text())
+                    .then(data => {
+                    // Parse the JSON data
+                    const json = JSON.parse(data.substring(47, data.length-2));
+
+                    // Access the data rows
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas2 = rows;
+
+                    if (rows.length > 0){
+
+                    //for (let i = 0; i < rows.length; i++) { //ganti pageSize
+                    for (let i = 0; i < pageSize; i++) {
+                    let id = i+1;
+                    //let index = rows[i].c[0].v;
+                    let index = id;
+                    let namaPegawai = rows[i].c[1].v;
+                    let namaKursus = rows[i].c[2].v;
+                    let tarikhMula = rows[i].c[3].f;
+                    let tarikhTamat = rows[i].c[4].f;
+	                let masaMula = rows[i].c[5].f;   
+                    let masaTamat = rows[i].c[6].f;
+                    let tempatKursus = rows[i].c[7].v;   
+                    let status = rows[i].c[8].v; 
+                    let institusi = rows[i].c[9].v;
+                    let peserta = rows[i].c[10].v;
+                    let telefon = rows[i].c[11].f;
+                    let row = table2.insertRow();
+                    row.insertCell().innerText = index;
+                    row.insertCell().innerText = namaPegawai +' [+60'+telefon+']';  
+                    row.insertCell().innerText = namaKursus;
+                    row.insertCell().innerText = tarikhMula;   
+                    row.insertCell().innerText = masaMula;
+                    row.insertCell().innerText = tarikhTamat;
+                    row.insertCell().innerText = masaTamat;
+                    row.insertCell().innerText = tempatKursus;
+                    row.insertCell().innerText = institusi;
+                    row.insertCell().innerText = peserta;                    
+                    row.insertCell().innerText = status;
+                    if (sessionStorage.getItem('login') == 'true'){
+                    row.insertCell().innerHTML = '<span id="batalbtnk" style="cursor:pointer;" onclick="batalKursus('+rows[i].c[0].f+')"><i class=\'fa fa-times\'></i> Batal </span>';
+                    //document.getElementById('batalHeadKursus').style.display = 'block';
+                    } else{     
+                    //row.insertCell().innerHTML = '';    
+                    //document.getElementById('batalHeadKursus').style.display = 'none';
+                    row.insertCell().innerHTML = '<i>Log masuk terlebih dahulu untuk batalkan tempahan.</i>';
+                    }   
+                    document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize).toFixed();
+                    /*row.insertCell().innerHTML = '<i class="fa fa-eye" style="font-size:18px;color:grey" onclick="viewSubconDetail(\''+companyName+'\')"></i>';*/ 
+                    /*document.getElementById("pageNumR").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize);*/
+                    }
+                    //loadTableM();
+    
+                    // Do something with the data
+                    /*rows.forEach(row => {
+                    console.log(row.c[0].f, row.c[1].v, row.c[2].v,row.c[3].v,row.c[4].v,row.c[5].v,row.c[6].v,row.c[7].f);
+                    });*/
+            }
+  
+            if (rows.length < 1){
+
+            let txt = "Not Available";
+            let row = table1.insertRow();
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;  
+            row.insertCell().innerText = txt;   
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;	    
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            }})
+            .catch(error => console.error(error));
+}        
+
+
+// setTimeout(getLogsKursus, 300); // Calls the greet function after 3000 milliseconds (3 seconds)
+
+setTimeout(getLogsTempahan, 300); // Calls the greet function after 3000 milliseconds (3 seconds)
+
+function loadTable(){
+    
+    let start = (curPage-1)*pageSize;
+    
+    console.log("start: "+start);
+    
+    let end =curPage*pageSize;
+    
+    //let end = datas.length;
+    
+    console.log("end: "+end);  
+    
+    let i = datas.length;
+    
+    console.log("datas length: "+i);    
+    
+    if(i >= start && i <= end) return true;
+    
+    let result = '';
+    
+    for (let j = start; j < end; j++){
+
+      let id = j+1;
+      //let index = rows[i].c[0].v;
+      let index = id;
+      let namaPegawai = datas[j].c[1].v;
+      let namaBilik = datas[j].c[2].v;
+      let tujuanTempah = datas[j].c[8].v;
+      let hariTempah = datas[j].c[3].v;
+	  let tarikhTempahMula = datas[j].c[4].f;
+	  let tarikhTempahTamat = datas[j].c[5].f;
+      let masaTempahMula = datas[j].c[6].f;
+      let masaTempahTamat = datas[j].c[7].f;   
+      let status = datas[j].c[9].v; 
+      let telefon = datas[j].c[10].f;
+     
+      //result += "<tr><td>"+index+"</td><td>"+namaPegawai+"</td><td>"+namaBilik+"</td><td>"+tujuanTempah+"</td><td>"+hariTempah+"</td><td>"+tarikhTempahMula+"</td><td>"+tarikhTempahTamat+"</td><td>"+masaTempahMula+"</td><td>"+masaTempahTamat+"</td><td>"+status+"</td></tr>";
+      result += "<tr><td>"+index+"</td><td>"+namaPegawai+" ["+telefon+"]</td><td>"+namaBilik+"</td><td>"+tujuanTempah+"</td><td>"+tarikhTempahMula+"</td><td>"+tarikhTempahTamat+"</td><td>"+masaTempahMula+"</td><td>"+masaTempahTamat+"</td><td>"+status+"</td><td>"+'<span id="batalbtn" style="cursor:pointer;" onclick="batalBilik('+datas[j].c[0].f+')"><i class=\'fa fa-times\'></i> Batal </span>'+"</td></tr>";
+      document.getElementById('data-history').innerHTML = result;
+      document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas.length/pageSize).toFixed();      
+}
+}  
+
+
+function loadTableKursus(){
+    
+    let start = (curPage-1)*pageSize;
+    
+    console.log("start: "+start);
+    
+    let end =curPage*pageSize;
+    
+    //let end = datas2.length;
+    
+    console.log("end: "+end);  
+    
+    let i = datas2.length;
+    
+    console.log("datas2 length: "+i);    
+    
+    if(i >= start && i <= end) return true;
+    
+    let result = '';
+    
+    for (let j = start; j < end; j++){
+
+      let id = j+1;
+      //let index = rows[i].c[0].v;
+      let index = id;
+      let namaPegawai = datas2[j].c[1].v;
+      let namaKursus = datas2[j].c[2].v;
+      let tarikhMula = datas2[j].c[3].f;
+      let tarikhTamat = datas2[j].c[4].f;
+	  let masaMula = datas2[j].c[5].f;   
+      let masaTamat = datas2[j].c[6].f;
+      let tempatKursus = datas2[j].c[7].v;   
+      let institusi = datas2[j].c[9].v;
+      let peserta = datas2[j].c[10].v;
+      let status = datas2[j].c[8].v; 
+      let telefon = datas2[j].c[11].f;
+     
+      result += "<tr><td>"+index+"</td><td>"+namaPegawai+" ["+telefon+"]</td><td>"+namaKursus+"</td><td>"+tarikhMula+"</td><td>"+masaMula+"</td><td>"+tarikhTamat+"</td><td>"+masaTamat+"</td><td>"+tempatKursus+"</td><td>"+institusi+"</td><td>"+peserta+"</td><td>"+status+'</td><td><span id="batalbtnk" style="cursor:pointer;" onclick="batalKursus('+datas[j].c[0].f+')"><i class=\'fa fa-times\'></i> Batal </span>'+"</td></tr>";   
+      document.getElementById('data-history-kursus').innerHTML = result;
+      document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas.length/pageSize).toFixed();      
+}
+}
+
+
+function loadTablePenggunaAdmin(){
+    
+    let start = (curPage-1)*pageSize;
+    
+    console.log("start: "+start);
+    
+    let end =curPage*pageSize;
+    
+    //let end = datas3.length;
+    
+    console.log("end: "+end);  
+    
+    let i = datas3.length;
+    
+    console.log("datas3 length: "+i);    
+    
+    if(i >= start && i <= end) return true;
+    
+    let result = '';
+    
+    for (let j = start; j < end; j++){
+
+      let id = j+1;
+      //let index = rows[i].c[0].v;
+      let index = id;
+      let namaPengguna = datas3[j].c[1].v;
+      let kategori = datas3[j].c[3].v;
+      let institusi = datas3[j].c[4].v;
+      let status = datas3[j].c[7].v;
+      let telefon = datas3[j].c[8].f;
+      //let toggleSw = '';
+      /*if (status == 'Aktif'){
+          toggleSw = '<label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>'
+      }if (status == 'Nyahaktif'){
+          toggleSw = '<label class="switch"><input type="checkbox"><span class="slider round"></span></label>'
+      }*/
+     let row = table3.insertRow();
+     row.insertCell().innerText = index;
+     row.insertCell().innerText = namaPengguna;
+     row.insertCell().innerText = kategori;
+     row.insertCell().innerText = institusi;
+     row.insertCell().innerText = '+60'+telefon;
+     let toggleSw = '';
+     if (status == 'Aktif'){
+     toggleSw = '<label class="switch"><input type="checkbox" onchange="ubahUserFlag('+datas3[j].c[0].f+')" checked><span class="slider round"></span></label>'
+     }if (status == 'Nyahaktif'){
+     toggleSw = '<label class="switch"><input type="checkbox" onchange="ubahUserFlag('+datas3[j].c[0].f+')"><span class="slider round"></span></label>'
+     }
+     row.insertCell().innerHTML = ' '+toggleSw +' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniPengguna('+datas3[j].c[0].f+')"><i class=\'fa fa-edit\'></i></span>';
+     document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas3.length/pageSize).toFixed();    
+     
+      //result += "<tr><td>"+index+"</td><td>"+namaPengguna+"</td><td>"+kategori+"</td><td>"+institusi+"</td><td>+60"+telefon+"</td><td>"+status+' '+toggleSw+ '<span id="batalbtnk" style="cursor:pointer;" onclick="nyahAktifPengguna('+datas3[j].c[0].f+')"><i class=\'fa fa-times\'></i> Nyahaktif </span>'+"</td></tr>";   
+      //document.getElementById('data-urus-pengguna').innerHTML = result;
+      
+      //document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas3.length/pageSize).toFixed();      
+}    
+}
+
+function loadTableBilikAdmin(){
+    
+    let start = (curPage-1)*pageSize;
+    
+    console.log("start: "+start);
+    
+    let end =curPage*pageSize;
+    
+    //let end = datas4.length;
+    
+    console.log("end: "+end);  
+    
+    let i = datas4.length;
+    
+    console.log("datas4 length: "+i);    
+    
+    if(i >= start && i <= end) return true;
+    
+    let result = '';
+    
+    for (let j = start; j < end; j++){
+
+      let id = j+1;
+      //let index = rows[i].c[0].v;
+      let index = id;
+      let namaBilik = datas4[j].c[1].v;
+      let status = datas4[j].c[2].v;
+                            
+      let row = table4.insertRow();
+      row.insertCell().innerText = index;
+      row.insertCell().innerText = namaBilik;
+      let toggleSw = '';
+      if (status == 'Aktif'){
+      toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchBilik'+datas4[j].c[0].f+'" value="'+status+'" onchange="ubahBilikFlag('+datas4[j].c[0].f+')" checked><span class="slider round"></span></label>'
+      }if (status == 'Nyahaktif'){
+      toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchBilik'+datas4[j].c[0].f+'" value="'+status+'" onchange="ubahBilikFlag('+datas4[j].c[0].f+')"><span class="slider round"></span></label>'
+      }
+      row.insertCell().innerHTML = ' '+toggleSw +' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniBilik('+datas4[j].c[0].f+')"><i class=\'fa fa-edit\'></i></span>';
+      document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas4.length/pageSize).toFixed();          
+}    
+}
+
+function loadTableKursusAdmin(){
+    
+    let start = (curPage-1)*pageSize;
+    
+    console.log("start: "+start);
+    
+    let end =curPage*pageSize;
+    
+    //let end = datas5.length;
+    
+    console.log("end: "+end);  
+    
+    let i = datas5.length;
+    
+    console.log("datas5 length: "+i);    
+    
+    if(i >= start && i <= end) return true;
+    
+    let result = '';
+    
+    for (let j = start; j < end; j++){
+
+      let id = j+1;
+      //let index = rows[i].c[0].v;
+      let index = id;
+      let namaKursus = datas5[j].c[1].v;
+      let status = datas5[j].c[2].v;
+     
+      result += "<tr><td>"+index+"</td><td>"+namaKursus+"</td><td>"+status+'</td><td><span id="batalbtnk" style="cursor:pointer;" onclick="nyahAktifKursus('+datas5[j].c[0].f+')"><i class=\'fa fa-times\'></i> Nyahaktif </span>'+"</td></tr>";   
+      document.getElementById('data-urus-kursus').innerHTML = result;
+      document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas5.length/pageSize).toFixed();      
+}     
+}
+
+function loadTableTujuanAdmin(){
+    
+    let start = (curPage-1)*pageSize;
+    
+    console.log("start: "+start);
+    
+    let end =curPage*pageSize;
+    
+    //let end = datas6.length;
+    
+    console.log("end: "+end);  
+    
+    let i = datas6.length;
+    
+    console.log("datas6 length: "+i);    
+    
+    if(i >= start && i <= end) return true;
+    
+    let result = '';
+    
+    for (let j = start; j < end; j++){
+
+      let id = j+1;
+      //let index = rows[i].c[0].v;
+      let index = id;
+      let tujuan = datas6[j].c[1].v;
+      let status = datas6[j].c[2].v;
+     
+      result += "<tr><td>"+index+"</td><td>"+tujuan+"</td><td>"+status+'</td><td><span id="batalbtnk" style="cursor:pointer;" onclick="nyahAktifTujuan('+datas6[j].c[0].f+')"><i class=\'fa fa-times\'></i> Nyahaktif </span>'+"</td></tr>";   
+      document.getElementById('data-urus-tujuan').innerHTML = result;
+      document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas6.length/pageSize).toFixed();      
+}    
+}
+
+    var startDate;
+    var endDate;
+    
+    document.getElementById("startDate").addEventListener("change", function() {
+    var input = this.value;
+    startDate = input;
+    var dateEntered = new Date(input);
+    console.log(input); //e.g. 2015-11-13
+    console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+    });
+    
+    document.getElementById("endDate").addEventListener("change", function() {
+    var input = this.value;
+    endDate = input;
+    var dateEntered = new Date(input);
+    console.log(input); //e.g. 2015-11-13
+    console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+    });    
+
+
+function getDataTempahanByDate(){
+    var startDate = document.getElementById("startDateTempahan").value;
+    var endDate = document.getElementById("endDateTempahan").value;
+    var urlDate = '';
+    console.log("startDate: "+startDate+" endDate: "+endDate);
+
+    if(sessionStorage.getItem('login') == 'false'){
+    urlDate ="https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CJ%2CK%2CL%2CM%2CN%2CO%2CP%2CQ%2CR%2CS%2CT%2CU%2CV+Where%20J%3E=date%20%27"+startDate+"%27%20and%20L%3C=date%20%27"+endDate+"%27+AND+%20P!='Batal'+order by A+desc";
+    }else{   
+    urlDate ="https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CJ%2CK%2CL%2CM%2CN%2CO%2CP%2CQ%2CR%2CS%2CT%2CU%2CV+Where%20J%3E=date%20%27"+startDate+"%27%20and%20L%3C=date%20%27"+endDate+"%27+order by A+desc";
+    }
+    clearLogTempahan();
+    fetch(urlDate).then(response => response.text().then(data => {
+                    console.log(data);
+                    // Parse the JSON data
+                    const json = JSON.parse(data.substring(47, data.length-2));
+
+                    // Access the data rows
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas7 = rows;      
+                    if(rows.length >0){
+                        let rowhead = tablehead7.insertRow();
+            if(sessionStorage.getItem('login') == 'true'){
+                rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th><th style="width:5vw;">Tetapan</th></tr>'; 
+            } else{
+                rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th></tr>';
+            }
+            for (let i = 0; i < pageSize; i++){
+                let id = i + 1;
+                let index = id;
+                let idRekod = rows[i].c[0].f;
+                let namaPenempah = rows[i].c[1].v;
+                let katalaluan = rows[i].c[2].v;
+                let telefon = rows[i].c[3].f;
+                let tajukProgram = rows[i].c[4].v;
+                let kategoriTujuan = rows[i].c[5].v;
+                let namaBilik = rows[i].c[6].v;
+                let institusiPeserta = rows[i].c[7].v;
+                let bilanganPeserta = rows[i].c[8].f;
+                let tarikhTempahMula = rows[i].c[9].f;
+                let masaTempahMula = rows[i].c[10].f;
+                let tarikhTempahTamat = rows[i].c[11].f;
+                let masaTempahTamat = rows[i].c[12].f;
+                let tarikhTempahan = rows[i].c[13].f;
+                let masaTempahan = rows[i].c[14].f;
+                let statusTempah = rows[i].c[15].v;
+                let row = table7.insertRow();
+                if (sessionStorage.getItem('login') == 'false'){    
+                row.insertCell().innerText = index;
+                row.insertCell().innerText = tajukProgram;
+                row.insertCell().innerText = namaBilik;
+                row.insertCell().innerHTML = statusTempah;
+                row.insertCell().innerText = institusiPeserta;
+                row.insertCell().innerText = bilanganPeserta;
+                var tarikhDisp;
+                var masaDisp;
+                if (tarikhTempahMula == tarikhTempahTamat){
+                   tarikhDisp = tarikhTempahMula; 
+                   masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
+                } else {
+                    tarikhDisp = tarikhTempahMula +" - "+tarikhTempahTamat;  
+                    masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")"; 
+                }
+                row.insertCell().innerHTML = tarikhDisp + "<br>"+ masaDisp;
+                row.insertCell().innerText = kategoriTujuan;
+                row.insertCell().innerHTML = namaPenempah + "<br>Tel: 60"+telefon+""; 
+                
+                }
+                if (sessionStorage.getItem('login') == 'true'){
+                   
+                row.insertCell().innerText = index;
+                row.insertCell().innerText = tajukProgram;
+                row.insertCell().innerText = namaBilik;
+                row.insertCell().innerHTML = statusTempah;
+                row.insertCell().innerText = institusiPeserta;
+                row.insertCell().innerText = bilanganPeserta;
+                var tarikhDisp;
+                var masaDisp;
+                if (tarikhTempahMula == tarikhTempahTamat){
+                   tarikhDisp = tarikhTempahMula; 
+                   masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
+                } else {
+                    tarikhDisp = tarikhTempahMula +" - "+tarikhTempahTamat; 
+                    masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")"; 
+                }
+                row.insertCell().innerHTML = tarikhDisp + "<br>"+ masaDisp;
+                row.insertCell().innerText = kategoriTujuan;
+                row.insertCell().innerHTML = namaPenempah + "<br>Tel: 60"+telefon+""; 
+                
+                if(statusTempah == 'Ditempah' ){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="batalTempahan('+idRekod+')"><i class=\'fa fa-times\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';
+                } else if (statusTempah == 'Batal'){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="restoreTempahan('+idRekod+')"><i class=\'fa fa-undo\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';
+                } else if (statusTempah == 'Selesai'){
+                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="showData()"><i class=\'fa fa-file\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';    
+                }
+                }  
+                
+            }
+        }
+    }))
+}
+
+
+
+function getDataByDate(){
+    
+
+    // var startDate = document.getElementById("startDate").value;
+    // var endDate = document.getElementById("endDate").value;
+    
+    console.log("startDate: "+startDate+" endDate: "+endDate);
+    
+    
+    //var urlDate = "https://docs.google.com/spreadsheets/d/1Pf2MVfj8nBXzyW66cujgch8GQBi_wT3YUED_FLMprZ4/gviz/tq?tqx=out:json&sheet=DataLogs&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%20Where%20B%3E=date%20%27"+startDate+"%27%20and%20B%3C=date%20%27"+endDate+"%27+order by A+desc";
+    var urlDate = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahBilik&tq=SELECT+A%2CC%2CD%2CE%2CI%2CJ%2CF%2CG%2CH%2CM%20Where%20I%3E=date%20%27"+startDate+"%27%20and%20I%3C=date%20%27"+endDate+"%27+order by A+desc";
+    clearLog();
+    
+    fetch(urlDate).then(response => response.text().then(data => {
+                    console.log(data);
+                    // Parse the JSON data
+                    const json = JSON.parse(data.substring(47, data.length-2));
+
+                    // Access the data rows
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas = rows;        
+        
+
+                    if (rows.length > 0){
+
+                    //for (let i = 0; i < rows.length; i++) { //ganti pageSize
+                    for (let i = 0; i < pageSize; i++) {
+                    let id = i+1;
+                    //let index = rows[i].c[0].v;
+                    let index = id;
+                    let namaPegawai = rows[i].c[1].v;
+                    let namaBilik = rows[i].c[2].v;
+                    let tujuanTempah = rows[i].c[8].v;
+                    let hariTempah = rows[i].c[3].v;
+	                let tarikhTempahMula = rows[i].c[4].f;  
+	                let tarikhTempahTamat = rows[i].c[5].f;
+                    let masaTempahMula = rows[i].c[6].f;
+                    let masaTempahTamat = rows[i].c[7].f;   
+                    let status = rows[i].c[9].v; 
+                    let row = table1.insertRow();
+                    row.insertCell().innerText = index;
+                    row.insertCell().innerText = namaPegawai;  
+                    row.insertCell().innerText = namaBilik;   
+                    row.insertCell().innerText = tujuanTempah;
+                    //row.insertCell().innerText = hariTempah;
+                    row.insertCell().innerText = tarikhTempahMula;
+                    row.insertCell().innerText = masaTempahMula;
+                    row.insertCell().innerText = tarikhTempahTamat;
+                    row.insertCell().innerText = masaTempahTamat;	
+                    row.insertCell().innerText = status;
+                    row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick=""><i class=\'fa fa-times\'></i> Batal </span>';
+                    document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize).toFixed();
+                    /*row.insertCell().innerHTML = '<i class="fa fa-eye" style="font-size:18px;color:grey" onclick="viewSubconDetail(\''+companyName+'\')"></i>';*/ 
+                    /*document.getElementById("pageNumR").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize);*/
+                    }
+                    //loadTableM();
+    
+                    // Do something with the data
+                    /*rows.forEach(row => {
+                    console.log(row.c[0].f, row.c[1].v, row.c[2].v,row.c[3].v,row.c[4].v,row.c[5].v,row.c[6].v,row.c[7].f);
+                    });*/
+            }
+  
+            if (rows.length < 1){
+
+            let txt = "Not Available";
+            let row = table1.insertRow();
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;  
+            row.insertCell().innerText = txt;   
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            //row.insertCell().innerText = txt;	    
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;	    
+            row.insertCell().innerText = txt;
+            }}))
+            .catch(error => console.error(error));
+}
+
+
+
+function getDataByDateK(){
+    
+
+    var startDateK = document.getElementById("startDateK").value;
+    var endDateK = document.getElementById("endDateK").value;
+    
+    console.log("startDate: "+startDateK+" endDate: "+endDateK);
+    
+    
+    //var urlDate = "https://docs.google.com/spreadsheets/d/1Pf2MVfj8nBXzyW66cujgch8GQBi_wT3YUED_FLMprZ4/gviz/tq?tqx=out:json&sheet=DataLogs&tq=SELECT+A%2CB%2CC%2CD%2CE%2CF%2CG%2CH%2CI%20Where%20B%3E=date%20%27"+startDate+"%27%20and%20B%3C=date%20%27"+endDate+"%27+order by A+desc";
+    var urlDate = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodKursusPendek&tq=SELECT+A%2CC%2CD%2CE%2CF%2CG%2CH%2CI%2CL%2CS%2CT+Where%20E%3E=date%20%27"+startDateK+"%27%20and%20E%3C=date%20%27"+endDateK+"%27+order by A+desc";
+                    
+                    console.log(urlDate);
+                    
+                    clearLogKursus();
+                    
+                    fetch(urlDate)
+                    .then(response => response.text())
+                    .then(data => {
+                    // Parse the JSON data
+                    const json = JSON.parse(data.substring(47, data.length-2));
+
+                    // Access the data rows
+                    const rows = json.table.rows;
+                    console.log(rows);
+                    datas2 = rows;
+
+                    if (rows.length > 0){
+
+                    //for (let i = 0; i < rows.length; i++) { //ganti pageSize
+                    for (let i = 0; i < pageSize; i++) {
+                    let id = i+1;
+                    //let index = rows[i].c[0].v;
+                    let index = id;
+                    let namaPegawai = rows[i].c[1].v;
+                    let namaKursus = rows[i].c[2].v;
+                    let tarikhMula = rows[i].c[3].f;
+                    let tarikhTamat = rows[i].c[4].f;
+	                let masaMula = rows[i].c[5].f;   
+                    let masaTamat = rows[i].c[6].f;
+                    let tempatKursus = rows[i].c[7].v;   
+                    let status = rows[i].c[8].v; 
+                    let institusi = rows[i].c[9].v;
+                    let peserta = rows[i].c[10].v;
+                    let row = table2.insertRow();
+                    row.insertCell().innerText = index;
+                    row.insertCell().innerText = namaPegawai;  
+                    row.insertCell().innerText = namaKursus;
+                    row.insertCell().innerText = tarikhMula;   
+                    row.insertCell().innerText = masaMula;
+                    row.insertCell().innerText = tarikhTamat;
+                    row.insertCell().innerText = masaTamat;
+                    row.insertCell().innerText = tempatKursus;
+                    row.insertCell().innerText = institusi;
+                    row.insertCell().innerText = peserta;                    
+                    row.insertCell().innerText = status;
+                    row.insertCell().innerHTML = '<span id="batalbtnk" style="cursor:pointer;" onclick=""><i class=\'fa fa-times\'></i> Batal </span>';
+                    document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize).toFixed();
+                    /*row.insertCell().innerHTML = '<i class="fa fa-eye" style="font-size:18px;color:grey" onclick="viewSubconDetail(\''+companyName+'\')"></i>';*/ 
+                    /*document.getElementById("pageNumR").innerHTML = "Page "+curPage+" of "+(rows.length/pageSize);*/
+                    }
+                    //loadTableM();
+    
+                    // Do something with the data
+                    /*rows.forEach(row => {
+                    console.log(row.c[0].f, row.c[1].v, row.c[2].v,row.c[3].v,row.c[4].v,row.c[5].v,row.c[6].v,row.c[7].f);
+                    });*/
+            }
+  
+            if (rows.length < 1){
+
+            let txt = "Not Available";
+            let row = table1.insertRow();
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;  
+            row.insertCell().innerText = txt;   
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;	    
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            row.insertCell().innerText = txt;
+            }})
+            .catch(error => console.error(error));
+}
+
+var urlUpdateStat = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=kemaskiniStatus";
+
+//var urlUpdateStatKursus = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=kemaskiniStatusKursus";
+
+
+    function updateStat(){
+    fetch(urlUpdateStat).then(response => response.text().then(data =>{ 
+        console.log(data);
+    }))
+    }
+
+    setInterval(updateStat,2000);
+
+    updateStat();
+
+    /*function updateStatKursus(){
+    fetch(urlUpdateStatKursus).then(response => response.text().then(data =>{ 
+        console.log(data);
+    }))
+    }*/
+
+    //setInterval(updateStatKursus,600000);    
+
+
+    function createTujuan(tujuanVal){
+        var urlTujuan = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=CreateTujuan&Tujuan="+tujuanVal;
+
+        fetch(urlTujuan).then(response => response.text().then(data => {
+            console.log(data);
+            alert(data);
+        }))
+    }
+
+    var urlTujuanList = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=Tujuan&tq=SELECT+B+WHERE+C=%27Aktif%27+order by A+desc';
+    var urlKursusList = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaKursusPendek&tq=SELECT+B+WHERE+C=%27Aktif%27+order by A+desc';    
+    var urlBilikList = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaBilik&tq=SELECT+B+WHERE+C=%27Aktif%27+order by A+asc';
+    var urlHariList = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=Hari&tq=SELECT+B+order by A+asc';
+
+    var tujuanArr = [];
+    var kursusArr = [];
+    var hariArr = [];
+    var bilikArr = [];
+
+    function populateTujuan(){
+        fetch(urlTujuanList).then(response => response.text().then(data => {
+            const json = JSON.parse(data.substring(47, data.length-2));
+            const rows = json.table.rows;
+            let tujuanList = document.getElementById('tujuan');
+            for (var i=0; i<rows.length; i++){
+                var opt = rows[i];
+                tujuanArr.push(opt);
+            }
+            console.log(tujuanArr);
+            for (let i = 0;i < tujuanArr.length; i++){
+                let optn = '';
+                optn = tujuanArr[i].c[0].v;
+                let el = document.createElement("option");
+                //tujuanList.removeChild(el);
+                el.textContent = '';
+                el.value = '';
+                el.textContent = optn;
+                el.value = optn;
+                tujuanList.appendChild(el);
+            }
+        }))
+    }
+
+    function populateKursus(){
+        fetch(urlKursusList).then(response => response.text().then(data => {
+            const json = JSON.parse(data.substring(47, data.length-2));
+            const rows = json.table.rows;
+            let kursusList = document.getElementById('kursuspendek');
+            for (var i=0; i<rows.length; i++){
+                var opt = rows[i];
+                kursusArr.push(opt);
+            }
+            console.log(kursusArr);
+            for (let i = 0;i < kursusArr.length; i++){
+                let optn = '';
+                optn = kursusArr[i].c[0].v;
+                let el = document.createElement("option");
+                //tujuanList.removeChild(el);
+                el.textContent = '';
+                el.value = '';
+                el.textContent = optn;
+                el.value = optn;
+                kursusList.appendChild(el);
+            }
+        }))
+    }
+
+    function populateBilik(){
+        fetch(urlBilikList).then(response => response.text().then(data => {
+            const json = JSON.parse(data.substring(47, data.length-2));
+            const rows = json.table.rows;
+            let bilikList = document.getElementById('namabilik');
+            for (var i=0; i<rows.length; i++){
+                var opt = rows[i];
+                bilikArr.push(opt);
+            }
+            console.log(bilikArr);
+            for (let i = 0;i < bilikArr.length; i++){
+                let optn = '';
+                optn = bilikArr[i].c[0].v;
+                let el = document.createElement("option");
+                //bilikList.removeChild(el);
+                el.textContent = '';
+                el.value = '';
+                el.textContent = optn;
+                el.value = optn;
+                bilikList.appendChild(el);
+            }
+        }))
+    }
+
+    function populateHari(){
+        fetch(urlHariList).then(response => response.text().then(data => {
+            const json = JSON.parse(data.substring(47, data.length-2));
+            const rows = json.table.rows;
+            let hariList = document.getElementById('hari');
+            for (var i=0; i<rows.length; i++){
+                var opt = rows[i];
+                hariArr.push(opt);
+            }
+            console.log(hariArr);
+            for (let i = 0;i < hariArr.length; i++){
+                let optn = '';
+                optn = hariArr[i].c[0].v;
+                let el = document.createElement("option");
+                //hariList.removeChild(el);
+                el.textContent = '';
+                el.value = '';
+                el.textContent = optn;
+                el.value = optn;
+                hariList.appendChild(el);
+            }
+        }))
+    }
+
+    populateTujuan();
+    populateKursus();
+    populateBilik();
+    populateHari();
+
+    function tempahBilik(){
+        var namaPegawai = document.getElementById("namapegawai").value;
+        var kataLaluan = sessionStorage.getItem('KataLaluan');
+        var telefon = sessionStorage.getItem('Telefon');
+        var namaBilik = document.getElementById("namabilik").value;
+        var tujuan;
+        if (document.getElementById("tujuan").value == "Lain lain"){
+            tujuan = document.getElementById("customtujuan").value;
+            createTujuan(tujuan);
+        }
+        /*else if((document.getElementById("tujuan").value == "Kursus Pendek")||(document.getElementById("tujuan").value == "Kursus")){
+            if (document.getElementById("kursuspendek").value != "Program baru"){
+            tujuan = document.getElementById("kursuspendek").value;   
+            
+            }else{
+                tujuan = document.getElementById("customkursus").value;
+                daftarKursus(tujuan);
+            }
+        }*/
+        else {
+            tujuan = document.getElementById("tujuan").value;
+        }
+        var tajukProgram;
+            if (document.getElementById("kursuspendek").value != "Program baru"){
+                tajukProgram = document.getElementById("kursuspendek").value;
+            }else{
+                tajukProgram = document.getElementById("customkursus").value;
+                daftarKursus(tajukProgram);
+            }        
+        var tarikhTempahMula = document.getElementById("tarikh_tempah_mula").value;
+        var tarikhTempahTamat = document.getElementById("tarikh_tempah_tamat").value;
+        var masaTempahMula = document.getElementById("masa_tempah_mula").value;
+        var masaTempahTamat = document.getElementById("masa_tempah_tamat").value;
+        var institusi = document.getElementById("institusipeserta").value;
+        var bilanganPeserta = document.getElementById("bilpeserta").value;
+        
+        var urlTempah = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=TempahBilikDanKursus&Katalaluan="+kataLaluan+"&NamaPenempah="+namaPegawai+"&NamaBilik="+namaBilik+"&KategoriTujuan="+tujuan+"&TajukProgram="+tajukProgram+"&TarikhTempahanMula="+tarikhTempahMula+"&TarikhTempahanTamat="+tarikhTempahTamat+"&MasaTempahanMula="+masaTempahMula+"&MasaTempahanTamat="+masaTempahTamat+"&Telefon="+telefon+"&InstitusiPeserta="+institusi+"&BilanganPeserta="+bilanganPeserta;                  
+        console.log(urlTempah);
+        
+        if ((document.getElementById("tarikh_tempah_mula").value != '')&&(document.getElementById("tarikh_tempah_tamat").value != '')&&(document.getElementById("masa_tempah_mula").value != '')&&(document.getElementById("masa_tempah_tamat").value != '')){
+
+        if ((document.getElementById("tujuan").value == "Kursus Pendek")||(document.getElementById("tujuan").value == "Kursus")){
+            var institusi = document.getElementById("institusipeserta").value;
+            var peserta = document.getElementById("bilpeserta").value; 
+            if ((institusi != '') && (peserta != '')){
+            //tempahKursus();
+            fetch(urlTempah).then(response => response.text().then(data => {
+            console.log(data);
+            alert(data);
+            getLogs();
+            $("input[type=text]").val("");
+            $("input[type=date]").val("");
+            $("input[type=time]").val("");
+            $("input[type=number]").val("");
+            document.getElementById('namapegawai').value = sessionStorage.getItem('NamaPegawai');
+        }))}else{
+            alert("Sila isi institusi dan bilangan peserta.");   
+        }
+        } else{
+            fetch(urlTempah).then(response => response.text().then(data => {
+            console.log(data);
+            alert(data);
+            getLogs();
+            $("input[type=text]").val("");
+            $("input[type=date]").val("");
+            $("input[type=time]").val("");
+            $("input[type=number]").val("");
+            document.getElementById('namapegawai').value = sessionStorage.getItem('NamaPegawai');
+        }))
+        }
+        }else{
+            console.log("Masa dan tarikh mestilah di isi!");
+            alert("Masa dan tarikh mestilah di isi!");
+        }
+    }
+
+            function daftarKursus(kursusVal){
+                var urlKursus = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=CreateKursusPendek&NamaKursusPendek="+kursusVal;
+                console.log(urlKursus);
+                fetch(urlKursus).then(response => response.text().then(data => {
+                console.log(data);
+                alert(data);
+            }))
+            }
+            
+            
+            function tempahKursus(){
+            var namaPegawai = document.getElementById("namapegawai").value;
+            var kataLaluan = sessionStorage.getItem('KataLaluan');
+            var namaKursus;
+            if (document.getElementById("kursuspendek").value != "Kursus baru"){
+                namaKursus = document.getElementById("kursuspendek").value;
+            }else{
+                namaKursus = document.getElementById("customkursus").value;
+            }
+            var tarikhKursusMula = document.getElementById("tarikh_kursus_mula").value;
+            var tarikhKursusTamat = document.getElementById("tarikh_kursus_tamat").value;
+            var masaKursusMula =  document.getElementById("masa_kursus_mula").value;
+            var masaKursusTamat = document.getElementById("masa_kursus_tamat").value;
+            var tempatKursus = document.getElementById("namabilik").value;
+            var institusi = document.getElementById("institusipeserta").value;
+            var peserta = document.getElementById("bilpeserta").value;
+            
+            var urlDaftarKursus = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=DaftarKursus&Katalaluan="+kataLaluan+"&NamaPegawai="+namaPegawai+"&NamaKursus="+namaKursus+"&TarikhKursusMula="+tarikhKursusMula+"&TarikhKursusTamat="+tarikhKursusTamat+"&MasaKursusMula="+masaKursusMula+"&MasaKursusTamat="+masaKursusTamat+"&TempatKursus="+tempatKursus+"&Institusi="+institusi+"&Peserta="+peserta;
+            console.log(urlDaftarKursus);
+            
+            if ((institusi != '') && (peserta != '')){
+            fetch(urlDaftarKursus).then(response => response.text().then(data =>{
+                console.log(data);
+                alert(data);
+            }))    
+            }else{
+             alert("Sila isi institusi dan bilangan peserta.");   
+            }
+            }
+
+            function restoreTempahan(id){
+                var namaPegawai;
+                if (sessionStorage.getItem('peranan')!="Admin"){
+                    namaPegawai =sessionStorage.getItem('NamaPegawai');
+                } else{
+                    namaPegawai = "Admin";
+                }
+                var katalaluan = sessionStorage.getItem('KataLaluan');
+                
+                var urlRestoreTempahan = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=RestoreTempahan&Id="+id+"&Nama="+namaPegawai+"&Katalaluan="+katalaluan;
+                console.log(urlRestoreTempahan);
+                fetch(urlRestoreTempahan).then(response => response.text().then(data => {
+                    console.log(data);
+                    alert(data);
+                    getLogsTempahan();
+                }))
+            }  
+
+            function batalTempahan(id){
+                var namaPegawai;
+                if (sessionStorage.getItem('peranan')!="Admin"){
+                    namaPegawai =sessionStorage.getItem('NamaPegawai');
+                } else{
+                    namaPegawai = "Admin";
+                }
+                var katalaluan = sessionStorage.getItem('KataLaluan');
+                
+                var urlBatalTempahan = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=BatalTempahan&Id="+id+"&Nama="+namaPegawai+"&Katalaluan="+katalaluan;
+                console.log(urlBatalTempahan);
+                fetch(urlBatalTempahan).then(response => response.text().then(data => {
+                    console.log(data);
+                    alert(data);
+                    getLogsTempahan();
+                }))
+            }            
+
+            function batalBilik(id){
+                var namaPegawai = sessionStorage.getItem('NamaPegawai');
+                var katalaluan = sessionStorage.getItem('KataLaluan');
+                var urlBatalBilik = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=BatalBilik&Id="+id+"&Nama="+namaPegawai+"&Katalaluan="+katalaluan;
+                console.log(urlBatalBilik);
+                fetch(urlBatalBilik).then(response => response.text().then(data => {
+                    console.log(data);
+                    alert(data);
+                }))
+            }
+            
+            function batalKursus(id){
+                var namaPegawai = sessionStorage.getItem('NamaPegawai');
+                var katalaluan = sessionStorage.getItem('KataLaluan');
+                var urlBatalKursus = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT/exec?func=BatalKursus&Id="+id+"&Nama="+namaPegawai+"&Katalaluan="+katalaluan;
+                console.log(urlBatalKursus);
+                fetch(urlBatalKursus).then(response => response.text().then(data => {
+                    console.log(data);
+                    alert(data);
+                }))
+            }            
+         
+            
+            function myFunction() {
+              var x = document.getElementById("myTopnav");
+              if (x.className === "topnav") {
+              x.className += " responsive";
+              } else {
+              x.className = "topnav";
+              }
+            }
+
+
+            // Get the container element
+            var btnContainer = document.getElementById("myTopnav");
+
+            // Get all buttons with class="btn" inside the container
+            var btns = btnContainer.getElementsByClassName("btn");
+
+            // Loop through the buttons and add the active class to the current/clicked button
+            for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+            });
+            }
+        </script>
+    </body>
+</html>
