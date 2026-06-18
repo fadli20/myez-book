@@ -1796,14 +1796,16 @@ inputPwd.addEventListener("keypress", function(event) {
             
             function previousPageTempahan() {
                 if(curPage > 1) curPage--;
-                renderTable();
+                //renderTable();
+				clearLogTempahan();
                 loadTableTempahan();
                 //getLogs();
             }
 
             function nextPageTempahan(){
                 if((curPage * pageSize) <= datas7.length) curPage++;
-                renderTable();
+                //renderTable();
+				clearLogTempahan();
                 loadTableTempahan();
                 //getLogs();
             }   
