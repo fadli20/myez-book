@@ -2353,103 +2353,89 @@ function getLogsTempahan(){
     })
 }
 
-function loadTableTempahan(){
-    
-    let start = (curPage-1)*pageSize;
-    
-    console.log("start: "+start);
-    
-    let end =curPage*pageSize;
-    
-    //let end = datas.length;
-    
-    console.log("end: "+end);  
-    
-    let i = datas7.length;
-    
-    console.log("datas7 length: "+i);    
-    
-    if(i >= start && i <= end) return true;
-    let rowhead = tablehead7.insertRow();
-            if(sessionStorage.getItem('login') == 'true'){
-                rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th><th style="width:5vw;">Tetapan</th></tr>'; 
-            } else{
-                rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th></tr>';
-            }
-            for (let j = 0; j < end; j++){
-                let id = j + 1;
-                let index = id;
-                let idRekod = datas7[j].c[0].f;
-                let namaPenempah = datas7[j].c[1].v;
-                let katalaluan = datas7[j].c[2].v;
-                let telefon = datas7[j].c[3].f;
-                let tajukProgram = datas7[j].c[4].v;
-                let kategoriTujuan = datas7[j].c[5].v;
-                let namaBilik = datas7[j].c[6].v;
-                let institusiPeserta = datas7[j].c[7].v;
-                let bilanganPeserta = datas7[j].c[8].f;
-                let tarikhTempahMula = datas7[j].c[9].f;
-                let masaTempahMula = datas7[j].c[10].f;
-                let tarikhTempahTamat = datas7[j].c[11].f;
-                let masaTempahTamat = datas7[j].c[12].f;
-                let tarikhTempahan = datas7[j].c[13].f;
-                let masaTempahan = datas7[j].c[14].f;
-                let statusTempah = datas7[j].c[15].v;
-                let row = table7.insertRow();
-                
-                if (sessionStorage.getItem('login') == 'false'){    
-                row.insertCell().innerText = index;
-                row.insertCell().innerText = tajukProgram;
-                row.insertCell().innerText = namaBilik;
-                row.insertCell().innerHTML = statusTempah;
-                row.insertCell().innerText = institusiPeserta;
-                row.insertCell().innerText = bilanganPeserta;
-                var tarikhDisp;
-                var masaDisp;
-                if (tarikhTempahMula == tarikhTempahTamat){
-                   tarikhDisp = tarikhTempahMula; 
-                   masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
-                } else {
-                    tarikhDisp = tarikhTempahMula +" - "+tarikhTempahTamat;  
-                    masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")"; 
-                }
-                row.insertCell().innerHTML = tarikhDisp + "<br>"+ masaDisp;
-                row.insertCell().innerHTML = namaPenempah + "<br>Tel: 60"+telefon+""; 
-                row.insertCell().innerText = kategoriTujuan;
-                
-                }
-                if (sessionStorage.getItem('login') == 'true'){
-                   
-                row.insertCell().innerText = index;
-                row.insertCell().innerText = tajukProgram;
-                row.insertCell().innerText = namaBilik;
-                row.insertCell().innerHTML = statusTempah;                
-                row.insertCell().innerText = institusiPeserta;
-                row.insertCell().innerText = bilanganPeserta;
-                var tarikhDisp;
-                var masaDisp;
-                if (tarikhTempahMula == tarikhTempahTamat){
-                   tarikhDisp = tarikhTempahMula; 
-                   masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")";
-                } else {
-                    tarikhDisp = tarikhTempahMula +" - "+tarikhTempahTamat; 
-                    masaDisp = "("+masaTempahMula + " - " + masaTempahTamat+")"; 
-                }
-                row.insertCell().innerHTML = tarikhDisp + "<br>"+ masaDisp;
-                row.insertCell().innerHTML = namaPenempah + "<br>Tel: 60"+telefon+""; 
-                row.insertCell().innerText = kategoriTujuan;
-                if(statusTempah == 'Ditempah' ){
-                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="batalTempahan('+idRekod+')"><i class=\'fa fa-times\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';
-                } else if (statusTempah == 'Batal'){
-                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="restoreTempahan('+idRekod+')"><i class=\'fa fa-undo\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';
-                } else if (statusTempah == 'Selesai'){
-                row.insertCell().innerHTML = '<span id="batalbtn" style="cursor:pointer;" onclick="showData()"><i class=\'fa fa-file\'></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan('+idRekod+')"><i class=\'fa fa-edit\'></i></span>';    
-                }
-                }  
-        document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas7.length/pageSize).toFixed();      
-}
-} 
+function loadTableTempahan() {
+    // 1. Clear existing table (both header and body)
+    tablehead7.innerHTML = '';
+    table7.innerHTML = '';
 
+    // 2. Calculate start and end indices
+    let start = (curPage - 1) * pageSize;
+    let end = Math.min(start + pageSize, datas7.length); // never exceed total rows
+
+    // 3. If no data, show a message and exit
+    if (datas7.length === 0) {
+        let row = table7.insertRow();
+        row.insertCell().colSpan = 10;
+        row.insertCell().innerText = 'Tiada rekod';
+        document.getElementById("pageNum").innerHTML = "Page 1 of 1";
+        return;
+    }
+
+    // 4. Build header (only once)
+    let rowhead = tablehead7.insertRow();
+    if (sessionStorage.getItem('login') == 'true') {
+        rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th><th style="width:5vw;">Tetapan</th></tr>';
+    } else {
+        rowhead.innerHTML = '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi </th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori </th><th style="width:5vw;">Butiran Penempah</th></tr>';
+    }
+
+    // 5. Loop from start to end (exclusive)
+    for (let j = start; j < end; j++) {
+        let row = datas7[j];
+        let idRekod = row.c[0] ? row.c[0].f : '';
+        let namaPenempah = row.c[1] ? row.c[1].v : '';
+        let telefon = row.c[3] ? row.c[3].f : '';
+        let tajukProgram = row.c[4] ? row.c[4].v : '';
+        let kategoriTujuan = row.c[5] ? row.c[5].v : '';
+        let namaBilik = row.c[6] ? row.c[6].v : '';
+        let institusiPeserta = row.c[7] ? row.c[7].v : '';
+        let bilanganPeserta = row.c[8] ? row.c[8].f : '';
+        let tarikhTempahMula = row.c[9] ? row.c[9].f : '';
+        let masaTempahMula = row.c[10] ? row.c[10].f : '';
+        let tarikhTempahTamat = row.c[11] ? row.c[11].f : '';
+        let masaTempahTamat = row.c[12] ? row.c[12].f : '';
+        let statusTempah = row.c[15] ? row.c[15].v : '';
+
+        let tr = table7.insertRow();
+        let pageIndex = (j - start) + 1; // 1-based index on current page
+
+        tr.insertCell().innerText = pageIndex;
+        tr.insertCell().innerText = tajukProgram;
+        tr.insertCell().innerText = namaBilik;
+        tr.insertCell().innerHTML = statusTempah;
+        tr.insertCell().innerText = institusiPeserta;
+        tr.insertCell().innerText = bilanganPeserta;
+
+        let tarikhDisp, masaDisp;
+        if (tarikhTempahMula == tarikhTempahTamat) {
+            tarikhDisp = tarikhTempahMula;
+            masaDisp = "(" + masaTempahMula + " - " + masaTempahTamat + ")";
+        } else {
+            tarikhDisp = tarikhTempahMula + " - " + tarikhTempahTamat;
+            masaDisp = "(" + masaTempahMula + " - " + masaTempahTamat + ")";
+        }
+        tr.insertCell().innerHTML = tarikhDisp + "<br>" + masaDisp;
+        tr.insertCell().innerText = kategoriTujuan;
+        tr.insertCell().innerHTML = namaPenempah + "<br>Tel: 60" + telefon;
+
+        // Add action buttons if logged in
+        if (sessionStorage.getItem('login') == 'true') {
+            let actions = '';
+            if (statusTempah == 'Ditempah') {
+                actions = '<span id="batalbtn" style="cursor:pointer;" onclick="batalTempahan(' + idRekod + ')"><i class="fa fa-times"></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan(' + idRekod + ')"><i class="fa fa-edit"></i></span>';
+            } else if (statusTempah == 'Batal') {
+                actions = '<span id="batalbtn" style="cursor:pointer;" onclick="restoreTempahan(' + idRekod + ')"><i class="fa fa-undo"></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan(' + idRekod + ')"><i class="fa fa-edit"></i></span>';
+            } else {
+                actions = '<span id="batalbtn" style="cursor:pointer;" onclick="showData()"><i class="fa fa-file"></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan(' + idRekod + ')"><i class="fa fa-edit"></i></span>';
+            }
+            tr.insertCell().innerHTML = actions;
+        }
+    }
+
+    // 6. Update pagination info
+    let totalPages = Math.ceil(datas7.length / pageSize) || 1;
+    document.getElementById("pageNum").innerHTML = "Page " + curPage + " of " + totalPages;
+}
 
 function getLogsKursus(){
                     clearLogKursus();
