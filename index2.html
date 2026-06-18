@@ -2399,7 +2399,7 @@ function loadTableTempahan() {
         let tr = table7.insertRow();
         let pageIndex = (j - start) + 1; // 1-based index on current page
 
-        tr.insertCell().innerText = datas7.length - idRekod + 1;
+        tr.insertCell().innerText = j + 1;
         tr.insertCell().innerText = tajukProgram;
         tr.insertCell().innerText = namaBilik;
         tr.insertCell().innerHTML = statusTempah;
