@@ -1,0 +1,2626 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous">
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="logo.png" rel="shortcut icon" type="image/x-icon" />
+    <title>KKSBJ Booking System</title>
+    <style>
+        .bebas-neue-regular {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .topnav .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .topnav a:not(:first-child) {
+                display: none;
+            }
+            .topnav a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .topnav.responsive {
+                position: relative;
+            }
+            .topnav.responsive .icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .topnav.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+        }
+        .mainbox {
+            text-align: center;
+            margin: auto;
+        }
+        .box {
+            width: 300px;
+            height: 120px;
+            display: inline-block;
+            margin: 10px 10px 10px 10px;
+            border: solid grey 5px;
+            opacity: 0.8;
+            color: white;
+            font-size: 34px;
+            text-shadow: 2px 2px black;
+        }
+        .vbox {
+            width: 300px;
+            height: 180px;
+            display: inline-block;
+            margin: 10px 10px 10px 10px;
+            border: solid grey 5px;
+            opacity: 0.8;
+            color: black;
+            font-size: 20px;
+            /*text-shadow: 2px 2px grey;*/
+        }
+        .blue {
+            background-color: #6699ff;
+        }
+        .red {
+            background-color: #ff0066;
+        }
+        .green {
+            background-color: #66ff99;
+        }
+        .orange {
+            background-color: #ff9966;
+        }
+        .yellow {
+            background-color: #e6e600;
+        }
+        .white {
+            background-color: white;
+            color: black;
+            text-shadow: 0px 0px black;
+        }
+        .reading {
+            font-size: 38px;
+        }
+        .unit {
+            font-size: 24px;
+        }
+        .ctrl {
+            width: 120px;
+            height: 120px;
+            display: inline-block;
+            margin: 10px 10px 10px 10px;
+            border: solid grey 5px;
+            opacity: 0.8;
+            color: white;
+            font-size: 20px;
+            text-shadow: 2px 2px black;
+            border-radius: 50%;
+        }
+        .ctrl:hover {
+            background-color: white;
+            color: black;
+            text-shadow: 0px 0px black;
+        }
+        .nav {
+            text-align: center;
+            position: absolute;
+            margin: auto;
+            width: 100vw;
+            left: 0px;
+            right: 0px;
+            background-color: black;
+        }
+        .opt {
+            width: 120px;
+            height: 40px;
+            font-size: 20px;
+            background-color: #99ccff;
+            border: 2px solid black;
+            margin: 10px;
+        }
+        .opt:hover {
+            background-color: gray;
+            color: white;
+        }
+        .feedbox {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background-color: black;
+            color: #00e68a;
+            font-size: 20px;
+        }
+
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #ddd;
+            padding: 6px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #0a8af2;
+            color: white;
+        }
+
+        @media only screen and (max-width: 960px) {
+            /* horizontal scrollbar for tables if mobile screen */
+            .tablemobile {
+                overflow-x: auto;
+                display: block;
+            }
+        }
+
+        .indicator {
+            width: 20px;
+            height: 20px;
+            background-color: #ff0066;
+            border: solid 1px black;
+            border-radius: 50%;
+            display: inline-block;
+            margin: auto;
+        }
+
+        .btn2 {
+            display: inline block;
+            width: 80px;
+            height: 20px;
+            color: #ffffff;
+            background-color: #3f5f8f;
+            border-radius: 5px;
+            padding: none;
+            border: solid 0px;
+            cursor: pointer;
+        }
+        .btn3 {
+            display: inline block;
+            width: 200px;
+            height: 60px;
+            color: #ffffff;
+            background-color: #3f5f8f;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px;
+            border: solid 0px;
+            cursor: pointer;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 17px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 13px;
+            width: 13px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(12px);
+            -ms-transform: translateX(12px);
+            transform: translateX(12px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 12px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            /*padding-top: 100px; /* Location of the box */
+            left: 5%;
+            top: 5%;
+            right: 5%;
+            bottom: 5%;
+            /*width: 100%; /* Full width */
+            /*height: 100%; /* Full height */
+            width: auto;
+            height: auto;
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            /*width: 80vw;*/
+            width: auto;
+            height: 92.5%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .infotext {
+
+            font-style: italic;
+            font-size: 9pt;
+            width: 320px;
+        }
+
+        /* Filter row styling */
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 10px auto;
+            padding: 8px 12px;
+            background: #f5f7fa;
+            border-radius: 8px;
+            max-width: 600px;
+        }
+        .filter-row label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
+        .filter-row select {
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background: white;
+            min-width: 100px;
+        }
+        .filter-row .btn2 {
+            height: 34px;
+            width: auto;
+            padding: 0 18px;
+            font-size: 14px;
+            background: #0a8af2;
+            border-radius: 4px;
+        }
+        .filter-row .btn2:hover {
+            background: #0670c9;
+        }
+
+        /* Pagination bar - always visible */
+        .pagination-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0 6px 0;
+            background: #fff;
+            border-top: 1px solid #ddd;
+            margin-top: 6px;
+            position: sticky;
+            bottom: 0;
+            z-index: 5;
+        }
+        .pagination-bar .btn2 {
+            height: 30px;
+            width: auto;
+            padding: 0 16px;
+            font-size: 13px;
+        }
+        .pagination-bar .page-info {
+            font-size: 14px;
+            color: #444;
+            font-weight: 500;
+            min-width: 100px;
+        }
+
+        /* Make table container scrollable if needed, but pagination stays */
+        .table-wrap {
+            position: relative;
+            max-height: none;
+            overflow: visible;
+        }
+
+        /* Responsive tweaks */
+        @media screen and (max-width: 600px) {
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+            .filter-row select {
+                width: 100%;
+            }
+            .pagination-bar {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="bebas-neue-regular"><img src="logo.png" height="300px" width="auto"></h1>
+    <div class="topnav" id="myTopnav">
+        <a href="#" class="btn active" onclick="showData()">Home</a>
+        <a id="menuListTempahan" href="#" class="btn" onclick="showTempahan()" style="display:none;">Senarai Tempahan</a>
+        <a href="#" class="btn" id="logmasuk" onclick="showManualCtrl()">Log Masuk</a>
+        <a href="#" class="btn" id="logkeluar" style="display:none;" onclick="logout()">Log Keluar</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <p style="text-align:center;font-size:20px;display:none">Feedback</p>
+    <div class="feedbox" id="feeds" style="display:none">
+        No update yet
+    </div>
+    <br><br>
+
+    <!-- GUARD DASHBOARD -->
+    <div class="mainbox" id="guard_dashboard" style="background-color: white; text-align: center; border: 10px solid black; padding: 2px;">
+        <h2 id="tajukJadualKursusPendek" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Senarai Tempahan</h2>
+        <br>
+
+        <!-- FILTER: Month & Year -->
+        <div class="filter-row">
+            <label for="monthFilter">Bulan:</label>
+            <select id="monthFilter">
+                <option value="all">Semua</option>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Mac</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Jun</option>
+                <option value="7">Julai</option>
+                <option value="8">Ogos</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Disember</option>
+            </select>
+
+            <label for="yearFilter">Tahun:</label>
+            <select id="yearFilter">
+                <option value="all">Semua</option>
+            </select>
+
+            <button class="btn2" id="filterMonthYearBtn" onclick="filterByMonthYear()">Tapis</button>
+            <button class="btn2" id="resetFilterBtn" onclick="resetFilter()" style="background:#888;">Reset</button>
+        </div>
+
+        <div class="table-wrap">
+            <table class="tablemobile">
+                <thead id="header-tempahan" style="width:80vw;"></thead>
+                <tbody id="data-tempahan" style="width:80vw;"></tbody>
+            </table>
+        </div>
+
+        <!-- PAGINATION BAR (always visible) -->
+        <div class="pagination-bar">
+            <button class="btn2" id="prevButtonTempahan">Sebelum</button>
+            <span class="page-info" id="pageInfoTempahan">Muka surat 1 / 1</span>
+            <button class="btn2" id="nextButtonTempahan">Seterusnya</button>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div class="mainbox" id="admin_dashboard" style="display: none; background-color: white; text-align: center; border: 10px solid black; padding: 2px;">
+        <p class="bebas-neue-regular" style="font-size:24pt;">DASHBOARD ADMIN</p>
+        <button class="btn3" onclick="urusPenggunaDisp()" id="btn_pengguna" style="background-color:#00cc7a;">URUS PENGGUNA</button>
+        <button class="btn3" onclick="urusBilikDisp()" id="btn_bilik">URUS BILIK</button>
+        <button class="btn3" onclick="urusKursusDisp()" id="btn_kursus">URUS KURSUS</button>
+        <button class="btn3" onclick="urusTujuanDisp()" id="btn_tujuan">URUS TUJUAN</button><br>
+
+        <br>
+        <div id="urus_pengguna" style="display:block;">
+            <p class="bebas-neue-regular" style="font-size:18pt;">URUS PENGGUNA</p>
+            <button class="btn3" onclick="tambahPengguna()" id="btnTambahPengguna"><i class="fa fa-plus"></i> Pengguna</button><br>
+            <table class="tablemobile">
+                <thead>
+                    <tr>
+                        <th style="width:5vw;">Index</th>
+                        <th style="width:10vw;">Nama Pengguna</th>
+                        <th style="width:5vw;">Kategori Pengguna</th>
+                        <th style="width:10vw;">Institusi</th>
+                        <th style="width:10vw;">Telefon</th>
+                        <th style="width:10vw;">Tetapan</th>
+                    </tr>
+                </thead>
+                <tbody id="data-urus-pengguna" style="width:80vw;"></tbody>
+            </table>
+            <br>
+            <div class="pagination-bar">
+                <button class="btn2" id="prevButtonPengguna">Sebelum</button>
+                <span class="page-info" id="pageInfoPengguna">Muka surat 1 / 1</span>
+                <button class="btn2" id="nextButtonPengguna">Seterusnya</button>
+            </div>
+        </div>
+
+        <div id="urus_bilik" style="display:none;">
+            <p class="bebas-neue-regular" style="font-size:18pt;">URUS BILIK</p>
+            <button class="btn3" onclick="tambahBilik()" id="btnTambahBilik"><i class="fa fa-plus"></i> Bilik</button><br>
+            <table class="tablemobile">
+                <thead>
+                    <tr>
+                        <th style="width:5vw;">Index</th>
+                        <th style="width:10vw;">Nama Bilik</th>
+                        <th style="width:10vw;">Tetapan</th>
+                    </tr>
+                </thead>
+                <tbody id="data-urus-bilik" style="width:80vw;"></tbody>
+            </table>
+            <br>
+            <div class="pagination-bar">
+                <button class="btn2" id="prevButtonBilik">Sebelum</button>
+                <span class="page-info" id="pageInfoBilik">Muka surat 1 / 1</span>
+                <button class="btn2" id="nextButtonBilik">Seterusnya</button>
+            </div>
+        </div>
+
+        <div id="urus_kursus" style="display:none;">
+            <p class="bebas-neue-regular" style="font-size:18pt;">URUS KURSUS</p>
+            <button class="btn3" onclick="tambahKursus()" id="btnTambahKursus"><i class="fa fa-plus"></i> Kursus</button><br>
+            <table class="tablemobile">
+                <thead>
+                    <tr>
+                        <th style="width:5vw;">Index</th>
+                        <th style="width:10vw;">Nama Kursus</th>
+                        <th style="width:10vw;">Tetapan</th>
+                    </tr>
+                </thead>
+                <tbody id="data-urus-kursus" style="width:80vw;"></tbody>
+            </table>
+            <br>
+            <div class="pagination-bar">
+                <button class="btn2" id="prevButtonNamaKursus">Sebelum</button>
+                <span class="page-info" id="pageInfoNamaKursus">Muka surat 1 / 1</span>
+                <button class="btn2" id="nextButtonNamaKursus">Seterusnya</button>
+            </div>
+        </div>
+
+        <div id="urus_tujuan" style="display:none;">
+            <p class="bebas-neue-regular" style="font-size:18pt;">URUS TUJUAN</p>
+            <button class="btn3" onclick="tambahTujuan()" id="btnTambahTujuan"><i class="fa fa-plus"></i> Tujuan</button><br>
+            <table class="tablemobile">
+                <thead>
+                    <tr>
+                        <th style="width:5vw;">Index</th>
+                        <th style="width:10vw;">Tujuan</th>
+                        <th style="width:10vw;">Tetapan</th>
+                    </tr>
+                </thead>
+                <tbody id="data-urus-tujuan" style="width:80vw;"></tbody>
+            </table>
+            <br>
+            <div class="pagination-bar">
+                <button class="btn2" id="prevButtonTujuan">Sebelum</button>
+                <span class="page-info" id="pageInfoTujuan">Muka surat 1 / 1</span>
+                <button class="btn2" id="nextButtonTujuan">Seterusnya</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SENSORDATA / BOOKING FORM -->
+    <div class="mainbox" id="sensordata" style="display:none">
+        <div style="display:none;">
+            <div class="box blue">Turbidity <br><span class="reading" id="tss"></span> <span class="unit">mg/L</span></div>
+            <div class="box yellow">BOD <br><span class="reading" id="bod"></span> <span class="unit">mg/L</span></div>
+            <div class="box orange">COD <br><span class="reading" id="cod"></span> <span class="unit">mg/L</span></div>
+            <div class="box green">PH <br><span class="reading" id="ph"></span> <span class="unit">PH</span></div>
+            <div class="box red">Temperature <br><span class="reading" id="temp"></span> <span class="unit">&deg;C</span></div>
+        </div>
+        <div id="borangTempahBilik" style="text-align:justify;border:10px solid black;padding: 2px;">
+            <h2 id="tajukBorang" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Borang Tempahan Bilik</h2>
+            <div style="margin-left:25%;margin-right:25%;width:50%;">
+                <br>
+                <span style="font-style:italic;font-size:12pt;text-align:center">Sila ubah tujuan kepada kursus atau kursus pendek untuk pendaftaran kursus pendek. Pilih lain-lain untuk tambah tujuan lain.</span><br>
+                <span style="font-style:bold italic;font-size:18pt;text-align:center;color:red;background:black;">PASTIKAN SEMUA TEMPAT KOSONG DI ISI.</span>
+                <br>
+                <label for="namapegawai" style="padding:10px;width:300px;border:10px;display: inline-block;">Nama Pegawai: </label>
+                <input type="text" id="namapegawai" name="namapegawai" placeholder="Nama Pegawai" style="width:200px;" required>
+                <br>
+                <label for="namabilik" style="padding:10px;width:300px;border:10px;display: inline-block;">Nama Bilik: </label>
+                <select name="namabilik" id="namabilik" style="width:200px;">
+                </select>
+                <br>
+                <label for="tujuan" style="padding:10px;width:300px;border:10px;display: inline-block;">Kategori Tujuan: </label>
+                <select name="tujuan" id="tujuan" onchange="checkTujuan(this.value);" style="width:200px;">
+                </select>
+                <input type="text" id="customtujuan" name="customtujuan" placeholder="Lain lain" style="display:none;width:200px;">
+                <br>
+                <label for="kursuspendek" style="padding:10px;width:300px;border:10px;display:inline-block;"> Tajuk Program: </label>
+                <select name="kursuspendek" id="kursuspendek" onchange="checkKursus(this.value);" style="width:200px;"></select>
+                <input type="text" id="customkursus" name="customkursus" value="Nama Program" placeholder="Nama Program" style="display:none;width:200px;">
+                <br>
+                <label for="institusipeserta" style="padding: 10px; width: 300px; border:10px; display:inline-block;">Institusi Peserta: </label>
+                <input type="text" id="institusipeserta" name="institusipeserta" placeholder="Institusi" value="Kolej Komuniti" style="width:200px">
+                <br>
+                <label for="bilpeserta" style="padding: 10px; width: 300px; border:10px; display:inline-block;">Bilangan Peserta: </label>
+                <input type="number" id="bilpeserta" name="bilpeserta" value="0" placeholder="0" style="width:200px">
+                <br>
+                <label for="tarikh_tempah_mula" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Tempah Mula: </label>
+                <input type="date" name="tarikh_tempah_mula" id="tarikh_tempah_mula" style="width:200px;"></input>
+                <br>
+                <label for="tarikh_tempah_tamat" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Tempah Tamat: </label>
+                <input type="date" name="tarikh_tempah_tamat" id="tarikh_tempah_tamat" style="width:200px;"></input>
+                <br>
+                <label for="masa_tempah_mula" style="padding:10px;width:300px;border:10px;display: inline-block;">Masa Tempah Mula: </label>
+                <input type="time" name="masa_tempah_mula" id="masa_tempah_mula" style="width:200px;"></input>
+                <br>
+                <label for="masa_tempah_tamat" style="padding:10px;width:300px;border:10px;display: inline-block;">Masa Tempah Tamat: </label>
+                <input type="time" name="masa_tempah_tamat" id="masa_tempah_tamat" style="width:200px;"></input>
+                <br><br>
+            </div>
+            <center><button class="btn2" onclick="tempahBilik();">Tempah</button></center>
+            <br><br>
+        </div>
+    </div>
+
+    <!-- LOGIN / MODE SELECT -->
+    <div class="mainbox" id="modeselect" style="display:none;">
+        <div id="mainPage">
+            <center>
+                <div id="loginForm" class="center" style="background-color:white;text-align:center;border:10px solid black;padding: 2px;">
+                    <p class="bebas-neue-regular" style="font-size:24pt;">LOG MASUK</p>
+                    <span style="font-style:italic;font-size:12pt;text-align:center">Nama Pengguna adalah case sensitive.</span><br><br>
+                    <label for="username" style="width:200px;">Nama Pengguna:</label><br>
+                    <input type="text" id="username" name="username" placeholder="Masukkan Nama Pengguna" required><br><br>
+                    <label for="password" style="width:200px;">Katalaluan:</label><br>
+                    <input type="password" id="password" name="password" placeholder="Masukkan Katalaluan" required>
+                    <br>
+                    <br>
+                    <div style="width:200px;"></div>
+                    <input type="checkbox" onclick="showPass()"> &nbsp;Tunjuk Katalaluan
+                    <br><br>
+                    <button class='btn2' value="register" id="loginBtn" onclick="login()">Log Masuk</button><br>
+                    <div id="maklumbalasLg"></div>
+                    <br>
+                    <p>Belum berdaftar?
+                        <a href="#" style="text-decoration: none;" onclick="crAccForm()">
+                            Cipta akaun
+                        </a>
+                    </p>
+                    <p>Lupa katalaluan?
+                        <a href="#" style="text-decoration: none;" onclick="restPwdForm()">
+                            Set semula katalaluan
+                        </a>
+                    </p>
+                </div>
+                <div id="createAccForm" style="display: none;background-color:white;text-align:center;border:10px solid black;padding: 2px;" class="center">
+                    <p class="bebas-neue-regular" style="font-size:24pt;">CIPTA AKAUN</p>
+                    <label for="usernameReg" style="width:200px;">Nama Pengguna:</label><br>
+                    <input type="text" id="usernameReg" name="usernameReg" placeholder="Masukkan Nama Pengguna" style="width:200px;" required><br><br>
+                    <label for="passwordReg" style="width:200px;">Katalaluan:</label><br>
+                    <input type="password" id="passwordReg" name="passwordReg" placeholder="Masukkan Katalaluan" style="width:200px;" required>
+                    <br><br>
+                    <label for="telefon" style="width:200px;">Telefon:</label><br>
+                    <input type="number" id="telefon" name="telefon" placeholder="0123456789" style="width:200px;" required><br><br>
+                    <label for="kategori" style="width:200px;">Kategori:</label><br>
+                    <select name="kategori" id="kategori" style="width:200px;">
+                        <option value="Kakitangan">Kakitangan</option>
+                        <option value="Pelajar">Pelajar</option>
+                        <option value="Pengawal">Pengawal</option>
+                    </select>
+                    <br><br>
+                    <label for="institusi" style="width:200px;">Institusi:</label><br>
+                    <select name="institusi" id="institusi" style="width:200px;">
+                        <option value="Kolej Komuniti">Kolej Komuniti</option>
+                        <option value="Lain-lain">Lain-lain</option>
+                    </select>
+                    <br><br>
+                    <div style="width:200px;"></div>
+                    <input type="checkbox" onclick="showPassReg()"> &nbsp;Tunjuk Katalaluan
+                    <br><br>
+                    <center>
+                        <button class='btn2' value="register" onclick="registerAcc()">Hantar</button>
+                        <div style="width:20px;display:inline-block;"></div>
+                        <button class='btn2' value="cancel" onclick="createAcc()">Batal</button>
+                    </center>
+                    <br>
+                    <div id="maklumbalasReg"></div>
+                </div>
+                <div id="resetPwdForm" style="display: none;background-color:white;text-align:center;border:10px solid black;padding: 2px;" class="center">
+                    <p class="bebas-neue-regular" style="font-size:24pt;">SET SEMULA KATALALUAN</p>
+                    <label for="usernameRest" style="width:200px;">Nama Pengguna:</label><br>
+                    <input type="text" id="usernameRest" name="usernameRest" placeholder="Masukkan Nama Pengguna" style="width:200px;" required><br><br>
+                    <label for="passwordRest" style="width:200px;">Katalaluan:</label><br>
+                    <input type="password" id="passwordRest" name="passwordRest" placeholder="Masukkan Katalaluan Baru" style="width:200px;" required>
+                    <br><br>
+                    <div style="width:200px;"></div>
+                    <input type="checkbox" onclick="showPassRest()"> &nbsp;Tunjuk Katalaluan
+                    <br><br>
+                    <center>
+                        <button class='btn2' value="register" onclick="resetPwd()">Hantar</button>
+                        <div style="width:20px;display:inline-block;"></div>
+                        <button class='btn2' value="cancel" onclick="resetAcc()">Batal</button>
+                    </center>
+                    <br>
+                    <div id="maklumbalasRest"></div>
+                </div>
+                <br><br><br><br><br><br>
+            </center>
+        </div>
+    </div>
+
+    <!-- KURSUS PENDEK TABLE -->
+    <div class="mainbox" id="valvectrl" style="display: none; background-color:white;text-align:center;border:10px solid black;padding: 2px;">
+        <h2 id="tajukJadualKursusPendek" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Jadual Kursus Pendek</h2>
+        <br>
+        <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDateK" type="date">&nbsp;&nbsp;</div>
+        <br>
+        <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDateK" type="date">&nbsp;&nbsp;</div>
+        <br><br>
+        <button class="btn2" id="filterDateK" onclick="getDataByDateK()">Submit</button><br><br>
+        <table class="tablemobile">
+            <thead>
+                <tr>
+                    <th style="width:5vw;">Index</th>
+                    <th style="width:10vw;">Nama Pegawai</th>
+                    <th style="width:5vw;">Nama Kursus</th>
+                    <th style="width:10vw;">Tarikh Mula</th>
+                    <th style="width:10vw;">Masa Mula</th>
+                    <th style="width:5vw;">Tarikh Tamat</th>
+                    <th style="width:5vw;">Masa Tamat</th>
+                    <th style="width:5vw;">Tempat Kursus</th>
+                    <th style="width:5vw;">Institusi</th>
+                    <th style="width:5vw;">Bil Peserta</th>
+                    <th style="width:5vw;">Status</th>
+                    <th id="batalHeadKursus" style="width:5vw;">Batal</th>
+                </tr>
+            </thead>
+            <tbody id="data-history-kursus" style="width:80vw;"></tbody>
+        </table>
+        <br>
+        <div class="pagination-bar">
+            <button class="btn2" id="prevButtonKursus">Sebelum</button>
+            <span class="page-info" id="pageInfoKursus">Muka surat 1 / 1</span>
+            <button class="btn2" id="nextButtonKursus">Seterusnya</button>
+        </div>
+    </div>
+
+    <!-- HISTORY TEMPAHAN BILIK -->
+    <div class="mainbox" id="historydata" style="display:none;background-color:white;text-align:center;border:10px solid black;padding: 2px;">
+        <h2 id="tajukJadualTempahanBilik" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Jadual Tempahan Bilik</h2>
+        <br>
+        <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDate" type="date">&nbsp;&nbsp;</div>
+        <br>
+        <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDate" type="date">&nbsp;&nbsp;</div>
+        <br><br>
+        <button class="btn2" id="filterDate" onclick="getDataByDate()">Submit</button><br><br>
+        <table class="tablemobile">
+            <thead>
+                <tr>
+                    <th style="width:5vw;">Index</th>
+                    <th style="width:10vw;">Nama Pegawai</th>
+                    <th style="width:5vw;">Nama Bilik</th>
+                    <th style="width:10vw;">Tujuan Tempah</th>
+                    <th style="width:5vw;">Tarikh Tempah Mula</th>
+                    <th style="width:5vw;">Masa Tempah Mula</th>
+                    <th style="width:5vw;">Tarikh Tempah Tamat</th>
+                    <th style="width:5vw;">Masa Tempah Tamat</th>
+                    <th style="width:5vw;">Status</th>
+                    <th id="batalHead" style="width:5vw;">Batal</th>
+                </tr>
+            </thead>
+            <tbody id="data-history" style="width:80vw;"></tbody>
+        </table>
+        <br>
+        <div class="pagination-bar">
+            <button class="btn2" id="prevButton">Sebelum</button>
+            <span class="page-info" id="pageInfo">Muka surat 1 / 1</span>
+            <button class="btn2" id="nextButton">Seterusnya</button>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <center>
+                <div id="output">
+                    <p class="butiran-kod">Senarai individu</p>
+                </div>
+                <button class='button-29' onclick="closeModal();" style="display:none;">OK</button>
+            </center>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        //  GLOBALS
+        // ============================================================
+        var pageSize = 10; // <-- changed from 30 to 10
+
+        var deployID = "AKfycbw7M97jvoYSt-RA4LwIT4zwu-QS5Z27lhWcsjF7dwQxV2w6AfA1j-caDAkgpVDAgLIT";
+
+        var datas = [];
+        var datas2 = [];
+        var datas3 = [];
+        var datas4 = [];
+        var datas5 = [];
+        var datas6 = [];
+        var datas7 = [];
+
+        let table1 = document.getElementById("data-history");
+        let table2 = document.getElementById("data-history-kursus");
+        let table3 = document.getElementById("data-urus-pengguna");
+        let table4 = document.getElementById("data-urus-bilik");
+        let table5 = document.getElementById("data-urus-kursus");
+        let table6 = document.getElementById("data-urus-tujuan");
+        let table7 = document.getElementById("data-tempahan");
+        let tablehead7 = document.getElementById("header-tempahan");
+
+        var curPage = 1;
+
+        // ============================================================
+        //  PAGINATION NAV (main table)
+        // ============================================================
+        document.querySelector('#prevButtonTempahan').addEventListener('click', function() {
+            if (curPage > 1) curPage--;
+            renderTempahanPage();
+        });
+        document.querySelector('#nextButtonTempahan').addEventListener('click', function() {
+            var totalPages = Math.ceil(datas7.length / pageSize);
+            if (curPage < totalPages) curPage++;
+            renderTempahanPage();
+        });
+
+        // Admin tables pagination
+        document.querySelector('#prevButtonPengguna').addEventListener('click', function() { if (curPage > 1) curPage--;
+            renderPenggunaPage(); });
+        document.querySelector('#nextButtonPengguna').addEventListener('click', function() { var t = Math.ceil(datas3
+                .length / pageSize); if (curPage < t) curPage++;
+            renderPenggunaPage(); });
+
+        document.querySelector('#prevButtonBilik').addEventListener('click', function() { if (curPage > 1) curPage--;
+            renderBilikPage(); });
+        document.querySelector('#nextButtonBilik').addEventListener('click', function() { var t = Math.ceil(datas4
+                .length / pageSize); if (curPage < t) curPage++;
+            renderBilikPage(); });
+
+        document.querySelector('#prevButtonNamaKursus').addEventListener('click', function() { if (curPage > 1) curPage--;
+            renderKursusAdminPage(); });
+        document.querySelector('#nextButtonNamaKursus').addEventListener('click', function() { var t = Math.ceil(datas5
+                .length / pageSize); if (curPage < t) curPage++;
+            renderKursusAdminPage(); });
+
+        document.querySelector('#prevButtonTujuan').addEventListener('click', function() { if (curPage > 1) curPage--;
+            renderTujuanAdminPage(); });
+        document.querySelector('#nextButtonTujuan').addEventListener('click', function() { var t = Math.ceil(datas6
+                .length / pageSize); if (curPage < t) curPage++;
+            renderTujuanAdminPage(); });
+
+        // Kursus & History (existing)
+        document.querySelector('#prevButtonKursus').addEventListener('click', function() { if (curPage > 1) curPage--;
+            renderKursusPage(); });
+        document.querySelector('#nextButtonKursus').addEventListener('click', function() { var t = Math.ceil(datas2
+                .length / pageSize); if (curPage < t) curPage++;
+            renderKursusPage(); });
+
+        document.querySelector('#prevButton').addEventListener('click', function() { if (curPage > 1) curPage--;
+            renderHistoryPage(); });
+        document.querySelector('#nextButton').addEventListener('click', function() { var t = Math.ceil(datas.length /
+                pageSize); if (curPage < t) curPage++;
+            renderHistoryPage(); });
+
+        // ============================================================
+        //  RENDER FUNCTIONS (main table)
+        // ============================================================
+        function renderTempahanPage() {
+            var total = datas7.length;
+            var totalPages = Math.ceil(total / pageSize) || 1;
+            if (curPage > totalPages) curPage = totalPages;
+            if (curPage < 1) curPage = 1;
+
+            var start = (curPage - 1) * pageSize;
+            var end = Math.min(start + pageSize, total);
+
+            // Clear table body & header
+            tablehead7.innerHTML = '';
+            table7.innerHTML = '';
+
+            // Build header
+            var rowhead = tablehead7.insertRow();
+            if (sessionStorage.getItem('login') == 'true') {
+                rowhead.innerHTML =
+                    '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi</th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori</th><th style="width:5vw;">Butiran Penempah</th><th style="width:5vw;">Tetapan</th></tr>';
+            } else {
+                rowhead.innerHTML =
+                    '<tr><th style="width:5vw;">Index</th><th style="width:10vw;">Program</th><th style="width:10vw;">Lokasi Bilik</th><th style="width:5vw;">Status Tempahan</th><th style="width:10vw;">Institusi</th><th style="width:5vw;">Bil Peserta</th><th style="width:5vw;">Tarikh & Masa</th><th style="width:5vw;">Kategori</th><th style="width:5vw;">Butiran Penempah</th></tr>';
+            }
+
+            if (total === 0) {
+                var emptyRow = table7.insertRow();
+                emptyRow.insertCell().colSpan = 10;
+                emptyRow.insertCell().innerText = 'Tiada rekod';
+                document.getElementById('pageInfoTempahan').innerText = 'Muka surat 1 / 1';
+                return;
+            }
+
+            for (var i = start; i < end; i++) {
+                var row = datas7[i];
+                var idRekod = row.c[0] ? row.c[0].f : '';
+                var namaPenempah = row.c[1] ? row.c[1].v : '';
+                var telefon = row.c[3] ? row.c[3].f : '';
+                var tajukProgram = row.c[4] ? row.c[4].v : '';
+                var kategoriTujuan = row.c[5] ? row.c[5].v : '';
+                var namaBilik = row.c[6] ? row.c[6].v : '';
+                var institusiPeserta = row.c[7] ? row.c[7].v : '';
+                var bilanganPeserta = row.c[8] ? row.c[8].f : '';
+                var tarikhTempahMula = row.c[9] ? row.c[9].f : '';
+                var masaTempahMula = row.c[10] ? row.c[10].f : '';
+                var tarikhTempahTamat = row.c[11] ? row.c[11].f : '';
+                var masaTempahTamat = row.c[12] ? row.c[12].f : '';
+                var statusTempah = row.c[15] ? row.c[15].v : '';
+
+                var tr = table7.insertRow();
+                var idx = i + 1;
+
+                tr.insertCell().innerText = idx;
+                tr.insertCell().innerText = tajukProgram;
+                tr.insertCell().innerText = namaBilik;
+                tr.insertCell().innerHTML = statusTempah;
+                tr.insertCell().innerText = institusiPeserta;
+                tr.insertCell().innerText = bilanganPeserta;
+
+                var tarikhDisp, masaDisp;
+                if (tarikhTempahMula == tarikhTempahTamat) {
+                    tarikhDisp = tarikhTempahMula;
+                    masaDisp = "(" + masaTempahMula + " - " + masaTempahTamat + ")";
+                } else {
+                    tarikhDisp = tarikhTempahMula + " - " + tarikhTempahTamat;
+                    masaDisp = "(" + masaTempahMula + " - " + masaTempahTamat + ")";
+                }
+                tr.insertCell().innerHTML = tarikhDisp + "<br>" + masaDisp;
+                tr.insertCell().innerText = kategoriTujuan;
+                tr.insertCell().innerHTML = namaPenempah + "<br>Tel: 60" + telefon;
+
+                if (sessionStorage.getItem('login') == 'true') {
+                    var actions = '';
+                    if (statusTempah == 'Ditempah') {
+                        actions =
+                            '<span id="batalbtn" style="cursor:pointer;" onclick="batalTempahan(' + idRekod + ')"><i class="fa fa-times"></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan(' + idRekod + ')"><i class="fa fa-edit"></i></span>';
+                    } else if (statusTempah == 'Batal') {
+                        actions =
+                            '<span id="batalbtn" style="cursor:pointer;" onclick="restoreTempahan(' + idRekod + ')"><i class="fa fa-undo"></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan(' + idRekod + ')"><i class="fa fa-edit"></i></span>';
+                    } else {
+                        actions =
+                            '<span id="batalbtn" style="cursor:pointer;" onclick="showData()"><i class="fa fa-file"></i></span> <span id="editbtn" style="cursor:pointer;" onclick="kemaskiniTempahan(' + idRekod + ')"><i class="fa fa-edit"></i></span>';
+                    }
+                    tr.insertCell().innerHTML = actions;
+                }
+            }
+
+            document.getElementById('pageInfoTempahan').innerText = 'Muka surat ' + curPage + ' / ' + totalPages;
+        }
+
+        // ============================================================
+        //  FILTER BY MONTH & YEAR (main table)
+        // ============================================================
+        function populateYearDropdown() {
+            var sel = document.getElementById('yearFilter');
+            var currentYear = new Date().getFullYear();
+            // Clear existing options except "Semua"
+            sel.innerHTML = '<option value="all">Semua</option>';
+            for (var y = currentYear + 1; y >= currentYear - 5; y--) {
+                var opt = document.createElement('option');
+                opt.value = y;
+                opt.textContent = y;
+                sel.appendChild(opt);
+            }
+        }
+
+        function filterByMonthYear() {
+            var month = document.getElementById('monthFilter').value;
+            var year = document.getElementById('yearFilter').value;
+
+            // Build the query with month/year conditions
+            var baseUrl =
+                'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V';
+
+            var whereClauses = [];
+            if (month !== 'all') {
+                whereClauses.push("MONTH(J)=" + month);
+            }
+            if (year !== 'all') {
+                whereClauses.push("YEAR(J)=" + year);
+            }
+
+            // Add status filter based on login
+            if (sessionStorage.getItem('login') == 'false') {
+                whereClauses.push("P!='Batal'");
+            }
+
+            var whereStr = whereClauses.length > 0 ? ' WHERE ' + whereClauses.join(' AND ') : '';
+            var url = baseUrl + whereStr + ' order by A desc';
+
+            // Fetch and render
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substring(47, data.length - 2));
+                    var rows = json.table.rows || [];
+                    datas7 = rows;
+                    curPage = 1;
+                    renderTempahanPage();
+                })
+                .catch(err => console.error(err));
+        }
+
+        function resetFilter() {
+            document.getElementById('monthFilter').value = 'all';
+            document.getElementById('yearFilter').value = 'all';
+            getLogsTempahan();
+        }
+
+        // ============================================================
+        //  OVERRIDE getLogsTempahan to use our render
+        // ============================================================
+        var originalGetLogsTempahan = getLogsTempahan;
+        getLogsTempahan = function() {
+            var url;
+            if (sessionStorage.getItem('login') == 'false') {
+                url =
+                    'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V Where P!=\'Batal\' order by A desc';
+            } else {
+                url =
+                    'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V order by A desc';
+            }
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substring(47, data.length - 2));
+                    datas7 = json.table.rows || [];
+                    curPage = 1;
+                    renderTempahanPage();
+                })
+                .catch(err => console.error(err));
+        };
+
+        // ============================================================
+        //  ADMIN TABLE RENDER FUNCTIONS (with 10 per page)
+        // ============================================================
+        function renderPenggunaPage() {
+            var total = datas3.length;
+            var totalPages = Math.ceil(total / pageSize) || 1;
+            if (curPage > totalPages) curPage = totalPages;
+            if (curPage < 1) curPage = 1;
+            var start = (curPage - 1) * pageSize;
+            var end = Math.min(start + pageSize, total);
+            table3.innerHTML = '';
+            if (total === 0) {
+                var r = table3.insertRow();
+                r.insertCell().colSpan = 6;
+                r.insertCell().innerText = 'Tiada rekod';
+                document.getElementById('pageInfoPengguna').innerText = 'Muka surat 1 / 1';
+                return;
+            }
+            for (var i = start; i < end; i++) {
+                var row = datas3[i];
+                var id = row.c[0] ? row.c[0].f : '';
+                var nama = row.c[1] ? row.c[1].v : '';
+                var kategori = row.c[3] ? row.c[3].v : '';
+                var institusi = row.c[4] ? row.c[4].v : '';
+                var status = row.c[7] ? row.c[7].v : '';
+                var telefon = row.c[8] ? row.c[8].f : '';
+                var tr = table3.insertRow();
+                tr.insertCell().innerText = i + 1;
+                tr.insertCell().innerText = nama;
+                tr.insertCell().innerText = kategori;
+                tr.insertCell().innerText = institusi;
+                tr.insertCell().innerText = '+60' + telefon;
+                var toggleSw = '';
+                if (status == 'Aktif') {
+                    toggleSw =
+                        '<label class="switch"><input type="checkbox" id="flagSwitch' + id + '" value="' + status + '" onchange="ubahUserFlag(' + id + ')" checked><span class="slider round"></span></label>';
+                } else {
+                    toggleSw =
+                        '<label class="switch"><input type="checkbox" id="flagSwitch' + id + '" value="' + status + '" onchange="ubahUserFlag(' + id + ')"><span class="slider round"></span></label>';
+                }
+                tr.insertCell().innerHTML = ' ' + toggleSw +
+                    ' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniPengguna(' + id + ')"><i class="fa fa-edit"></i></span>';
+            }
+            document.getElementById('pageInfoPengguna').innerText = 'Muka surat ' + curPage + ' / ' + totalPages;
+        }
+
+        function renderBilikPage() {
+            var total = datas4.length;
+            var totalPages = Math.ceil(total / pageSize) || 1;
+            if (curPage > totalPages) curPage = totalPages;
+            if (curPage < 1) curPage = 1;
+            var start = (curPage - 1) * pageSize;
+            var end = Math.min(start + pageSize, total);
+            table4.innerHTML = '';
+            if (total === 0) {
+                var r = table4.insertRow();
+                r.insertCell().colSpan = 3;
+                r.insertCell().innerText = 'Tiada rekod';
+                document.getElementById('pageInfoBilik').innerText = 'Muka surat 1 / 1';
+                return;
+            }
+            for (var i = start; i < end; i++) {
+                var row = datas4[i];
+                var id = row.c[0] ? row.c[0].f : '';
+                var nama = row.c[1] ? row.c[1].v : '';
+                var status = row.c[2] ? row.c[2].v : '';
+                var tr = table4.insertRow();
+                tr.insertCell().innerText = i + 1;
+                tr.insertCell().innerText = nama;
+                var toggleSw = '';
+                if (status == 'Aktif') {
+                    toggleSw =
+                        '<label class="switch"><input type="checkbox" id="flagSwitchBilik' + id + '" value="' + status + '" onchange="ubahBilikFlag(' + id + ')" checked><span class="slider round"></span></label>';
+                } else {
+                    toggleSw =
+                        '<label class="switch"><input type="checkbox" id="flagSwitchBilik' + id + '" value="' + status + '" onchange="ubahBilikFlag(' + id + ')"><span class="slider round"></span></label>';
+                }
+                tr.insertCell().innerHTML = ' ' + toggleSw +
+                    ' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniBilik(' + id + ')"><i class="fa fa-edit"></i></span>';
+            }
+            document.getElementById('pageInfoBilik').innerText = 'Muka surat ' + curPage + ' / ' + totalPages;
+        }
+
+        function renderKursusAdminPage() {
+            var total = datas5.length;
+            var totalPages = Math.ceil(total / pageSize) || 1;
+            if (curPage > totalPages) curPage = totalPages;
+            if (curPage < 1) curPage = 1;
+            var start = (curPage - 1) * pageSize;
+            var end = Math.min(start + pageSize, total);
+            table5.innerHTML = '';
+            if (total === 0) {
+                var r = table5.insertRow();
+                r.insertCell().colSpan = 3;
+                r.insertCell().innerText = 'Tiada rekod';
+                document.getElementById('pageInfoNamaKursus').innerText = 'Muka surat 1 / 1';
+                return;
+            }
+            for (var i = start; i < end; i++) {
+                var row = datas5[i];
+                var id = row.c[0] ? row.c[0].f : '';
+                var nama = row.c[1] ? row.c[1].v : '';
+                var status = row.c[2] ? row.c[2].v : '';
+                var tr = table5.insertRow();
+                tr.insertCell().innerText = i + 1;
+                tr.insertCell().innerText = nama;
+                var toggleSw = '';
+                if (status == 'Aktif') {
+                    toggleSw =
+                        '<label class="switch"><input type="checkbox" id="flagSwitchKursus' + id + '" value="' + status + '" onchange="ubahKursusFlag(' + id + ')" checked><span class="slider round"></span></label>';
+                } else {
+                    toggleSw =
+                        '<label class="switch"><input type="checkbox" id="flagSwitchKursus' + id + '" value="' + status + '" onchange="ubahKursusFlag(' + id + ')"><span class="slider round"></span></label>';
+                }
+                tr.insertCell().innerHTML = ' ' + toggleSw +
+                    ' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniKursus(' + id + ')"><i class="fa fa-edit"></i></span>';
+            }
+            document.getElementById('pageInfoNamaKursus').innerText = 'Muka surat ' + curPage + ' / ' + totalPages;
+        }
+
+        function renderTujuanAdminPage() {
+            var total = datas6.length;
+            var totalPages = Math.ceil(total / pageSize) || 1;
+            if (curPage > totalPages) curPage = totalPages;
+            if (curPage < 1) curPage = 1;
+            var start = (curPage - 1) * pageSize;
+            var end = Math.min(start + pageSize, total);
+            table6.innerHTML = '';
+            if (total === 0) {
+                var r = table6.insertRow();
+                r.insertCell().colSpan = 3;
+                r.insertCell().innerText = 'Tiada rekod';
+                document.getElementById('pageInfoTujuan').innerText = 'Muka surat 1 / 1';
+                return;
+            }
+            for (var i = start; i < end; i++) {
+                var row = datas6[i];
+                var id = row.c[0] ? row.c[0].f : '';
+                var nama = row.c[1] ? row.c[1].v : '';
+                var status = row.c[2] ? row.c[2].v : '';
+                var tr = table6.insertRow();
+                tr.insertCell().innerText = i + 1;
+                tr.insertCell().innerText = nama;
+                var toggleSw = '';
+                if (status == 'Aktif') {
+                    toggleSw =
+                        '<label class="switch"><input type="checkbox" id="flagSwitchTujuan' + id + '" value="' + status + '" onchange="ubahTujuanFlag(' + id + ')" checked><span class="slider round"></span></label>';
+                } else {
+                    toggleSw =
+                        '<label class="switch"><input type="checkbox" id="flagSwitchTujuan' + id + '" value="' + status + '" onchange="ubahTujuanFlag(' + id + ')"><span class="slider round"></span></label>';
+                }
+                tr.insertCell().innerHTML = ' ' + toggleSw +
+                    ' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniTujuan(' + id + ')"><i class="fa fa-edit"></i></span>';
+            }
+            document.getElementById('pageInfoTujuan').innerText = 'Muka surat ' + curPage + ' / ' + totalPages;
+        }
+
+        // ============================================================
+        //  HISTORY & KURSUS RENDER (keep 10 per page)
+        // ============================================================
+        function renderHistoryPage() {
+            var total = datas.length;
+            var totalPages = Math.ceil(total / pageSize) || 1;
+            if (curPage > totalPages) curPage = totalPages;
+            if (curPage < 1) curPage = 1;
+            var start = (curPage - 1) * pageSize;
+            var end = Math.min(start + pageSize, total);
+            table1.innerHTML = '';
+            if (total === 0) {
+                var r = table1.insertRow();
+                r.insertCell().colSpan = 10;
+                r.insertCell().innerText = 'Tiada rekod';
+                document.getElementById('pageInfo').innerText = 'Muka surat 1 / 1';
+                return;
+            }
+            for (var i = start; i < end; i++) {
+                var row = datas[i];
+                var id = row.c[0] ? row.c[0].f : '';
+                var namaPegawai = row.c[1] ? row.c[1].v : '';
+                var namaBilik = row.c[2] ? row.c[2].v : '';
+                var tujuan = row.c[8] ? row.c[8].v : '';
+                var tarikhMula = row.c[4] ? row.c[4].f : '';
+                var tarikhTamat = row.c[5] ? row.c[5].f : '';
+                var masaMula = row.c[6] ? row.c[6].f : '';
+                var masaTamat = row.c[7] ? row.c[7].f : '';
+                var status = row.c[9] ? row.c[9].v : '';
+                var telefon = row.c[10] ? row.c[10].f : '';
+                var tr = table1.insertRow();
+                tr.insertCell().innerText = i + 1;
+                tr.insertCell().innerText = namaPegawai + ' [+60' + telefon + ']';
+                tr.insertCell().innerText = namaBilik;
+                tr.insertCell().innerText = tujuan;
+                tr.insertCell().innerText = tarikhMula;
+                tr.insertCell().innerText = masaMula;
+                tr.insertCell().innerText = tarikhTamat;
+                tr.insertCell().innerText = masaTamat;
+                tr.insertCell().innerText = status;
+                if (sessionStorage.getItem('login') == 'true') {
+                    tr.insertCell().innerHTML =
+                        '<span id="batalbtn" style="cursor:pointer;" onclick="batalBilik(' + id + ')"><i class="fa fa-times"></i> Batal </span>';
+                } else {
+                    tr.insertCell().innerHTML = '<i>Log masuk terlebih dahulu untuk batalkan tempahan.</i>';
+                }
+            }
+            document.getElementById('pageInfo').innerText = 'Muka surat ' + curPage + ' / ' + totalPages;
+        }
+
+        function renderKursusPage() {
+            var total = datas2.length;
+            var totalPages = Math.ceil(total / pageSize) || 1;
+            if (curPage > totalPages) curPage = totalPages;
+            if (curPage < 1) curPage = 1;
+            var start = (curPage - 1) * pageSize;
+            var end = Math.min(start + pageSize, total);
+            table2.innerHTML = '';
+            if (total === 0) {
+                var r = table2.insertRow();
+                r.insertCell().colSpan = 12;
+                r.insertCell().innerText = 'Tiada rekod';
+                document.getElementById('pageInfoKursus').innerText = 'Muka surat 1 / 1';
+                return;
+            }
+            for (var i = start; i < end; i++) {
+                var row = datas2[i];
+                var id = row.c[0] ? row.c[0].f : '';
+                var namaPegawai = row.c[1] ? row.c[1].v : '';
+                var namaKursus = row.c[2] ? row.c[2].v : '';
+                var tarikhMula = row.c[3] ? row.c[3].f : '';
+                var tarikhTamat = row.c[4] ? row.c[4].f : '';
+                var masaMula = row.c[5] ? row.c[5].f : '';
+                var masaTamat = row.c[6] ? row.c[6].f : '';
+                var tempat = row.c[7] ? row.c[7].v : '';
+                var status = row.c[8] ? row.c[8].v : '';
+                var institusi = row.c[9] ? row.c[9].v : '';
+                var peserta = row.c[10] ? row.c[10].v : '';
+                var telefon = row.c[11] ? row.c[11].f : '';
+                var tr = table2.insertRow();
+                tr.insertCell().innerText = i + 1;
+                tr.insertCell().innerText = namaPegawai + ' [+60' + telefon + ']';
+                tr.insertCell().innerText = namaKursus;
+                tr.insertCell().innerText = tarikhMula;
+                tr.insertCell().innerText = masaMula;
+                tr.insertCell().innerText = tarikhTamat;
+                tr.insertCell().innerText = masaTamat;
+                tr.insertCell().innerText = tempat;
+                tr.insertCell().innerText = institusi;
+                tr.insertCell().innerText = peserta;
+                tr.insertCell().innerText = status;
+                if (sessionStorage.getItem('login') == 'true') {
+                    tr.insertCell().innerHTML =
+                        '<span id="batalbtnk" style="cursor:pointer;" onclick="batalKursus(' + id + ')"><i class="fa fa-times"></i> Batal </span>';
+                } else {
+                    tr.insertCell().innerHTML = '<i>Log masuk terlebih dahulu untuk batalkan tempahan.</i>';
+                }
+            }
+            document.getElementById('pageInfoKursus').innerText = 'Muka surat ' + curPage + ' / ' + totalPages;
+        }
+
+        // ============================================================
+        //  OVERRIDE ADMIN getLogs functions to use render
+        // ============================================================
+        var origGetLogsUser = getLogsUser;
+        getLogsUser = function() {
+            fetch(urlLogsUser)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substring(47, data.length - 2));
+                    datas3 = json.table.rows || [];
+                    curPage = 1;
+                    renderPenggunaPage();
+                })
+                .catch(err => console.error(err));
+        };
+
+        var origGetLogsBilik = getLogsBilik;
+        getLogsBilik = function() {
+            fetch(urlLogsBilik)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substring(47, data.length - 2));
+                    datas4 = json.table.rows || [];
+                    curPage = 1;
+                    renderBilikPage();
+                })
+                .catch(err => console.error(err));
+        };
+
+        var origGetLogsNamaKursus = getLogsNamaKursus;
+        getLogsNamaKursus = function() {
+            fetch(urlLogsNamaKursus)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substring(47, data.length - 2));
+                    datas5 = json.table.rows || [];
+                    curPage = 1;
+                    renderKursusAdminPage();
+                })
+                .catch(err => console.error(err));
+        };
+
+        var origGetLogsTujuan = getLogsTujuan;
+        getLogsTujuan = function() {
+            fetch(urlLogsTujuan)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substring(47, data.length - 2));
+                    datas6 = json.table.rows || [];
+                    curPage = 1;
+                    renderTujuanAdminPage();
+                })
+                .catch(err => console.error(err));
+        };
+
+        var origGetLogs = getLogs;
+        getLogs = function() {
+            fetch(urlLogs)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substring(47, data.length - 2));
+                    datas = json.table.rows || [];
+                    curPage = 1;
+                    renderHistoryPage();
+                })
+                .catch(err => console.error(err));
+        };
+
+        var origGetLogsKursus = getLogsKursus;
+        getLogsKursus = function() {
+            fetch(urlLogsKursus)
+                .then(response => response.text())
+                .then(data => {
+                    var json = JSON.parse(data.substring(47, data.length - 2));
+                    datas2 = json.table.rows || [];
+                    curPage = 1;
+                    renderKursusPage();
+                })
+                .catch(err => console.error(err));
+        };
+
+        // ============================================================
+        //  KEEP EXISTING HELPER FUNCTIONS (unchanged)
+        // ============================================================
+        function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        var butiranKod = document.getElementsByClassName("butiran-kod")[0];
+
+        function addLeadingZero(num) { return num.toString().padStart(2, '0'); }
+
+        // ---------- KEMASKINI / TAMBAH functions (unchanged) ----------
+        // (keeping them as-is to avoid breaking anything)
+        async function kemaskiniTempahan(id) {
+            var kat = '',
+                bilik = '',
+                prog = '',
+                stat = '';
+            var url = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahan&tq=SELECT+A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V WHERE A=' +
+                id + ' order by A desc';
+
+            fetch(url).then(response => response.text()).then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                if (!rows || rows.length === 0) return;
+                let idR = rows[0].c[0].f;
+                let namaPenempah = rows[0].c[1].v;
+                let katalaluan = rows[0].c[2].v;
+                let telefon = rows[0].c[3].f;
+                let tajukProgram = rows[0].c[4].v;
+                let kategoriTujuan = rows[0].c[5].v;
+                let namaBilik = rows[0].c[6].v;
+                let institusiPeserta = rows[0].c[7].v;
+                let bilanganPeserta = rows[0].c[8].f;
+                let tarikhTempahanMula = rows[0].c[9].f;
+                let masaTempahanMula = rows[0].c[10].f;
+                let tarikhTempahanTamat = rows[0].c[11].f;
+                let masaTempahanTamat = rows[0].c[12].f;
+                let status = rows[0].c[15].v;
+                kat = kategoriTujuan;
+                bilik = namaBilik;
+                prog = tajukProgram;
+                stat = status;
+
+                var context =
+                    '<div id="borangKemaskiniTempahan" style="text-align:justify;border:10px solid black;padding: 2px;">';
+                context +=
+                    '<h2 id="tajukBorang" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Kemaskini Tempahan</h2>';
+                context += '<div style="margin-left:25%;margin-right:25%;width:50%;"><br>';
+                context +=
+                    '<label for="namaPenempahKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Nama Penempah: </label><input type="text" id="namaPenempahKT" name="namaPenempahKT" value="' +
+                    namaPenempah + '" placeholder="Nama Pegawai" style="width:200px;" required>';
+                context +=
+                    '<label for="katalaluanKT" style="width:200px;display:none;">Katalaluan: </label><br><input type="password" name="katalaluanKT" id="katalaluanKT" value="' +
+                    katalaluan + '" style="display:none;">';
+                context +=
+                    '<label for="telefonKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Telefon: </label><input type="number" name="telefonKT" value="' +
+                    telefon + '" id="telefonKT" style="width:200px;"><br>';
+                context +=
+                    '<label for="namaBilikKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Nama Bilik: </label><select name="namaBilikKT" id="namaBilikKT" style="width:200px;"></select><br>';
+                context +=
+                    '<label for="kategoriTujuanKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Kategori Tujuan: </label><select name="kategoriTujuanKT" id="kategoriTujuanKT" onchange="checkTujuan(this.value);" style="width:200px;"></select>';
+                context +=
+                    '<input type="text" id="customtujuanKT" name="customtujuanKT" placeholder="Lain lain" style="display:none;width:200px;"><br>';
+                context +=
+                    '<label for="tajukProgramKT" style="padding:10px;width:300px;border:10px;display:inline-block;"> Tajuk Program: </label><select name="tajukProgramKT" id="tajukProgramKT" onchange="checkKursus(this.value);" style="width:200px;"></select><input type="text" id="customkursusKT" name="customkursusKT" placeholder="Nama Program" style="display:none;width:200px;"><br>';
+                context +=
+                    '<label for="institusiPesertaKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Institusi: </label><input type="text" id="institusiPesertaKT" name="institusiPesertaKT" value="' +
+                    institusiPeserta + '" placeholder="Institusi Peserta" style="width:200px;"><br>';
+                context +=
+                    '<label for="bilanganPesertaKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Bilangan Peserta: </label><input type="number" name="bilanganPesertaKT" value="' +
+                    bilanganPeserta + '" id="bilanganPesertaKT" placeholder="0" style="width:200px;"><br>';
+                context +=
+                    '<label for="tarikh_tempah_mulaKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Tempah Mula: </label><input type="date" name="tarikh_tempah_mulaKT" id="tarikh_tempah_mulaKT" value="' +
+                    tarikhTempahanMula + '" style="width:200px;"></input><br>';
+                context +=
+                    '<label for="tarikh_tempah_tamatKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Tarikh Tempah Tamat: </label><input type="date" name="tarikh_tempah_tamatKT" id="tarikh_tempah_tamatKT" value="' +
+                    tarikhTempahanTamat + '" style="width:200px;"></input><br>';
+                context +=
+                    '<label for="masa_tempah_mulaKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Masa Tempah Mula: </label><input type="time" name="masa_tempah_mulaKT" id="masa_tempah_mulaKT" value="' +
+                    masaTempahanMula + '" style="width:200px;"></input><br>';
+                context +=
+                    '<label for="masa_tempah_tamatKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Masa Tempah Tamat: </label><input type="time" name="masa_tempah_tamatKT" id="masa_tempah_tamatKT" value="' +
+                    masaTempahanTamat + '" style="width:200px;"></input><br>';
+                context +=
+                    '<label for="statusKT" style="padding:10px;width:300px;border:10px;display: inline-block;">Status: </label><select id="statusKT" name="statusKT" style="width:200px;"><option value="Ditempah">Ditempah</option><option value="Selesai">Selesai</option><option value="Batal">Batal</option></select><br>';
+                context +=
+                    '<center><button class="btn2" onclick="updateTempahan(' + idR + ')">Hantar</button></center>';
+                context += '</div>';
+                modal.style.display = "block";
+                butiranKod.innerHTML = '';
+                butiranKod.innerHTML = context;
+                kat = kategoriTujuan;
+                bilik = namaBilik;
+                prog = tajukProgram;
+                stat = status;
+            });
+
+            await sleep(1000);
+            fetch(urlKursusList).then(response => response.text().then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                let kursusList = document.getElementById('tajukProgramKT');
+                for (var i = 0; i < rows.length; i++) {
+                    var opt = rows[i];
+                    kursusArr.push(opt);
+                }
+                for (let i = 0; i < kursusArr.length; i++) {
+                    let optn = kursusArr[i].c[0].v;
+                    let el = document.createElement("option");
+                    el.textContent = optn;
+                    el.value = optn;
+                    kursusList.appendChild(el);
+                }
+            }));
+
+            await sleep(1000);
+            fetch(urlTujuanList).then(response => response.text().then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                let tujuanList = document.getElementById('kategoriTujuanKT');
+                for (var i = 0; i < rows.length; i++) {
+                    var opt = rows[i];
+                    tujuanArr.push(opt);
+                }
+                for (let i = 0; i < tujuanArr.length; i++) {
+                    let optn = tujuanArr[i].c[0].v;
+                    let el = document.createElement("option");
+                    el.textContent = optn;
+                    el.value = optn;
+                    tujuanList.appendChild(el);
+                }
+            }));
+
+            await sleep(1000);
+            fetch(urlBilikList).then(response => response.text().then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                let bilikList = document.getElementById('namaBilikKT');
+                for (var i = 0; i < rows.length; i++) {
+                    var opt = rows[i];
+                    bilikArr.push(opt);
+                }
+                for (let i = 0; i < bilikArr.length; i++) {
+                    let optn = bilikArr[i].c[0].v;
+                    let el = document.createElement("option");
+                    el.textContent = optn;
+                    el.value = optn;
+                    bilikList.appendChild(el);
+                }
+            }));
+
+            var selectKat = document.getElementById('kategoriTujuanKT');
+            var selectBilik = document.getElementById('namaBilikKT');
+            var selectProgram = document.getElementById('tajukProgramKT');
+            var selectStatus = document.getElementById('statusKT');
+            await sleep(500);
+            for (let i = 0; i < selectKat.options.length; i++) {
+                if (selectKat.options[i].value === kat) { selectKat.options[i].selected = true; break; }
+            }
+            for (let i = 0; i < selectBilik.options.length; i++) {
+                if (selectBilik.options[i].value === bilik) { selectBilik.options[i].selected = true; break; }
+            }
+            for (let i = 0; i < selectProgram.options.length; i++) {
+                if (selectProgram.options[i].value === prog) { selectProgram.options[i].selected = true; break; }
+            }
+            for (let i = 0; i < selectStatus.options.length; i++) {
+                if (selectStatus.options[i].value === stat) { selectStatus.options[i].selected = true; break; }
+            }
+        }
+
+        async function kemaskiniPengguna(id) {
+            var kat = '',
+                ins = '';
+            var url = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=DataPengguna&tq=SELECT+A,B,C,D,E,F,G,H,I WHERE A=' +
+                id + ' order by A desc';
+            fetch(url).then(response => response.text()).then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                if (!rows || rows.length === 0) return;
+                let idR = rows[0].c[0].f;
+                let namaPengguna = rows[0].c[1].v;
+                let katalaluan = rows[0].c[2].v;
+                let kategori = rows[0].c[3].v;
+                let institusi = rows[0].c[4].v;
+                let telefon = rows[0].c[8].f;
+                kat = kategori;
+                ins = institusi;
+                var context =
+                    '<p class="bebas-neue-regular" style="font-size:24pt;">Kemaskini Pengguna</p><br><label for="namaPenggunaAF" style="width:200px">Nama Pengguna: </label><br><input type="text" name="namaPenggunaAF" id="namaPenggunaAF" value="' +
+                    namaPengguna + '" style="width:200px"></input><br><br><label for="katalaluanAF" style="width:200px">Katalaluan: </label><br><input type="password" name="katalaluanAF" id="katalaluanAF" value="' +
+                    katalaluan + '"><br><br><label for="kategoriAF" style="width:200px">Kategori: </label><br><select name="kategoriAF" id="kategoriAF"><option value="Kakitangan">Kakitangan</option><option value="Pelajar">Pelajar</option><option value="Pengawal">Pengawal</option><option value="Admin">Admin</option></select><br><br><label for="institusiAF">Institusi: </label><br><select name="institusiAF" id="institusiAF"><option value="Kolej Komuniti">Kolej Komuniti</option><option value="Lain-lain">Lain-lain</option></select><br><br><label for="telefonAF">Telefon: </label><br><input type="number" name="telefonAF" value="' +
+                    telefon + '" id="telefonAF"><br><br><button class="btn2" onclick="updateUser(' + idR +
+                    ')">Hantar</button>';
+                modal.style.display = "block";
+                butiranKod.innerHTML = '';
+                butiranKod.innerHTML = context;
+            });
+            await sleep(500);
+            var selectKat = document.getElementById('kategoriAF');
+            var selectIns = document.getElementById('institusiAF');
+            for (let i = 0; i < selectKat.options.length; i++) {
+                if (selectKat.options[i].value === kat) { selectKat.options[i].selected = true; break; }
+            }
+            for (let i = 0; i < selectIns.options.length; i++) {
+                if (selectIns.options[i].value === ins) { selectIns.options[i].selected = true; break; }
+            }
+        }
+
+        async function kemaskiniBilik(id) {
+            var url = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaBilik&tq=SELECT+A,B,C WHERE A=' +
+                id + ' order by A desc';
+            fetch(url).then(response => response.text()).then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                if (!rows || rows.length === 0) return;
+                let idR = rows[0].c[0].f;
+                let namaBilik = rows[0].c[1].v;
+                var context =
+                    '<p class="bebas-neue-regular" style="font-size:24pt;">Kemaskini Bilik</p><br><label for="namaBilikAF">Nama Bilik: </label><input type="text" name="namaBilikAF" id="namaBilikAF" value="' +
+                    namaBilik + '"></input><br><br><button class="btn2" onclick="updateBilik(' + idR +
+                    ')">Hantar</button>';
+                modal.style.display = "block";
+                butiranKod.innerHTML = '';
+                butiranKod.innerHTML = context;
+            });
+        }
+
+        async function kemaskiniKursus(id) {
+            var url = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaKursusPendek&tq=SELECT+A,B,C WHERE A=' +
+                id + ' order by A desc';
+            fetch(url).then(response => response.text()).then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                if (!rows || rows.length === 0) return;
+                let idR = rows[0].c[0].f;
+                let namaKursus = rows[0].c[1].v;
+                var context =
+                    '<p class="bebas-neue-regular" style="font-size:24pt;">Kemaskini Kursus</p><br><label for="namaKursusAF">Nama Kursus: </label><input type="text" name="namaKursusAF" id="namaKursusAF" value="' +
+                    namaKursus + '"></input><br><br><button class="btn2" onclick="updateKursus(' + idR +
+                    ')">Hantar</button>';
+                modal.style.display = "block";
+                butiranKod.innerHTML = '';
+                butiranKod.innerHTML = context;
+            });
+        }
+
+        async function kemaskiniTujuan(id) {
+            var url = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=Tujuan&tq=SELECT+A,B,C WHERE A=' +
+                id + ' order by A desc';
+            fetch(url).then(response => response.text()).then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                if (!rows || rows.length === 0) return;
+                let idR = rows[0].c[0].f;
+                let tujuan = rows[0].c[1].v;
+                var context =
+                    '<p class="bebas-neue-regular" style="font-size:24pt;">Kemaskini Tujuan</p><br><label for="tujuanAF">Tujuan: </label><input type="text" name="tujuanAF" id="tujuanAF" value="' +
+                    tujuan + '"></input><br><br><button class="btn2" onclick="updateTujuan(' + idR +
+                    ')">Hantar</button>';
+                modal.style.display = "block";
+                butiranKod.innerHTML = '';
+                butiranKod.innerHTML = context;
+            });
+        }
+
+        function tambahPengguna() {
+            var context =
+                '<p class="bebas-neue-regular" style="font-size:24pt;">Tambah Pengguna</p><br><label for="namaPenggunaBaru" style="width:200px">Nama Pengguna: </label><br><input type="text" id="namaPenggunaBaru" name="namaPenggunaBaru" placeholder="Nama Pengguna" style="width:200px" required><br><br><label for="katalaluanPenggunaBaru" style="width:200px">Katalaluan: </label><br><input type="password" name="katalaluanPenggunaBaru" id="katalaluanPenggunaBaru" style="width:200px"><br><br><label for="kategoriPenggunaBaru" style="width:200px">Kategori: </label><br><select name="kategoriPenggunaBaru" id="kategoriPenggunaBaru" style="width:200px"><option value="Kakitangan">Kakitangan</option><option value="Pelajar">Pelajar</option><option value="Pengawal">Pengawal</option><option value="Admin">Admin</option></select><br><br><label for="institusiPenggunaBaru" style="width:200px">Institusi: </label><br><select name="institusiPenggunaBaru" id="institusiPenggunaBaru" style="width:200px"><option value="Kolej Komuniti">Kolej Komuniti</option><option value="Lain-lain">Lain-lain</option></select><br><br><label for="telefonPenggunaBaru" style="width:200px">Telefon: </label><br><input type="number" name="telefonPenggunaBaru" id="telefonPenggunaBaru"><br><br><button class="btn2" onclick="sendTambahPengguna()">Tambah</button>';
+            modal.style.display = "block";
+            butiranKod.innerHTML = '';
+            butiranKod.innerHTML = context;
+        }
+
+        function tambahBilik() {
+            var context =
+                '<p class="bebas-neue-regular" style="font-size:24pt;">Tambah Bilik</p><br><label for="namaBilikBaru" style="width:200px">Nama Bilik: </label><br><input type="text" id="namaBilikBaru" name="namaBilikBaru" placeholder="Nama Bilik" style="width:200px" required><br><br><button class="btn2" onclick="sendTambahBilik()">Tambah</button>';
+            modal.style.display = "block";
+            butiranKod.innerHTML = '';
+            butiranKod.innerHTML = context;
+        }
+
+        function tambahKursus() {
+            var context =
+                '<p class="bebas-neue-regular" style="font-size:24pt;">Tambah Kursus</p><br><label for="namaKursusBaru" style="width:200px">Nama Kursus/Kursus Pendek: </label><br><input type="text" id="namaKursusBaru" name="namaKursusBaru" placeholder="Nama Kursus/Kursus Pendek" style="width:200px" required><br><br><button class="btn2" onclick="sendTambahKursus()">Tambah</button>';
+            modal.style.display = "block";
+            butiranKod.innerHTML = '';
+            butiranKod.innerHTML = context;
+        }
+
+        function tambahTujuan() {
+            var context =
+                '<p class="bebas-neue-regular" style="font-size:24pt;">Tambah Tujuan</p><br><label for="tujuanBaru" style="width:200px">Tujuan: </label><br><input type="text" id="tujuanBaru" name="tujuanBaru" placeholder="Tujuan" style="width:200px" required><br><br><button class="btn2" onclick="sendTambahTujuan()">Tambah</button>';
+            modal.style.display = "block";
+            butiranKod.innerHTML = '';
+            butiranKod.innerHTML = context;
+        }
+
+        function sendTambahPengguna() {
+            var namaPengguna = document.getElementById('namaPenggunaBaru').value;
+            var katalaluan = document.getElementById('katalaluanPenggunaBaru').value;
+            var kategori = document.getElementById('kategoriPenggunaBaru').value;
+            var institusi = document.getElementById('institusiPenggunaBaru').value;
+            var telefon = document.getElementById('telefonPenggunaBaru').value;
+            var url = 'https://script.google.com/macros/s/' + deployID +
+                '/exec?func=DaftarPengguna&Nama=' + namaPengguna + '&Katalaluan=' + katalaluan + '&Kategori=' +
+                kategori + '&Institusi=' + institusi + '&Telefon=' + telefon;
+            if (namaPengguna == '' || katalaluan == '' || telefon == '') {
+                alert('Sila isi semua ruangan.');
+                return;
+            }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsUser();
+            });
+        }
+
+        function sendTambahBilik() {
+            var namaBilik = document.getElementById('namaBilikBaru').value;
+            var url = 'https://script.google.com/macros/s/' + deployID + '/exec?func=CreateBilik&NamaBilik=' +
+                namaBilik;
+            if (namaBilik == '') { alert('Nama bilik hendaklah di isi'); return; }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsBilik();
+            });
+        }
+
+        function sendTambahKursus() {
+            var namaKursus = document.getElementById('namaKursusBaru').value;
+            var url = 'https://script.google.com/macros/s/' + deployID +
+                '/exec?func=CreateKursusPendek&NamaKursusPendek=' + namaKursus;
+            if (namaKursus == '') { alert('Nama kursus/kursus pendek hendaklah di isi'); return; }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsNamaKursus();
+            });
+        }
+
+        function sendTambahTujuan() {
+            var tujuan = document.getElementById('tujuanBaru').value;
+            var url = 'https://script.google.com/macros/s/' + deployID + '/exec?func=CreateTujuan&Tujuan=' +
+                tujuan;
+            if (tujuan == '') { alert('Tujuan hendaklah di isi'); return; }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsTujuan();
+            });
+        }
+
+        function updateTempahan(id) {
+            var namaPenempah = document.getElementById('namaPenempahKT').value;
+            var katalaluan = document.getElementById('katalaluanKT').value;
+            var telefon = document.getElementById('telefonKT').value;
+            var tajukProgram = document.getElementById('tajukProgramKT').value;
+            var kategoriTujuan = document.getElementById('kategoriTujuanKT').value;
+            var namaBilik = document.getElementById('namaBilikKT').value;
+            var institusiPeserta = document.getElementById('institusiPesertaKT').value;
+            var bilanganPeserta = document.getElementById('bilanganPesertaKT').value;
+            var tarikhTempahanMula = document.getElementById('tarikh_tempah_mulaKT').value;
+            var masaTempahanMula = document.getElementById('masa_tempah_mulaKT').value;
+            var tarikhTempahanTamat = document.getElementById('tarikh_tempah_tamatKT').value;
+            var masaTempahanTamat = document.getElementById('masa_tempah_tamatKT').value;
+            var status = document.getElementById('statusKT').value;
+            var url = 'https://script.google.com/macros/s/' + deployID +
+                '/exec?func=KemaskiniTempahan&Id=' + id + '&NamaPenempah=' + namaPenempah + '&Katalaluan=' +
+                katalaluan + '&Telefon=' + telefon + '&TajukProgram=' + tajukProgram + '&KategoriTujuan=' +
+                kategoriTujuan + '&NamaBilik=' + namaBilik + '&InstitusiPeserta=' + institusiPeserta +
+                '&BilanganPeserta=' + bilanganPeserta + '&TarikhTempahanMula=' + tarikhTempahanMula +
+                '&MasaTempahanMula=' + masaTempahanMula + '&TarikhTempahanTamat=' + tarikhTempahanTamat +
+                '&MasaTempahanTamat=' + masaTempahanTamat + '&Status=' + status;
+            if (namaPenempah == '' || telefon == '') { alert('Sila isi semua ruangan.'); return; }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsTempahan();
+                modal.style.display = 'none';
+            });
+        }
+
+        function updateUser(id) {
+            var namaPengguna = document.getElementById('namaPenggunaAF').value;
+            var katalaluan = document.getElementById('katalaluanAF').value;
+            var kategori = document.getElementById('kategoriAF').value;
+            var institusi = document.getElementById('institusiAF').value;
+            var telefon = document.getElementById('telefonAF').value;
+            var url = 'https://script.google.com/macros/s/' + deployID + '/exec?func=KemaskiniPengguna&Id=' +
+                id + '&Nama=' + namaPengguna + '&Katalaluan=' + katalaluan + '&Kategori=' + kategori +
+                '&Institusi=' + institusi + '&Telefon=' + telefon;
+            if (namaPengguna == '' || telefon == '') { alert('Sila isi semua ruangan.'); return; }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsUser();
+                modal.style.display = 'none';
+            });
+        }
+
+        function updateKursus(id) {
+            var namaKursus = document.getElementById('namaKursusAF').value;
+            var url = 'https://script.google.com/macros/s/' + deployID +
+                '/exec?func=EditKursusPendek&Id=' + id + '&NamaKursusPendek=' + namaKursus;
+            if (namaKursus == '') { alert('Nama kursus/kursus pendek hendaklah di isi'); return; }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsNamaKursus();
+                modal.style.display = 'none';
+            });
+        }
+
+        function updateBilik(id) {
+            var namaBilik = document.getElementById('namaBilikAF').value;
+            var url = 'https://script.google.com/macros/s/' + deployID + '/exec?func=EditBilik&Id=' + id +
+                '&NamaBilik=' + namaBilik;
+            if (namaBilik == '') { alert('Nama bilik hendaklah di isi'); return; }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsBilik();
+                modal.style.display = 'none';
+            });
+        }
+
+        function updateTujuan(id) {
+            var tujuan = document.getElementById('tujuanAF').value;
+            var url = 'https://script.google.com/macros/s/' + deployID + '/exec?func=EditTujuan&Id=' + id +
+                '&Tujuan=' + tujuan;
+            if (tujuan == '') { alert('Tujuan hendaklah di isi'); return; }
+            $.post(url, function(data) {
+                alert(data);
+                getLogsTujuan();
+                modal.style.display = 'none';
+            });
+        }
+
+        function displayModal() {
+            modal.style.display = "block";
+            butiranKod.innerHTML =
+                "<center><span>Senarai individu akan dipaparkan disini mengikut tarikh hari semasa untuk semakan pegawai keselamatan.</span></center>";
+        }
+
+        span.onclick = function() { modal.style.display = "none"; }
+        window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+
+        function closeModal() { modal.style.display = "none"; }
+
+        // ============================================================
+        //  ADMIN TAB TOGGLES
+        // ============================================================
+        var urusPengguna = document.getElementById('urus_pengguna');
+        var urusBilik = document.getElementById('urus_bilik');
+        var urusKursus = document.getElementById('urus_kursus');
+        var urusTujuan = document.getElementById('urus_tujuan');
+        var btnPengguna = document.getElementById('btn_pengguna');
+        var btnBilik = document.getElementById('btn_bilik');
+        var btnKursus = document.getElementById('btn_kursus');
+        var btnTujuan = document.getElementById('btn_tujuan');
+
+        function urusPenggunaDisp() {
+            urusPengguna.style.display = 'block';
+            urusBilik.style.display = 'none';
+            urusKursus.style.display = 'none';
+            urusTujuan.style.display = 'none';
+            btnPengguna.style.backgroundColor = '#00cc7a';
+            btnBilik.style.backgroundColor = '#3f5f8f';
+            btnKursus.style.backgroundColor = '#3f5f8f';
+            btnTujuan.style.backgroundColor = '#3f5f8f';
+            getLogsUser();
+        }
+
+        function urusBilikDisp() {
+            urusPengguna.style.display = 'none';
+            urusBilik.style.display = 'block';
+            urusKursus.style.display = 'none';
+            urusTujuan.style.display = 'none';
+            btnPengguna.style.backgroundColor = '#3f5f8f';
+            btnBilik.style.backgroundColor = '#00cc7a';
+            btnKursus.style.backgroundColor = '#3f5f8f';
+            btnTujuan.style.backgroundColor = '#3f5f8f';
+            getLogsBilik();
+        }
+
+        function urusKursusDisp() {
+            urusPengguna.style.display = 'none';
+            urusBilik.style.display = 'none';
+            urusKursus.style.display = 'block';
+            urusTujuan.style.display = 'none';
+            btnPengguna.style.backgroundColor = '#3f5f8f';
+            btnBilik.style.backgroundColor = '#3f5f8f';
+            btnKursus.style.backgroundColor = '#00cc7a';
+            btnTujuan.style.backgroundColor = '#3f5f8f';
+            getLogsNamaKursus();
+        }
+
+        function urusTujuanDisp() {
+            urusPengguna.style.display = 'none';
+            urusBilik.style.display = 'none';
+            urusKursus.style.display = 'none';
+            urusTujuan.style.display = 'block';
+            btnPengguna.style.backgroundColor = '#3f5f8f';
+            btnBilik.style.backgroundColor = '#3f5f8f';
+            btnKursus.style.backgroundColor = '#3f5f8f';
+            btnTujuan.style.backgroundColor = '#00cc7a';
+            getLogsTujuan();
+        }
+
+        // ============================================================
+        //  LOGIN / LOGOUT
+        // ============================================================
+        var mainPage = document.getElementById("mainPage");
+        var loginPage = document.getElementById("loginPage");
+        var loginForm = document.getElementById("loginForm");
+        var createAccForm = document.getElementById("createAccForm");
+        var resetPwdForm = document.getElementById("resetPwdForm");
+        var dashboardGuard = document.getElementById("guard_dashboard");
+        var dashboardAdmin = document.getElementById("admin_dashboard");
+
+        sessionStorage.setItem('login', false);
+        sessionStorage.setItem('NamaPegawai', 'BelumLogmasuk');
+        sessionStorage.setItem('KataLaluan', 'BelumLogmasuk');
+
+        function crAccForm() { loginForm.style.display = "none";
+            createAccForm.style.display = "block";
+            $("input[type=text]").val("");
+            $("input[type=password]").val(""); }
+
+        function restPwdForm() { loginForm.style.display = "none";
+            resetPwdForm.style.display = "block";
+            $("input[type=text]").val("");
+            $("input[type=password]").val(""); }
+
+        function createAcc() { loginForm.style.display = "block";
+            createAccForm.style.display = "none";
+            $("input[type=text]").val("");
+            $("input[type=password]").val(""); }
+
+        function resetAcc() { loginForm.style.display = "block";
+            resetPwdForm.style.display = "none";
+            $("input[type=text]").val("");
+            $("input[type=password]").val(""); }
+
+        function showPass() { var x = document.getElementsByName('password')[0]; if (x.type === "password") x.type =
+                "text";
+            else x.type = "password"; }
+
+        function showPassReg() { var x = document.getElementsByName('passwordReg')[0]; if (x.type === "password") x
+                .type = "text";
+            else x.type = "password"; }
+
+        function showPassRest() { var x = document.getElementsByName('passwordRest')[0]; if (x.type === "password") x
+                .type = "text";
+            else x.type = "password"; }
+
+        function login() {
+            var gasURL = "https://script.google.com/macros/s/" + deployID + "/exec";
+            var logMasuk = "?func=LogMasuk";
+            var userName = document.getElementsByName('username')[0].value;
+            var password = document.getElementsByName('password')[0].value;
+            var mesejGagal = "Log masuk gagal";
+            if (userName == '' || password == '') {
+                document.getElementById('maklumbalasLg').style.color = 'red';
+                document.getElementById('maklumbalasLg').innerHTML = 'Sila isi nama pengguna dan katalaluan.';
+                setTimeout(function() { document.getElementById("maklumbalasLg").innerHTML = ""; }, 3000);
+                return;
+            }
+            updateStat();
+            $.post(gasURL + logMasuk + "&Nama=" + userName + "&Katalaluan=" + password, function(data) {
+                if (data == mesejGagal) {
+                    document.getElementById('maklumbalasLg').style.color = 'red';
+                    document.getElementById('maklumbalasLg').innerHTML = data;
+                    setTimeout(function() { document.getElementById("maklumbalasLg").innerHTML = ""; }, 3000);
+                    return;
+                }
+                var obj = JSON.parse(data);
+                sessionStorage.setItem('peranan', obj.kategori);
+                sessionStorage.setItem('statusAktif', obj.status);
+                document.getElementById('maklumbalasLg').style.color = 'blue';
+                document.getElementById('maklumbalasLg').innerHTML = data;
+                setTimeout(function() { document.getElementById("maklumbalasLg").innerHTML = ""; }, 1);
+                document.getElementsByName('username')[0].value = '';
+                document.getElementsByName('password')[0].value = '';
+
+                if (sessionStorage.getItem('statusAktif') == 'Aktif') {
+                    $("input[type=text]").val("");
+                    $("input[type=password]").val("");
+                    sessionStorage.setItem('NamaPegawai', userName);
+                    sessionStorage.setItem('KataLaluan', password);
+                    sessionStorage.setItem('Telefon', obj.telefon);
+                    sessionStorage.setItem('login', true);
+                    document.getElementById('namapegawai').value = sessionStorage.getItem('NamaPegawai');
+                    document.getElementById('logkeluar').style.display = "block";
+                    document.getElementById('logmasuk').style.display = "none";
+                    document.getElementById('menuListTempahan').style.display = "block";
+                    document.getElementById('institusipeserta').value = 'Kolej Komuniti';
+                    document.getElementById('customkursus').value = 'Program';
+                    document.getElementById('customtujuan').value = 'Tujuan';
+
+                    if (sessionStorage.getItem('peranan') == 'Kakitangan' || sessionStorage.getItem(
+                            'peranan') == 'Pelajar') {
+                        showMode();
+                    } else if (sessionStorage.getItem('peranan') == 'Pengawal') {
+                        guardPage();
+                    } else {
+                        adminPage();
+                    }
+                } else {
+                    alert("Akaun telah dinyahaktif. Sila hubungi pentadbir untuk pengaktifan semula akaun.");
+                }
+            });
+        }
+
+        var inputPwd = document.getElementsByName('password')[0];
+        inputPwd.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") { event.preventDefault();
+                document.getElementById("loginBtn").click(); }
+        });
+
+        function registerAcc() {
+            var gasURL = "https://script.google.com/macros/s/" + deployID + "/exec";
+            var daftarAcc = "?func=DaftarPengguna";
+            var userName = document.getElementsByName('usernameReg')[0].value;
+            var password = document.getElementsByName('passwordReg')[0].value;
+            var telefon = document.getElementsByName('telefon')[0].value;
+            var kategori = document.getElementsByName('kategori')[0].value;
+            var institusi = document.getElementsByName('institusi')[0].value;
+            var mesejGagal = "Pendaftaran gagal. Sila daftar gunakan Nama Pengguna yang lain.";
+            if (userName == '' || password == '' || telefon == '') {
+                document.getElementById('maklumbalasReg').style.color = 'red';
+                document.getElementById('maklumbalasReg').innerHTML = 'Sila isi semua ruangan.';
+                setTimeout(function() { document.getElementById("maklumbalasReg").innerHTML = ""; }, 3000);
+                return;
+            }
+            $.post(gasURL + daftarAcc + "&Nama=" + userName + "&Katalaluan=" + password + "&Kategori=" + kategori +
+                "&Institusi=" + institusi + "&Telefon=" + telefon, function(data) {
+                if (data == mesejGagal) {
+                    document.getElementById('maklumbalasReg').style.color = 'red';
+                    document.getElementById('maklumbalasReg').innerHTML = data;
+                    setTimeout(function() { document.getElementById("maklumbalasReg").innerHTML = ""; }, 3000);
+                    return;
+                }
+                document.getElementById('maklumbalasReg').style.color = 'blue';
+                document.getElementById('maklumbalasReg').innerHTML = data;
+                setTimeout(function() { document.getElementById("maklumbalasReg").innerHTML = ""; }, 3000);
+                document.getElementsByName('usernameReg')[0].value = '';
+                document.getElementsByName('passwordReg')[0].value = '';
+                setTimeout(createAcc, 3000);
+            });
+        }
+
+        function resetPwd() {
+            var gasURL = "https://script.google.com/macros/s/" + deployID + "/exec";
+            var resetPwd = "?func=ResetKatalaluan";
+            var userName = document.getElementsByName('usernameRest')[0].value;
+            var password = document.getElementsByName('passwordRest')[0].value;
+            var mesejGagal = "Reset Katalaluan gagal. Nama Pengguna tidak wujud.";
+            if (userName == '' || password == '') {
+                document.getElementById('maklumbalasRest').style.color = 'red';
+                document.getElementById('maklumbalasRest').innerHTML = 'Sila isi semua ruangan.';
+                setTimeout(function() { document.getElementById("maklumbalasRest").innerHTML = ""; }, 3000);
+                return;
+            }
+            $.post(gasURL + resetPwd + "&Nama=" + userName + "&Katalaluan=" + password, function(data) {
+                if (data == mesejGagal) {
+                    document.getElementById('maklumbalasRest').style.color = 'red';
+                    document.getElementById('maklumbalasRest').innerHTML = data;
+                    setTimeout(function() { document.getElementById("maklumbalasRest").innerHTML = ""; }, 3000);
+                    return;
+                }
+                document.getElementById('maklumbalasRest').style.color = 'blue';
+                document.getElementById('maklumbalasRest').innerHTML = data;
+                setTimeout(function() { document.getElementById("maklumbalasRest").innerHTML = ""; }, 3000);
+                document.getElementsByName('usernameRest')[0].value = '';
+                document.getElementsByName('passwordRest')[0].value = '';
+                setTimeout(resetAcc, 3000);
+            });
+        }
+
+        function checkTujuan(val) {
+            var customTujuan = document.getElementById("customtujuan");
+            var customkursusPendek = document.getElementById("inputkursus");
+            var tajukborang = document.getElementById("tajukBorang");
+            if (val == "Lain lain") {
+                customTujuan.style.display = "inline-block";
+                customkursusPendek.style.display = "none";
+                tajukborang.innerText = "Borang Tempahan Bilik dan Kursus Pendek";
+            } else if ((val == "Kursus Pendek") || (val == "Kursus")) {
+                customTujuan.style.display = "none";
+                tajukborang.innerText = "Borang Tempahan Bilik dan Kursus Pendek";
+            } else {
+                customTujuan.style.display = "none";
+                customkursusPendek.style.display = "none";
+                tajukborang.innerText = "Borang Tempahan Bilik dan Kursus Pendek";
+            }
+        }
+
+        function checkKursus(val) {
+            var kursusPendekInput = document.getElementById("customkursus");
+            if (val == "Program baru") {
+                kursusPendekInput.style.display = "inline-block";
+                kursusPendekInput.value = "Nama Program";
+            } else {
+                kursusPendekInput.style.display = "none";
+            }
+        }
+
+        function logout() {
+            sessionStorage.setItem('login', false);
+            sessionStorage.setItem('NamaPegawai', 'BelumLogmasuk');
+            sessionStorage.setItem('KataLaluan', 'BelumLogmasuk');
+            document.getElementById('logkeluar').style.display = "none";
+            document.getElementById('logmasuk').style.display = "block";
+            showData();
+        }
+
+        function showData() {
+            if (sessionStorage.getItem('login') == 'true') {
+                document.getElementById('menuListTempahan').style.display = "block";
+                document.getElementById('logkeluar').style.display = "block";
+                document.getElementById('logmasuk').style.display = "none";
+                document.getElementById('institusipeserta').value = 'Kolej Komuniti';
+                document.getElementById('bilpeserta').value = '0';
+                getLogsKursus();
+                getLogsTempahan();
+                if (sessionStorage.getItem('peranan') == 'Kakitangan' || sessionStorage.getItem('peranan') ==
+                    'Pelajar') {
+                    document.getElementById("sensordata").style.display = "block";
+                    document.getElementById("modeselect").style.display = "none";
+                    document.getElementById("valvectrl").style.display = "none";
+                    document.getElementById("historydata").style.display = "none";
+                    dashboardGuard.style.display = 'none';
+                    dashboardAdmin.style.display = 'none';
+                } else if (sessionStorage.getItem('peranan') == 'Pengawal') {
+                    document.getElementById("sensordata").style.display = "none";
+                    document.getElementById("modeselect").style.display = "none";
+                    document.getElementById("valvectrl").style.display = "none";
+                    document.getElementById("historydata").style.display = "none";
+                    dashboardGuard.style.display = 'block';
+                    dashboardAdmin.style.display = 'none';
+                } else {
+                    document.getElementById("sensordata").style.display = "none";
+                    document.getElementById("modeselect").style.display = "none";
+                    document.getElementById("valvectrl").style.display = "none";
+                    document.getElementById("historydata").style.display = "none";
+                    dashboardGuard.style.display = 'none';
+                    dashboardAdmin.style.display = 'block';
+                }
+            } else {
+                document.getElementById("sensordata").style.display = "none";
+                document.getElementById("modeselect").style.display = "none";
+                document.getElementById("valvectrl").style.display = "none";
+                document.getElementById("historydata").style.display = "none";
+                document.getElementById('logkeluar').style.display = "none";
+                document.getElementById('logmasuk').style.display = "block";
+                document.getElementById('menuListTempahan').style.display = "none";
+                dashboardGuard.style.display = 'block';
+                dashboardAdmin.style.display = 'none';
+                getLogsTempahan();
+            }
+        }
+
+        function guardPage() {
+            dashboardGuard.style.display = 'block';
+            dashboardAdmin.style.display = 'none';
+            document.getElementById("modeselect").style.display = "none";
+            getLogsTempahan();
+        }
+
+        function adminPage() {
+            dashboardGuard.style.display = 'none';
+            dashboardAdmin.style.display = 'block';
+            document.getElementById("modeselect").style.display = "none";
+            getLogsUser();
+        }
+
+        function showMode() {
+            document.getElementById("sensordata").style.display = "block";
+            document.getElementById("modeselect").style.display = "none";
+            document.getElementById("valvectrl").style.display = "none";
+            document.getElementById("historydata").style.display = "none";
+            dashboardGuard.style.display = 'none';
+            dashboardAdmin.style.display = 'none';
+        }
+
+        function showManualCtrl() {
+            document.getElementById("sensordata").style.display = "none";
+            document.getElementById("modeselect").style.display = "block";
+            document.getElementById("valvectrl").style.display = "none";
+            document.getElementById("historydata").style.display = "none";
+            dashboardGuard.style.display = 'none';
+            dashboardAdmin.style.display = 'none';
+            $("input[type=date]").val("");
+            getLogsKursus();
+        }
+
+        function showTempahan() {
+            document.getElementById("sensordata").style.display = "none";
+            document.getElementById("modeselect").style.display = "none";
+            document.getElementById("valvectrl").style.display = "none";
+            document.getElementById("historydata").style.display = "none";
+            dashboardGuard.style.display = 'block';
+            dashboardAdmin.style.display = 'none';
+            $("input[type=date]").val("");
+            getLogsTempahan();
+        }
+
+        function showHistory() {
+            document.getElementById("sensordata").style.display = "none";
+            document.getElementById("modeselect").style.display = "none";
+            document.getElementById("valvectrl").style.display = "none";
+            document.getElementById("historydata").style.display = "block";
+            dashboardGuard.style.display = 'none';
+            dashboardAdmin.style.display = 'none';
+            $("input[type=date]").val("");
+            getLogs();
+        }
+
+        function showKursusPendek() {
+            document.getElementById("sensordata").style.display = "none";
+            document.getElementById("modeselect").style.display = "none";
+            document.getElementById("valvectrl").style.display = "block";
+            document.getElementById("historydata").style.display = "none";
+            dashboardGuard.style.display = 'none';
+            dashboardAdmin.style.display = 'none';
+            $("input[type=date]").val("");
+            getLogsKursus();
+        }
+
+        // ============================================================
+        //  DATA URLS
+        // ============================================================
+        var urlLogs = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahBilik&tq=SELECT+A,C,D,E,I,J,F,G,H,M,T WHERE M!='Batal' order by A desc";
+        var urlLogsKursus = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodKursusPendek&tq=SELECT+A,C,D,E,F,G,H,I,L,S,T,U WHERE L!='Batal' order by A desc";
+        var urlLogsUser = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=DataPengguna&tq=SELECT+A,B,C,D,E,F,G,H,I order by A desc";
+        var urlLogsBilik = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaBilik&tq=SELECT+A,B,C order by A desc";
+        var urlLogsNamaKursus = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaKursusPendek&tq=SELECT+A,B,C order by A desc";
+        var urlLogsTujuan = "https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=Tujuan&tq=SELECT+A,B,C order by A desc";
+
+        // ============================================================
+        //  FLAG TOGGLES (Admin)
+        // ============================================================
+        function ubahUserFlag(id) {
+            var sw = document.getElementById('flagSwitch' + id);
+            if (sw.value == 'Aktif') {
+                sw.value = 'Nyahaktif';
+                fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=DisablePengguna&Id=' + id)
+                    .then(r => r.text()).then(d => { alert(d);
+                        getLogsUser(); });
+            } else {
+                sw.value = 'Aktif';
+                fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=EnablePengguna&Id=' + id)
+                    .then(r => r.text()).then(d => { alert(d);
+                        getLogsUser(); });
+            }
+        }
+
+        function ubahBilikFlag(id) {
+            var sw = document.getElementById('flagSwitchBilik' + id);
+            if (sw.value == 'Aktif') {
+                sw.value = 'Nyahaktif';
+                fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=DisableBilik&Id=' + id)
+                    .then(r => r.text()).then(d => { alert(d);
+                        getLogsBilik(); });
+            } else {
+                sw.value = 'Aktif';
+                fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=EnableBilik&Id=' + id)
+                    .then(r => r.text()).then(d => { alert(d);
+                        getLogsBilik(); });
+            }
+        }
+
+        function ubahKursusFlag(id) {
+            var sw = document.getElementById('flagSwitchKursus' + id);
+            if (sw.value == 'Aktif') {
+                sw.value = 'Nyahaktif';
+                fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=DisableKursusPendek&Id=' +
+                    id).then(r => r.text()).then(d => { alert(d);
+                        getLogsNamaKursus(); });
+            } else {
+                sw.value = 'Aktif';
+                fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=EnableKursusPendek&Id=' +
+                    id).then(r => r.text()).then(d => { alert(d);
+                        getLogsNamaKursus(); });
+            }
+        }
+
+        function ubahTujuanFlag(id) {
+            var sw = document.getElementById('flagSwitchTujuan' + id);
+            if (sw.value == 'Aktif') {
+                sw.value = 'Nyahaktif';
+                fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=DisableTujuan&Id=' + id)
+                    .then(r => r.text()).then(d => { alert(d);
+                        getLogsTujuan(); });
+            } else {
+                sw.value = 'Aktif';
+                fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=EnableTujuan&Id=' + id)
+                    .then(r => r.text()).then(d => { alert(d);
+                        getLogsTujuan(); });
+            }
+        }
+
+        // ============================================================
+        //  Batal / Restore
+        // ============================================================
+        function restoreTempahan(id) {
+            var nama = (sessionStorage.getItem('peranan') != "Admin") ? sessionStorage.getItem('NamaPegawai') :
+                "Admin";
+            var kata = sessionStorage.getItem('KataLaluan');
+            fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=RestoreTempahan&Id=' + id +
+                    '&Nama=' + nama + '&Katalaluan=' + kata)
+                .then(r => r.text()).then(d => { alert(d);
+                    getLogsTempahan(); });
+        }
+
+        function batalTempahan(id) {
+            var nama = (sessionStorage.getItem('peranan') != "Admin") ? sessionStorage.getItem('NamaPegawai') :
+                "Admin";
+            var kata = sessionStorage.getItem('KataLaluan');
+            fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=BatalTempahan&Id=' + id +
+                    '&Nama=' + nama + '&Katalaluan=' + kata)
+                .then(r => r.text()).then(d => { alert(d);
+                    getLogsTempahan(); });
+        }
+
+        function batalBilik(id) {
+            var nama = sessionStorage.getItem('NamaPegawai');
+            var kata = sessionStorage.getItem('KataLaluan');
+            fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=BatalBilik&Id=' + id +
+                    '&Nama=' + nama + '&Katalaluan=' + kata)
+                .then(r => r.text()).then(d => { alert(d);
+                    getLogs(); });
+        }
+
+        function batalKursus(id) {
+            var nama = sessionStorage.getItem('NamaPegawai');
+            var kata = sessionStorage.getItem('KataLaluan');
+            fetch('https://script.google.com/macros/s/' + deployID + '/exec?func=BatalKursus&Id=' + id +
+                    '&Nama=' + nama + '&Katalaluan=' + kata)
+                .then(r => r.text()).then(d => { alert(d);
+                    getLogsKursus(); });
+        }
+
+        // ============================================================
+        //  UPDATE STAT
+        // ============================================================
+        var urlUpdateStat = "https://script.google.com/macros/s/" + deployID + "/exec?func=kemaskiniStatus";
+
+        function updateStat() {
+            fetch(urlUpdateStat).then(response => response.text().then(data => { console.log(data); }));
+        }
+        setInterval(updateStat, 2000);
+        updateStat();
+
+        // ============================================================
+        //  CREATE / POPULATE DROPDOWNS
+        // ============================================================
+        var urlTujuanList = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=Tujuan&tq=SELECT+B WHERE C=%27Aktif%27 order by A desc';
+        var urlKursusList = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaKursusPendek&tq=SELECT+B WHERE C=%27Aktif%27 order by A desc';
+        var urlBilikList = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=NamaBilik&tq=SELECT+B WHERE C=%27Aktif%27 order by A asc';
+        var urlHariList = 'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=Hari&tq=SELECT+B order by A asc';
+
+        var tujuanArr = [],
+            kursusArr = [],
+            hariArr = [],
+            bilikArr = [];
+
+        function populateTujuan() {
+            fetch(urlTujuanList).then(response => response.text().then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                let tujuanList = document.getElementById('tujuan');
+                for (var i = 0; i < rows.length; i++) {
+                    var opt = rows[i];
+                    tujuanArr.push(opt);
+                }
+                for (let i = 0; i < tujuanArr.length; i++) {
+                    let optn = tujuanArr[i].c[0].v;
+                    let el = document.createElement("option");
+                    el.textContent = optn;
+                    el.value = optn;
+                    tujuanList.appendChild(el);
+                }
+            }));
+        }
+
+        function populateKursus() {
+            fetch(urlKursusList).then(response => response.text().then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                let kursusList = document.getElementById('kursuspendek');
+                for (var i = 0; i < rows.length; i++) {
+                    var opt = rows[i];
+                    kursusArr.push(opt);
+                }
+                for (let i = 0; i < kursusArr.length; i++) {
+                    let optn = kursusArr[i].c[0].v;
+                    let el = document.createElement("option");
+                    el.textContent = optn;
+                    el.value = optn;
+                    kursusList.appendChild(el);
+                }
+            }));
+        }
+
+        function populateBilik() {
+            fetch(urlBilikList).then(response => response.text().then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                let bilikList = document.getElementById('namabilik');
+                for (var i = 0; i < rows.length; i++) {
+                    var opt = rows[i];
+                    bilikArr.push(opt);
+                }
+                for (let i = 0; i < bilikArr.length; i++) {
+                    let optn = bilikArr[i].c[0].v;
+                    let el = document.createElement("option");
+                    el.textContent = optn;
+                    el.value = optn;
+                    bilikList.appendChild(el);
+                }
+            }));
+        }
+
+        function populateHari() {
+            fetch(urlHariList).then(response => response.text().then(data => {
+                const json = JSON.parse(data.substring(47, data.length - 2));
+                const rows = json.table.rows;
+                let hariList = document.getElementById('hari');
+                for (var i = 0; i < rows.length; i++) {
+                    var opt = rows[i];
+                    hariArr.push(opt);
+                }
+                for (let i = 0; i < hariArr.length; i++) {
+                    let optn = hariArr[i].c[0].v;
+                    let el = document.createElement("option");
+                    el.textContent = optn;
+                    el.value = optn;
+                    hariList.appendChild(el);
+                }
+            }));
+        }
+
+        populateTujuan();
+        populateKursus();
+        populateBilik();
+        populateHari();
+
+        // ============================================================
+        //  TEMPAH BILIK
+        // ============================================================
+        function daftarKursus(kursusVal) {
+            var urlKursus = 'https://script.google.com/macros/s/' + deployID +
+                '/exec?func=CreateKursusPendek&NamaKursusPendek=' + kursusVal;
+            fetch(urlKursus).then(response => response.text().then(data => { console.log(data);
+                alert(data); }));
+        }
+
+        function tempahBilik() {
+            var namaPegawai = document.getElementById("namapegawai").value;
+            var kataLaluan = sessionStorage.getItem('KataLaluan');
+            var telefon = sessionStorage.getItem('Telefon');
+            var namaBilik = document.getElementById("namabilik").value;
+            var tujuan;
+            if (document.getElementById("tujuan").value == "Lain lain") {
+                tujuan = document.getElementById("customtujuan").value;
+                createTujuan(tujuan);
+            } else {
+                tujuan = document.getElementById("tujuan").value;
+            }
+            var tajukProgram;
+            if (document.getElementById("kursuspendek").value != "Program baru") {
+                tajukProgram = document.getElementById("kursuspendek").value;
+            } else {
+                tajukProgram = document.getElementById("customkursus").value;
+                daftarKursus(tajukProgram);
+            }
+            var tarikhTempahMula = document.getElementById("tarikh_tempah_mula").value;
+            var tarikhTempahTamat = document.getElementById("tarikh_tempah_tamat").value;
+            var masaTempahMula = document.getElementById("masa_tempah_mula").value;
+            var masaTempahTamat = document.getElementById("masa_tempah_tamat").value;
+            var institusi = document.getElementById("institusipeserta").value;
+            var bilanganPeserta = document.getElementById("bilpeserta").value;
+
+            var urlTempah = 'https://script.google.com/macros/s/' + deployID +
+                '/exec?func=TempahBilikDanKursus&Katalaluan=' + kataLaluan + '&NamaPenempah=' + namaPegawai +
+                '&NamaBilik=' + namaBilik + '&KategoriTujuan=' + tujuan + '&TajukProgram=' + tajukProgram +
+                '&TarikhTempahanMula=' + tarikhTempahMula + '&TarikhTempahanTamat=' + tarikhTempahTamat +
+                '&MasaTempahanMula=' + masaTempahMula + '&MasaTempahanTamat=' + masaTempahTamat + '&Telefon=' +
+                telefon + '&InstitusiPeserta=' + institusi + '&BilanganPeserta=' + bilanganPeserta;
+
+            if (tarikhTempahMula == '' || tarikhTempahTamat == '' || masaTempahMula == '' || masaTempahTamat ==
+                '') {
+                alert("Masa dan tarikh mestilah di isi!");
+                return;
+            }
+            if ((document.getElementById("tujuan").value == "Kursus Pendek") || (document.getElementById("tujuan")
+                    .value == "Kursus")) {
+                if (institusi == '' || bilanganPeserta == '') {
+                    alert("Sila isi institusi dan bilangan peserta.");
+                    return;
+                }
+            }
+            fetch(urlTempah).then(response => response.text().then(data => {
+                alert(data);
+                getLogsTempahan();
+                $("input[type=text]").val("");
+                $("input[type=date]").val("");
+                $("input[type=time]").val("");
+                $("input[type=number]").val("");
+                document.getElementById('namapegawai').value = sessionStorage.getItem('NamaPegawai');
+            }));
+        }
+
+        function createTujuan(tujuanVal) {
+            var urlTujuan = 'https://script.google.com/macros/s/' + deployID + '/exec?func=CreateTujuan&Tujuan=' +
+                tujuanVal;
+            fetch(urlTujuan).then(response => response.text().then(data => { console.log(data);
+                alert(data); }));
+        }
+
+        // ============================================================
+        //  GET DATA BY DATE (for other tables)
+        // ============================================================
+        function getDataByDate() {
+            var startDate = document.getElementById("startDate").value;
+            var endDate = document.getElementById("endDate").value;
+            if (!startDate || !endDate) { alert("Sila pilih tarikh mula dan tamat."); return; }
+            var urlDate =
+                'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodTempahBilik&tq=SELECT+A,C,D,E,I,J,F,G,H,M WHERE I>=date "' +
+                startDate + '" AND I<=date "' + endDate + '" order by A desc';
+            clearLog();
+            fetch(urlDate).then(response => response.text().then(data => {
+                var json = JSON.parse(data.substring(47, data.length - 2));
+                datas = json.table.rows || [];
+                curPage = 1;
+                renderHistoryPage();
+            }));
+        }
+
+        function getDataByDateK() {
+            var startDateK = document.getElementById("startDateK").value;
+            var endDateK = document.getElementById("endDateK").value;
+            if (!startDateK || !endDateK) { alert("Sila pilih tarikh mula dan tamat."); return; }
+            var urlDate =
+                'https://docs.google.com/spreadsheets/d/1fYSJAiZSMkx5FTuv0GaXnhF5OULAWQWm4Hy-VQ8_YiM/gviz/tq?tqx=out:json&sheet=RekodKursusPendek&tq=SELECT+A,C,D,E,F,G,H,I,L,S,T WHERE E>=date "' +
+                startDateK + '" AND E<=date "' + endDateK + '" order by A desc';
+            clearLogKursus();
+            fetch(urlDate).then(response => response.text().then(data => {
+                var json = JSON.parse(data.substring(47, data.length - 2));
+                datas2 = json.table.rows || [];
+                curPage = 1;
+                renderKursusPage();
+            }));
+        }
+
+        function clearLogTempahan() { tablehead7.innerHTML = '';
+            table7.innerHTML = ''; }
+
+        function clearLog() { table1.innerHTML = ''; }
+
+        function clearLogKursus() { table2.innerHTML = ''; }
+
+        // ============================================================
+        //  TOP NAV
+        // ============================================================
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") x.className += " responsive";
+            else x.className = "topnav";
+        }
+
+        var btnContainer = document.getElementById("myTopnav");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                if (current.length > 0) current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        populateYearDropdown();
+        getLogsTempahan();
+
+        // Reset filter to "all" on page load
+        document.getElementById('monthFilter').value = 'all';
+        document.getElementById('yearFilter').value = 'all';
+    </script>
+</body>
+</html>
