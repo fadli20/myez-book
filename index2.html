@@ -384,12 +384,16 @@ input:checked + .slider:before {
             <h2 id="tajukJadualKursusPendek" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Senarai Tempahan</h2>
                         <br>
             <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDateTempahan" type="date">&nbsp;&nbsp;</div><br><div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDateTempahan" type="date">&nbsp;&nbsp;</div><br><br><button  class="btn2" id="filterDateK" onclick="getDataTempahanByDate()">Submit</button><br><br>
+			<button class="btn2" onclick="exportPDF()">📄 Cetak PDF</button><br><br>
+			<div id="printable-area">
+				<h2 class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Senarai Tempahan</h2><br><br>
                   <table class="tablemobile"> 
       <thead id="header-tempahan" style="width:80vw;"></thead>
       <tbody id="data-tempahan" style="width:80vw;">      
       </tbody>
       </table>
               <br>
+			</div>
         <center>
         <button class="btn2" id="prevButtonTempahan">Previous</button> 
         <button class="btn2" id="nextButtonTempahan">Next</button>
@@ -3424,6 +3428,38 @@ var urlUpdateStat = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwI
             this.className += " active";
             });
             }
+
+function exportPDF() {
+    const element = document.getElementById('printable-area');
+    
+    // Optional: show a loading message
+    const btn = event.target;
+    btn.textContent = 'Memproses...';
+    btn.disabled = true;
+
+    html2pdf()
+        .set({
+            margin: 0.5,
+            filename: 'Senarai_Tempahan.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' } // use landscape for wide tables
+        })
+        .from(element)
+        .save()
+        .then(() => {
+            btn.textContent = '📄 Cetak PDF';
+            btn.disabled = false;
+        })
+        .catch(err => {
+            console.error('PDF generation error:', err);
+            btn.textContent = '📄 Cetak PDF';
+            btn.disabled = false;
+            alert('Gagal menjana PDF. Sila cuba lagi.');
+        });
+}
+			
         </script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>					  
     </body>
 </html>
