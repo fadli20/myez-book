@@ -385,15 +385,11 @@ input:checked + .slider:before {
                         <br>
             <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDateTempahan" type="date">&nbsp;&nbsp;</div><br><div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDateTempahan" type="date">&nbsp;&nbsp;</div><br><br><button  class="btn2" id="filterDateK" onclick="getDataTempahanByDate()">Submit</button><br><br>
 			<button class="btn2 btn-print-pdf" onclick="exportPDF()">📄 Cetak PDF</button>
-			<div id="printable-area">
-				<h2 class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Senarai Tempahan</h2><br><br>
                   <table class="tablemobile"> 
       <thead id="header-tempahan" style="width:80vw;"></thead>
       <tbody id="data-tempahan" style="width:80vw;">      
       </tbody>
       </table>
-              <br><br><br>
-			</div>
         <center>
         <button class="btn2" id="prevButtonTempahan">Previous</button> 
         <button class="btn2" id="nextButtonTempahan">Next</button>
@@ -3571,6 +3567,7 @@ function exportPDF() {
 }
 			
         </script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>					  
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>		
+		<div id="pdfContainer" style="display:none;"></div>
     </body>
 </html>
