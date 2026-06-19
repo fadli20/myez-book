@@ -385,6 +385,7 @@ input:checked + .slider:before {
                         <br>
             <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDateTempahan" type="date">&nbsp;&nbsp;</div><br><div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDateTempahan" type="date">&nbsp;&nbsp;</div><br><br><button  class="btn2" id="filterDateK" onclick="getDataTempahanByDate()">Submit</button><br><br>
 			<button class="btn2 btn-print-pdf" onclick="exportPDF()">📄 Cetak PDF</button>
+			<button class="btn2 btn-export-excel" onclick="exportExcel()">📊 Eksport Excel</button>
                   <table class="tablemobile"> 
       <thead id="header-tempahan" style="width:80vw;"></thead>
       <tbody id="data-tempahan" style="width:80vw;">      
@@ -3521,9 +3522,107 @@ function exportPDF() {
     btn.innerHTML = originalText;
     btn.disabled = false;
 }
+
+function exportExcel() {
+    const btn = document.querySelector('.btn-export-excel');
+    if (!btn) return;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '⏳ Menjana Excel...';
+    btn.disabled = true;
+
+    try {
+        // Prepare data array for SheetJS
+        const data = [];
+
+        // Header row
+        const headers = ['Index', 'Program', 'Lokasi Bilik', 'Status', 'Institusi', 'Bil Peserta', 'Tarikh & Masa', 'Kategori', 'Butiran Penempah'];
+        data.push(headers);
+
+        // Loop through ALL rows in datas7
+        for (let i = 0; i < datas7.length; i++) {
+            const row = datas7[i];
+            const namaPenempah = row.c[1] ? row.c[1].v : '';
+            const telefon = row.c[3] ? row.c[3].f : '';
+            const tajukProgram = row.c[4] ? row.c[4].v : '';
+            const kategoriTujuan = row.c[5] ? row.c[5].v : '';
+            const namaBilik = row.c[6] ? row.c[6].v : '';
+            const institusiPeserta = row.c[7] ? row.c[7].v : '';
+            const bilanganPeserta = row.c[8] ? row.c[8].f : '';
+            const tarikhTempahMula = row.c[9] ? row.c[9].f : '';
+            const masaTempahMula = row.c[10] ? row.c[10].f : '';
+            const tarikhTempahTamat = row.c[11] ? row.c[11].f : '';
+            const masaTempahTamat = row.c[12] ? row.c[12].f : '';
+            const statusTempah = row.c[15] ? row.c[15].v : '';
+
+            let tarikhDisp, masaDisp;
+            if (tarikhTempahMula == tarikhTempahTamat) {
+                tarikhDisp = tarikhTempahMula;
+                masaDisp = masaTempahMula + " - " + masaTempahTamat;
+            } else {
+                tarikhDisp = tarikhTempahMula + " - " + tarikhTempahTamat;
+                masaDisp = masaTempahMula + " - " + masaTempahTamat;
+            }
+
+            data.push([
+                i + 1,
+                tajukProgram,
+                namaBilik,
+                statusTempah,
+                institusiPeserta,
+                bilanganPeserta,
+                tarikhDisp + " (" + masaDisp + ")",
+                kategoriTujuan,
+                namaPenempah + " (Tel: 60" + telefon + ")"
+            ]);
+        }
+
+        // Create workbook
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.aoa_to_sheet(data);
+
+        // Auto column widths (optional)
+        const colWidths = [
+            { wch: 8 },  // Index
+            { wch: 30 }, // Program
+            { wch: 20 }, // Bilik
+            { wch: 15 }, // Status
+            { wch: 25 }, // Institusi
+            { wch: 12 }, // Bil Peserta
+            { wch: 35 }, // Tarikh & Masa
+            { wch: 20 }, // Kategori
+            { wch: 35 }  // Butiran
+        ];
+        ws['!cols'] = colWidths;
+
+        XLSX.utils.book_append_sheet(wb, ws, 'Senarai Tempahan');
+
+        // Generate Excel file as binary
+        const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+
+        // Create Blob and download
+        const blob = new Blob([wbout], { type: 'application/octet-stream' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Senarai_Tempahan.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    } catch (e) {
+        console.error('Excel export error:', e);
+        alert('Export failed: ' + e.message);
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }
+}
 			
         </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>		
     </body>
 </html>
