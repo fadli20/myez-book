@@ -3424,60 +3424,32 @@ var urlUpdateStat = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwI
             this.className += " active";
             });
             }
-
 function exportPDF() {
-    // Get the button and show loading state
     const btn = document.querySelector('.btn-print-pdf');
     if (!btn) return;
     const originalText = btn.innerHTML;
     btn.innerHTML = '⏳ Menjana PDF...';
     btn.disabled = true;
 
-    // Step 1: Build a full table from datas7
-    const container = document.getElementById('pdfContainer');
-    container.innerHTML = ''; // clear previous
-
-    // Create a wrapper div with styling
-    const wrapper = document.createElement('div');
-    wrapper.style.padding = '20px';
-    wrapper.style.fontFamily = 'Arial, sans-serif';
-
-    // Add title
-    const title = document.createElement('h2');
-    title.innerText = 'Senarai Tempahan';
-    title.style.textAlign = 'center';
-    wrapper.appendChild(title);
-
-    // Create table
-    const table = document.createElement('table');
-    table.style.width = '100%';
-    table.style.borderCollapse = 'collapse';
-    table.style.fontSize = '10pt';
-
-    // Header
-    const thead = document.createElement('thead');
-    const headerRow = document.createElement('tr');
-    const headers = ['Index', 'Program', 'Lokasi Bilik', 'Status Tempahan', 'Institusi', 'Bil Peserta', 'Tarikh & Masa', 'Kategori', 'Butiran Penempah'];
-    headers.forEach(text => {
-        const th = document.createElement('th');
-        th.innerText = text;
-        th.style.border = '1px solid #000';
-        th.style.padding = '6px';
-        th.style.backgroundColor = '#0a8af2';
-        th.style.color = 'white';
-        headerRow.appendChild(th);
+    // Use jsPDF with autoTable
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: 'a4'
     });
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
 
-    // Body – loop through ALL rows in datas7
-    const tbody = document.createElement('tbody');
-    const total = datas7.length;
-    for (let i = 0; i < total; i++) {
+    // Title
+    doc.setFontSize(16);
+    doc.text('Senarai Tempahan', 14, 20);
+
+    // Prepare table data
+    const tableRows = [];
+    const headers = ['Index', 'Program', 'Lokasi Bilik', 'Status', 'Institusi', 'Bil Peserta', 'Tarikh & Masa', 'Kategori', 'Butiran Penempah'];
+
+    // Loop through ALL rows in datas7
+    for (let i = 0; i < datas7.length; i++) {
         const row = datas7[i];
-        const tr = document.createElement('tr');
-
-        // Extract data (using the same logic as loadTableTempahan)
         const namaPenempah = row.c[1] ? row.c[1].v : '';
         const telefon = row.c[3] ? row.c[3].f : '';
         const tajukProgram = row.c[4] ? row.c[4].v : '';
@@ -3491,10 +3463,6 @@ function exportPDF() {
         const masaTempahTamat = row.c[12] ? row.c[12].f : '';
         const statusTempah = row.c[15] ? row.c[15].v : '';
 
-        // Index (global, not per‑page)
-        const idx = i + 1;
-
-        // Date & Masa display
         let tarikhDisp, masaDisp;
         if (tarikhTempahMula == tarikhTempahTamat) {
             tarikhDisp = tarikhTempahMula;
@@ -3504,70 +3472,58 @@ function exportPDF() {
             masaDisp = "(" + masaTempahMula + " - " + masaTempahTamat + ")";
         }
 
-        const cells = [
-            idx,
+        tableRows.push([
+            i + 1,
             tajukProgram,
             namaBilik,
             statusTempah,
             institusiPeserta,
             bilanganPeserta,
-            tarikhDisp + "<br>" + masaDisp,
+            tarikhDisp + "\n" + masaDisp,
             kategoriTujuan,
-            namaPenempah + "<br>Tel: 60" + telefon
-        ];
-
-        cells.forEach((text, colIndex) => {
-            const td = document.createElement('td');
-            td.innerHTML = text;
-            td.style.border = '1px solid #000';
-            td.style.padding = '4px';
-            // Alternate row colors
-            if (i % 2 === 0) td.style.backgroundColor = '#f2f2f2';
-            tr.appendChild(td);
-        });
-
-        tbody.appendChild(tr);
+            namaPenempah + "\nTel: 60" + telefon
+        ]);
     }
-    table.appendChild(tbody);
-    wrapper.appendChild(table);
-    container.appendChild(wrapper);
 
-    // Step 2: Generate PDF from the container
-    // Use html2pdf
-    const element = container;
+    // Generate table
+    doc.autoTable({
+        head: [headers],
+        body: tableRows,
+        startY: 25,
+        theme: 'striped',
+        headStyles: { fillColor: [10, 138, 242], textColor: [255, 255, 255], fontSize: 8 },
+        bodyStyles: { fontSize: 7 },
+        columnStyles: {
+            0: { cellWidth: 10 }, // Index
+            1: { cellWidth: 30 }, // Program
+            2: { cellWidth: 25 }, // Bilik
+            3: { cellWidth: 20 }, // Status
+            4: { cellWidth: 25 }, // Institusi
+            5: { cellWidth: 15 }, // Bil Peserta
+            6: { cellWidth: 30 }, // Tarikh & Masa
+            7: { cellWidth: 25 }, // Kategori
+            8: { cellWidth: 30 }  // Butiran
+        },
+        margin: { top: 25 },
+        pageBreak: 'auto',
+        rowPageBreak: 'avoid', // avoid splitting rows across pages
+        didDrawPage: function(data) {
+            // Optional: add page number
+            doc.setFontSize(8);
+            doc.text('Muka surat ' + data.pageNumber, 14, data.settings.margin.top - 5);
+        }
+    });
 
-    // Temporarily show the container (needed for canvas capture)
-    container.style.display = 'block';
+    // Save PDF
+    doc.save('Senarai_Tempahan.pdf');
 
-    html2pdf()
-        .set({
-            margin: 0.5,
-            filename: 'Senarai_Tempahan.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
-            jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
-        })
-        .from(element)
-        .save()
-        .then(() => {
-            // Clean up
-            container.style.display = 'none';
-            container.innerHTML = '';
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        })
-        .catch(err => {
-            console.error('PDF generation error:', err);
-            container.style.display = 'none';
-            container.innerHTML = '';
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-            alert('Gagal menjana PDF. Sila cuba lagi.');
-        });
+    // Reset button
+    btn.innerHTML = originalText;
+    btn.disabled = false;
 }
 			
         </script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>		
-		<div id="pdfContainer" style="display:none;"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
     </body>
 </html>
