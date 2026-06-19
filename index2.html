@@ -3430,30 +3430,141 @@ var urlUpdateStat = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwI
             }
 
 function exportPDF() {
-    const element = document.getElementById('printable-area');
-    
-    // Optional: show a loading message
-    const btn = event.target;
-    btn.textContent = 'Memproses...';
+    // Get the button and show loading state
+    const btn = document.querySelector('.btn-print-pdf');
+    if (!btn) return;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '⏳ Menjana PDF...';
     btn.disabled = true;
+
+    // Step 1: Build a full table from datas7
+    const container = document.getElementById('pdfContainer');
+    container.innerHTML = ''; // clear previous
+
+    // Create a wrapper div with styling
+    const wrapper = document.createElement('div');
+    wrapper.style.padding = '20px';
+    wrapper.style.fontFamily = 'Arial, sans-serif';
+
+    // Add title
+    const title = document.createElement('h2');
+    title.innerText = 'Senarai Tempahan';
+    title.style.textAlign = 'center';
+    wrapper.appendChild(title);
+
+    // Create table
+    const table = document.createElement('table');
+    table.style.width = '100%';
+    table.style.borderCollapse = 'collapse';
+    table.style.fontSize = '10pt';
+
+    // Header
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    const headers = ['Index', 'Program', 'Lokasi Bilik', 'Status Tempahan', 'Institusi', 'Bil Peserta', 'Tarikh & Masa', 'Kategori', 'Butiran Penempah'];
+    headers.forEach(text => {
+        const th = document.createElement('th');
+        th.innerText = text;
+        th.style.border = '1px solid #000';
+        th.style.padding = '6px';
+        th.style.backgroundColor = '#0a8af2';
+        th.style.color = 'white';
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Body – loop through ALL rows in datas7
+    const tbody = document.createElement('tbody');
+    const total = datas7.length;
+    for (let i = 0; i < total; i++) {
+        const row = datas7[i];
+        const tr = document.createElement('tr');
+
+        // Extract data (using the same logic as loadTableTempahan)
+        const namaPenempah = row.c[1] ? row.c[1].v : '';
+        const telefon = row.c[3] ? row.c[3].f : '';
+        const tajukProgram = row.c[4] ? row.c[4].v : '';
+        const kategoriTujuan = row.c[5] ? row.c[5].v : '';
+        const namaBilik = row.c[6] ? row.c[6].v : '';
+        const institusiPeserta = row.c[7] ? row.c[7].v : '';
+        const bilanganPeserta = row.c[8] ? row.c[8].f : '';
+        const tarikhTempahMula = row.c[9] ? row.c[9].f : '';
+        const masaTempahMula = row.c[10] ? row.c[10].f : '';
+        const tarikhTempahTamat = row.c[11] ? row.c[11].f : '';
+        const masaTempahTamat = row.c[12] ? row.c[12].f : '';
+        const statusTempah = row.c[15] ? row.c[15].v : '';
+
+        // Index (global, not per‑page)
+        const idx = i + 1;
+
+        // Date & Masa display
+        let tarikhDisp, masaDisp;
+        if (tarikhTempahMula == tarikhTempahTamat) {
+            tarikhDisp = tarikhTempahMula;
+            masaDisp = "(" + masaTempahMula + " - " + masaTempahTamat + ")";
+        } else {
+            tarikhDisp = tarikhTempahMula + " - " + tarikhTempahTamat;
+            masaDisp = "(" + masaTempahMula + " - " + masaTempahTamat + ")";
+        }
+
+        const cells = [
+            idx,
+            tajukProgram,
+            namaBilik,
+            statusTempah,
+            institusiPeserta,
+            bilanganPeserta,
+            tarikhDisp + "<br>" + masaDisp,
+            kategoriTujuan,
+            namaPenempah + "<br>Tel: 60" + telefon
+        ];
+
+        cells.forEach((text, colIndex) => {
+            const td = document.createElement('td');
+            td.innerHTML = text;
+            td.style.border = '1px solid #000';
+            td.style.padding = '4px';
+            // Alternate row colors
+            if (i % 2 === 0) td.style.backgroundColor = '#f2f2f2';
+            tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    wrapper.appendChild(table);
+    container.appendChild(wrapper);
+
+    // Step 2: Generate PDF from the container
+    // Use html2pdf
+    const element = container;
+
+    // Temporarily show the container (needed for canvas capture)
+    container.style.display = 'block';
 
     html2pdf()
         .set({
             margin: 0.5,
             filename: 'Senarai_Tempahan.pdf',
             image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true },
-            jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' } // use landscape for wide tables
+            html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
         })
         .from(element)
         .save()
         .then(() => {
-            btn.textContent = '📄 Cetak PDF';
+            // Clean up
+            container.style.display = 'none';
+            container.innerHTML = '';
+            btn.innerHTML = originalText;
             btn.disabled = false;
         })
         .catch(err => {
             console.error('PDF generation error:', err);
-            btn.textContent = '📄 Cetak PDF';
+            container.style.display = 'none';
+            container.innerHTML = '';
+            btn.innerHTML = originalText;
             btn.disabled = false;
             alert('Gagal menjana PDF. Sila cuba lagi.');
         });
