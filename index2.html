@@ -389,6 +389,7 @@ input:checked + .slider:before {
       <tbody id="data-tempahan" style="width:80vw;">      
       </tbody>
       </table>
+      <br><br>
         <center>
         <button class="btn2" id="prevButtonTempahan">Previous</button> 
         <button class="btn2" id="nextButtonTempahan">Next</button>
@@ -1248,6 +1249,8 @@ function closeModal(){
             var btnKursus = document.getElementById('btn_kursus');
             var btnTujuan = document.getElementById('btn_tujuan');
             
+            
+            /*
             function urusPenggunaDisp(){
             urusPengguna.style.display = 'block';
             urusBilik.style.display = 'none';
@@ -1294,8 +1297,58 @@ function closeModal(){
             btnKursus.style.backgroundColor = '#3f5f8f';
             btnTujuan.style.backgroundColor = '#00cc7a';
             getLogsTujuan();
-            }        
-        
+            }    */    
+   function urusPenggunaDisp() {
+    curPage = 1;
+    urusPengguna.style.display = 'block';
+    urusBilik.style.display = 'none';
+    urusKursus.style.display = 'none';
+    urusTujuan.style.display = 'none';
+    btnPengguna.style.backgroundColor = '#00cc7a';
+    btnBilik.style.backgroundColor = '#3f5f8f';
+    btnKursus.style.backgroundColor = '#3f5f8f';
+    btnTujuan.style.backgroundColor = '#3f5f8f';
+    getLogsUser();
+}
+
+function urusBilikDisp() {
+    curPage = 1;
+    urusPengguna.style.display = 'none';
+    urusBilik.style.display = 'block';
+    urusKursus.style.display = 'none';
+    urusTujuan.style.display = 'none';
+    btnPengguna.style.backgroundColor = '#3f5f8f';
+    btnBilik.style.backgroundColor = '#00cc7a';
+    btnKursus.style.backgroundColor = '#3f5f8f';
+    btnTujuan.style.backgroundColor = '#3f5f8f';
+    getLogsBilik();
+}
+
+function urusKursusDisp() {
+    curPage = 1;
+    urusPengguna.style.display = 'none';
+    urusBilik.style.display = 'none';
+    urusKursus.style.display = 'block';
+    urusTujuan.style.display = 'none';
+    btnPengguna.style.backgroundColor = '#3f5f8f';
+    btnBilik.style.backgroundColor = '#3f5f8f';
+    btnKursus.style.backgroundColor = '#00cc7a';
+    btnTujuan.style.backgroundColor = '#3f5f8f';
+    getLogsNamaKursus();
+}
+
+function urusTujuanDisp() {
+    curPage = 1;
+    urusPengguna.style.display = 'none';
+    urusBilik.style.display = 'none';
+    urusKursus.style.display = 'none';
+    urusTujuan.style.display = 'block';
+    btnPengguna.style.backgroundColor = '#3f5f8f';
+    btnBilik.style.backgroundColor = '#3f5f8f';
+    btnKursus.style.backgroundColor = '#3f5f8f';
+    btnTujuan.style.backgroundColor = '#00cc7a';
+    getLogsTujuan();
+}     
         
  
       var mainPage = document.getElementById("mainPage");
@@ -1734,7 +1787,7 @@ inputPwd.addEventListener("keypress", function(event) {
             let table7 = document.getElementById("data-tempahan");
             let tablehead7 = document.getElementById("header-tempahan");
             
-            const pageSize = 10;
+            const pageSize = 8;
             let curPage = 1;
 
             document.querySelector('#nextButton').addEventListener('click', nextPage, false);
@@ -1905,7 +1958,62 @@ inputPwd.addEventListener("keypress", function(event) {
 
             var urlLogsTempahan = '';
 
-            
+
+
+function getLogsUser() {
+    fetch(urlLogsUser)
+        .then(response => response.text())
+        .then(data => {
+            const json = JSON.parse(data.substring(47, data.length - 2));
+            const rows = json.table.rows || [];
+            datas3 = rows;//.reverse(); // optional: oldest first
+            curPage = 1;
+            loadTablePenggunaAdmin();
+        })
+        .catch(error => console.error(error));
+}
+
+function getLogsBilik() {
+    fetch(urlLogsBilik)
+        .then(response => response.text())
+        .then(data => {
+            const json = JSON.parse(data.substring(47, data.length - 2));
+            const rows = json.table.rows || [];
+            datas4 = rows;//.reverse();
+            curPage = 1;
+            loadTableBilikAdmin();
+        })
+        .catch(error => console.error(error));
+}
+
+function getLogsNamaKursus() {
+    fetch(urlLogsNamaKursus)
+        .then(response => response.text())
+        .then(data => {
+            const json = JSON.parse(data.substring(47, data.length - 2));
+            const rows = json.table.rows || [];
+            datas5 = rows;//.reverse();
+            curPage = 1;
+            loadTableKursusAdmin();
+        })
+        .catch(error => console.error(error));
+}
+
+function getLogsTujuan() {
+    fetch(urlLogsTujuan)
+        .then(response => response.text())
+        .then(data => {
+            const json = JSON.parse(data.substring(47, data.length - 2));
+            const rows = json.table.rows || [];
+            datas6 = rows;//.reverse();
+            curPage = 1;
+            loadTableTujuanAdmin();
+        })
+        .catch(error => console.error(error));
+}
+
+
+            /*
             function getLogsUser(){
                 clearLogPenggunaAdmin();
                 
@@ -1954,7 +2062,7 @@ inputPwd.addEventListener("keypress", function(event) {
             row.insertCell().innerText = txt;
             }})
             .catch(error => console.error(error));
-        }
+        }*/
 
             function ubahUserFlag(id){
                 if(document.getElementById('flagSwitch'+id+'').value == 'Aktif'){
@@ -2048,6 +2156,7 @@ inputPwd.addEventListener("keypress", function(event) {
                 }
             }
 
+            /*
             function getLogsBilik(){
                 clearLogBilikAdmin();
                 
@@ -2087,8 +2196,8 @@ inputPwd.addEventListener("keypress", function(event) {
             row.insertCell().innerText = txt;
             }})
             .catch(error => console.error(error));
-        }
-        
+        }*/
+            /*
             function getLogsNamaKursus(){
                 clearLogKursusAdmin();
                 
@@ -2128,8 +2237,8 @@ inputPwd.addEventListener("keypress", function(event) {
             row.insertCell().innerText = txt;
             }})
             .catch(error => console.error(error));
-        }            
-            
+        } */           
+            /*
             function getLogsTujuan(){
                 clearLogTujuanAdmin();
                 
@@ -2169,7 +2278,7 @@ inputPwd.addEventListener("keypress", function(event) {
             row.insertCell().innerText = txt;
             }})
             .catch(error => console.error(error));
-        }    
+        }    */
             
                   function getLogs(){
                     clearLog();
@@ -2613,172 +2722,156 @@ function loadTableKursus(){
 }
 
 
-function loadTablePenggunaAdmin(){
-    
-    let start = (curPage-1)*pageSize;
-    
-    console.log("start: "+start);
-    
-    let end =curPage*pageSize;
-    
-    //let end = datas3.length;
-    
-    console.log("end: "+end);  
-    
-    let i = datas3.length;
-    
-    console.log("datas3 length: "+i);    
-    
-    if(i >= start && i <= end) return true;
-    
-    let result = '';
-    
-    for (let j = start; j < end; j++){
+function loadTablePenggunaAdmin() {
+    // Clear table
+    table3.innerHTML = '';
 
-      let id = j+1;
-      //let index = rows[i].c[0].v;
-      let index = id;
-      let namaPengguna = datas3[j].c[1].v;
-      let kategori = datas3[j].c[3].v;
-      let institusi = datas3[j].c[4].v;
-      let status = datas3[j].c[7].v;
-      let telefon = datas3[j].c[8].f;
-      //let toggleSw = '';
-      /*if (status == 'Aktif'){
-          toggleSw = '<label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>'
-      }if (status == 'Nyahaktif'){
-          toggleSw = '<label class="switch"><input type="checkbox"><span class="slider round"></span></label>'
-      }*/
-     let row = table3.insertRow();
-     row.insertCell().innerText = index;
-     row.insertCell().innerText = namaPengguna;
-     row.insertCell().innerText = kategori;
-     row.insertCell().innerText = institusi;
-     row.insertCell().innerText = '+60'+telefon;
-     let toggleSw = '';
-     if (status == 'Aktif'){
-     toggleSw = '<label class="switch"><input type="checkbox" onchange="ubahUserFlag('+datas3[j].c[0].f+')" checked><span class="slider round"></span></label>'
-     }if (status == 'Nyahaktif'){
-     toggleSw = '<label class="switch"><input type="checkbox" onchange="ubahUserFlag('+datas3[j].c[0].f+')"><span class="slider round"></span></label>'
-     }
-     row.insertCell().innerHTML = ' '+toggleSw +' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniPengguna('+datas3[j].c[0].f+')"><i class=\'fa fa-edit\'></i></span>';
-     document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas3.length/pageSize).toFixed();    
-     
-      //result += "<tr><td>"+index+"</td><td>"+namaPengguna+"</td><td>"+kategori+"</td><td>"+institusi+"</td><td>+60"+telefon+"</td><td>"+status+' '+toggleSw+ '<span id="batalbtnk" style="cursor:pointer;" onclick="nyahAktifPengguna('+datas3[j].c[0].f+')"><i class=\'fa fa-times\'></i> Nyahaktif </span>'+"</td></tr>";   
-      //document.getElementById('data-urus-pengguna').innerHTML = result;
-      
-      //document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas3.length/pageSize).toFixed();      
-}    
+    let start = (curPage - 1) * pageSize;
+    let end = Math.min(start + pageSize, datas3.length);
+
+    if (datas3.length === 0) {
+        let row = table3.insertRow();
+        row.insertCell().colSpan = 6;
+        row.insertCell().innerText = 'Tiada rekod';
+        document.getElementById("pageNum").innerHTML = "Page 1 of 1";
+        return;
+    }
+
+    for (let j = start; j < end; j++) {
+        let row = datas3[j];
+        let id = row.c[0] ? row.c[0].f : '';
+        let namaPengguna = row.c[1] ? row.c[1].v : '';
+        let kategori = row.c[3] ? row.c[3].v : '';
+        let institusi = row.c[4] ? row.c[4].v : '';
+        let status = row.c[7] ? row.c[7].v : '';
+        let telefon = row.c[8] ? row.c[8].f : '';
+
+        let tr = table3.insertRow();
+        tr.insertCell().innerText = j + 1;
+        tr.insertCell().innerText = namaPengguna;
+        tr.insertCell().innerText = kategori;
+        tr.insertCell().innerText = institusi;
+        tr.insertCell().innerText = '+60' + telefon;
+
+        let toggleSw = '';
+        if (status == 'Aktif') {
+            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitch' + id + '" value="' + status + '" onchange="ubahUserFlag(' + id + ')" checked><span class="slider round"></span></label>';
+        } else {
+            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitch' + id + '" value="' + status + '" onchange="ubahUserFlag(' + id + ')"><span class="slider round"></span></label>';
+        }
+        tr.insertCell().innerHTML = ' ' + toggleSw + ' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniPengguna(' + id + ')"><i class="fa fa-edit"></i></span>';
+    }
+
+    let totalPages = Math.ceil(datas3.length / pageSize) || 1;
+    document.getElementById("pageNum").innerHTML = "Page " + curPage + " of " + totalPages;
 }
 
-function loadTableBilikAdmin(){
-    
-    let start = (curPage-1)*pageSize;
-    
-    console.log("start: "+start);
-    
-    let end =curPage*pageSize;
-    
-    //let end = datas4.length;
-    
-    console.log("end: "+end);  
-    
-    let i = datas4.length;
-    
-    console.log("datas4 length: "+i);    
-    
-    if(i >= start && i <= end) return true;
-    
-    let result = '';
-    
-    for (let j = start; j < end; j++){
+function loadTableBilikAdmin() {
+    table4.innerHTML = '';
+    let start = (curPage - 1) * pageSize;
+    let end = Math.min(start + pageSize, datas4.length);
 
-      let id = j+1;
-      //let index = rows[i].c[0].v;
-      let index = id;
-      let namaBilik = datas4[j].c[1].v;
-      let status = datas4[j].c[2].v;
-                            
-      let row = table4.insertRow();
-      row.insertCell().innerText = index;
-      row.insertCell().innerText = namaBilik;
-      let toggleSw = '';
-      if (status == 'Aktif'){
-      toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchBilik'+datas4[j].c[0].f+'" value="'+status+'" onchange="ubahBilikFlag('+datas4[j].c[0].f+')" checked><span class="slider round"></span></label>'
-      }if (status == 'Nyahaktif'){
-      toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchBilik'+datas4[j].c[0].f+'" value="'+status+'" onchange="ubahBilikFlag('+datas4[j].c[0].f+')"><span class="slider round"></span></label>'
-      }
-      row.insertCell().innerHTML = ' '+toggleSw +' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniBilik('+datas4[j].c[0].f+')"><i class=\'fa fa-edit\'></i></span>';
-      document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas4.length/pageSize).toFixed();          
-}    
+    if (datas4.length === 0) {
+        let row = table4.insertRow();
+        row.insertCell().colSpan = 3;
+        row.insertCell().innerText = 'Tiada rekod';
+        document.getElementById("pageNum").innerHTML = "Page 1 of 1";
+        return;
+    }
+
+    for (let j = start; j < end; j++) {
+        let row = datas4[j];
+        let id = row.c[0] ? row.c[0].f : '';
+        let namaBilik = row.c[1] ? row.c[1].v : '';
+        let status = row.c[2] ? row.c[2].v : '';
+
+        let tr = table4.insertRow();
+        tr.insertCell().innerText = j + 1;
+        tr.insertCell().innerText = namaBilik;
+
+        let toggleSw = '';
+        if (status == 'Aktif') {
+            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchBilik' + id + '" value="' + status + '" onchange="ubahBilikFlag(' + id + ')" checked><span class="slider round"></span></label>';
+        } else {
+            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchBilik' + id + '" value="' + status + '" onchange="ubahBilikFlag(' + id + ')"><span class="slider round"></span></label>';
+        }
+        tr.insertCell().innerHTML = ' ' + toggleSw + ' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniBilik(' + id + ')"><i class="fa fa-edit"></i></span>';
+    }
+
+    let totalPages = Math.ceil(datas4.length / pageSize) || 1;
+    document.getElementById("pageNum").innerHTML = "Page " + curPage + " of " + totalPages;
 }
 
-function loadTableKursusAdmin(){
-    
-    let start = (curPage-1)*pageSize;
-    
-    console.log("start: "+start);
-    
-    let end =curPage*pageSize;
-    
-    //let end = datas5.length;
-    
-    console.log("end: "+end);  
-    
-    let i = datas5.length;
-    
-    console.log("datas5 length: "+i);    
-    
-    if(i >= start && i <= end) return true;
-    
-    let result = '';
-    
-    for (let j = start; j < end; j++){
+function loadTableKursusAdmin() {
+    table5.innerHTML = '';
+    let start = (curPage - 1) * pageSize;
+    let end = Math.min(start + pageSize, datas5.length);
 
-      let id = j+1;
-      //let index = rows[i].c[0].v;
-      let index = id;
-      let namaKursus = datas5[j].c[1].v;
-      let status = datas5[j].c[2].v;
-     
-      result += "<tr><td>"+index+"</td><td>"+namaKursus+"</td><td>"+status+'</td><td><span id="batalbtnk" style="cursor:pointer;" onclick="nyahAktifKursus('+datas5[j].c[0].f+')"><i class=\'fa fa-times\'></i> Nyahaktif </span>'+"</td></tr>";   
-      document.getElementById('data-urus-kursus').innerHTML = result;
-      document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas5.length/pageSize).toFixed();      
-}     
+    if (datas5.length === 0) {
+        let row = table5.insertRow();
+        row.insertCell().colSpan = 3;
+        row.insertCell().innerText = 'Tiada rekod';
+        document.getElementById("pageNum").innerHTML = "Page 1 of 1";
+        return;
+    }
+
+    for (let j = start; j < end; j++) {
+        let row = datas5[j];
+        let id = row.c[0] ? row.c[0].f : '';
+        let namaKursus = row.c[1] ? row.c[1].v : '';
+        let status = row.c[2] ? row.c[2].v : '';
+
+        let tr = table5.insertRow();
+        tr.insertCell().innerText = j + 1;
+        tr.insertCell().innerText = namaKursus;
+
+        let toggleSw = '';
+        if (status == 'Aktif') {
+            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchKursus' + id + '" value="' + status + '" onchange="ubahKursusFlag(' + id + ')" checked><span class="slider round"></span></label>';
+        } else {
+            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchKursus' + id + '" value="' + status + '" onchange="ubahKursusFlag(' + id + ')"><span class="slider round"></span></label>';
+        }
+        tr.insertCell().innerHTML = ' ' + toggleSw + ' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniKursus(' + id + ')"><i class="fa fa-edit"></i></span>';
+    }
+
+    let totalPages = Math.ceil(datas5.length / pageSize) || 1;
+    document.getElementById("pageNum").innerHTML = "Page " + curPage + " of " + totalPages;
 }
 
-function loadTableTujuanAdmin(){
-    
-    let start = (curPage-1)*pageSize;
-    
-    console.log("start: "+start);
-    
-    let end =curPage*pageSize;
-    
-    //let end = datas6.length;
-    
-    console.log("end: "+end);  
-    
-    let i = datas6.length;
-    
-    console.log("datas6 length: "+i);    
-    
-    if(i >= start && i <= end) return true;
-    
-    let result = '';
-    
-    for (let j = start; j < end; j++){
+function loadTableTujuanAdmin() {
+    table6.innerHTML = '';
+    let start = (curPage - 1) * pageSize;
+    let end = Math.min(start + pageSize, datas6.length);
 
-      let id = j+1;
-      //let index = rows[i].c[0].v;
-      let index = id;
-      let tujuan = datas6[j].c[1].v;
-      let status = datas6[j].c[2].v;
-     
-      result += "<tr><td>"+index+"</td><td>"+tujuan+"</td><td>"+status+'</td><td><span id="batalbtnk" style="cursor:pointer;" onclick="nyahAktifTujuan('+datas6[j].c[0].f+')"><i class=\'fa fa-times\'></i> Nyahaktif </span>'+"</td></tr>";   
-      document.getElementById('data-urus-tujuan').innerHTML = result;
-      document.getElementById("pageNum").innerHTML = "Page "+curPage+" of "+(datas6.length/pageSize).toFixed();      
-}    
+    if (datas6.length === 0) {
+        let row = table6.insertRow();
+        row.insertCell().colSpan = 3;
+        row.insertCell().innerText = 'Tiada rekod';
+        document.getElementById("pageNum").innerHTML = "Page 1 of 1";
+        return;
+    }
+
+    for (let j = start; j < end; j++) {
+        let row = datas6[j];
+        let id = row.c[0] ? row.c[0].f : '';
+        let tujuan = row.c[1] ? row.c[1].v : '';
+        let status = row.c[2] ? row.c[2].v : '';
+
+        let tr = table6.insertRow();
+        tr.insertCell().innerText = j + 1;
+        tr.insertCell().innerText = tujuan;
+
+        let toggleSw = '';
+        if (status == 'Aktif') {
+            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchTujuan' + id + '" value="' + status + '" onchange="ubahTujuanFlag(' + id + ')" checked><span class="slider round"></span></label>';
+        } else {
+            toggleSw = '<label class="switch"><input type="checkbox" id="flagSwitchTujuan' + id + '" value="' + status + '" onchange="ubahTujuanFlag(' + id + ')"><span class="slider round"></span></label>';
+        }
+        tr.insertCell().innerHTML = ' ' + toggleSw + ' <span id="batalbtn" style="cursor:pointer;" onclick="kemaskiniTujuan(' + id + ')"><i class="fa fa-edit"></i></span>';
+    }
+
+    let totalPages = Math.ceil(datas6.length / pageSize) || 1;
+    document.getElementById("pageNum").innerHTML = "Page " + curPage + " of " + totalPages;
 }
 
     var startDate;
