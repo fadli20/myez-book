@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="logo.png" rel="shortcut icon" type="image/x-icon" />
-        <title>KKSBJ Booking System</title>
+        <title>KKSBJ MYEZ-BOOK</title>
     <style>
     
 .bebas-neue-regular {
@@ -352,6 +352,103 @@ input:checked + .slider:before {
     width:320px;
 }      
 
+/* Filter & Action Bar */
+.filter-actions {
+    max-width: 800px;
+    margin: 0 auto 10px auto;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 12px;
+}
+
+.filter-row label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #333;
+    margin-right: -4px;
+}
+
+.filter-row select,
+.filter-row input[type="date"] {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    background: white;
+    min-width: 100px;
+}
+
+.filter-row .btn2 {
+    height: 30px;
+    width: auto;
+    padding: 0 16px;
+    font-size: 13px;
+    background: #0a8af2;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.filter-row .btn2:hover {
+    background: #0670c9;
+}
+.filter-row .btn2:last-child {
+    background: #888;
+}
+.filter-row .btn2:last-child:hover {
+    background: #666;
+}
+
+.action-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 4px;
+    border-top: 1px dashed #ccc;
+}
+
+.action-row .btn2 {
+    height: 32px;
+    width: auto;
+    padding: 0 20px;
+    font-size: 14px;
+    background: #3f5f8f;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.action-row .btn2:hover {
+    background: #2a4a6f;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 600px) {
+    .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+    .filter-row select,
+    .filter-row input[type="date"] {
+        width: 100%;
+    }
+    .action-row {
+        flex-wrap: wrap;
+    }
+}
       
     </style>
     </head>
@@ -383,7 +480,55 @@ input:checked + .slider:before {
             <!--<p class="bebas-neue-regular" style="font-size:24pt;">DASHBOARD PENGAWAL</p>--->
             <h2 id="tajukJadualKursusPendek" class="bebas-neue-regular" style="text-align:center;margin:auto;font-size:24pt;">Senarai Tempahan</h2>
                         <br>
-            <div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">Start Date: </span><input id="startDateTempahan" type="date">&nbsp;&nbsp;</div><br><div style="width:auto;margin:auto;"><span style="width:100px;padding:2px;">End Date: </span><input id="endDateTempahan" type="date">&nbsp;&nbsp;</div><br><br><button  class="btn2" id="filterDateK" onclick="getDataTempahanByDate()">Submit</button>&nbsp;&nbsp;<button class="btn2 btn-print-pdf" onclick="exportPDF()">PDF</button>&nbsp;&nbsp;<button class="btn2 btn-export-excel" onclick="exportExcel()">Excel</button><br><br>
+<!-- FILTER & ACTION BAR -->
+<div class="filter-actions">
+
+    <!-- Row 1: Month & Year -->
+    <div class="filter-row">
+        <label for="monthFilter">Bulan:</label>
+        <select id="monthFilter">
+            <option value="all">Semua</option>
+            <option value="1">Januari</option>
+            <option value="2">Februari</option>
+            <option value="3">Mac</option>
+            <option value="4">April</option>
+            <option value="5">Mei</option>
+            <option value="6">Jun</option>
+            <option value="7">Julai</option>
+            <option value="8">Ogos</option>
+            <option value="9">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Disember</option>
+        </select>
+
+        <label for="yearFilter">Tahun:</label>
+        <select id="yearFilter">
+            <option value="all">Semua</option>
+        </select>
+
+        <button class="btn2" onclick="filterByMonthYear()">Tapis</button>
+        <button class="btn2" onclick="resetFilter()" style="background:#888;">Reset</button>
+    </div>
+
+    <!-- Row 2: Start & End Date -->
+    <div class="filter-row">
+        <label for="startDateTempahan">Tarikh Mula:</label>
+        <input id="startDateTempahan" type="date">
+
+        <label for="endDateTempahan">Tarikh Tamat:</label>
+        <input id="endDateTempahan" type="date">
+
+        <button class="btn2" onclick="getDataTempahanByDate()">Cari</button>
+    </div>
+
+    <!-- Row 3: PDF & Excel -->
+    <div class="action-row">
+        <button class="btn2 btn-print-pdf" onclick="exportPDF()">📄 PDF</button>
+        <button class="btn2 btn-export-excel" onclick="exportExcel()">📊 Excel</button>
+    </div>
+
+</div>
                   <table class="tablemobile"> 
       <thead id="header-tempahan" style="width:80vw;"></thead>
       <tbody id="data-tempahan" style="width:80vw;">      
@@ -693,6 +838,7 @@ input:checked + .slider:before {
             function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
             }
+            
 
         // Get the modal
 var modal = document.getElementById("myModal");
@@ -2375,6 +2521,8 @@ function getLogsTempahan(){
         const rows = json.table.rows;
         console.log(rows);
         datas7 = rows;
+        //datas7 = rows;
+        window.fullData = rows.slice(); // keep a copy        
 
         if(rows.length >0){
             let rowhead = tablehead7.insertRow();
@@ -2459,6 +2607,70 @@ function getLogsTempahan(){
             }
         }
     })
+}
+
+function populateYearDropdown() {
+    const sel = document.getElementById('yearFilter');
+    const currentYear = new Date().getFullYear();
+    sel.innerHTML = '<option value="all">Semua</option>';
+    for (let y = currentYear + 1; y >= currentYear - 5; y--) {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        sel.appendChild(opt);
+    }
+}
+// Call it once when page loads
+populateYearDropdown();            
+            
+            
+            
+function filterByMonthYear() {
+    const month = document.getElementById('monthFilter').value;
+    const year = document.getElementById('yearFilter').value;
+
+    // Start with the full dataset (keep a backup)
+    if (!window.fullData) window.fullData = datas7.slice(); // store once
+
+    let filtered = window.fullData;
+
+    if (month !== 'all') {
+        filtered = filtered.filter(row => {
+            const dateStr = row.c[9]?.f; // "2026-01-20"
+            if (!dateStr) return false;
+            const m = parseInt(dateStr.split('-')[1], 10);
+            return m === parseInt(month, 10);
+        });
+    }
+
+    if (year !== 'all') {
+        filtered = filtered.filter(row => {
+            const dateStr = row.c[9]?.f;
+            if (!dateStr) return false;
+            const y = parseInt(dateStr.split('-')[0], 10);
+            return y === parseInt(year, 10);
+        });
+    }
+
+    datas7 = filtered;
+    curPage = 1;                 // go back to first page
+    clearLogTempahan();          // clear the table
+    loadTableTempahan();         // render the filtered data
+}
+
+function resetFilter() {
+    document.getElementById('monthFilter').value = 'all';
+    document.getElementById('yearFilter').value = 'all';
+    if (window.fullData) {
+        datas7 = window.fullData.slice();
+    } else {
+        // fallback: reload from server
+        getLogsTempahan();
+        return;
+    }
+    curPage = 1;
+    clearLogTempahan();
+    loadTableTempahan();
 }
 
 function loadTableTempahan() {
@@ -3516,6 +3728,18 @@ var urlUpdateStat = "https://script.google.com/macros/s/AKfycbw7M97jvoYSt-RA4LwI
             this.className += " active";
             });
             }
+            
+            function getTimestamp() {
+    const now = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    return now.getFullYear() +
+           pad(now.getMonth() + 1) +
+           pad(now.getDate()) + '_' +
+           pad(now.getHours()) +
+           pad(now.getMinutes()) +
+           pad(now.getSeconds());
+}
+            
 function exportPDF() {
     const btn = document.querySelector('.btn-print-pdf');
     if (!btn) return;
@@ -3523,37 +3747,35 @@ function exportPDF() {
     btn.innerHTML = '⏳ Menjana PDF...';
     btn.disabled = true;
 
-    // Use jsPDF with autoTable
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: 'a4'
-    });
+    const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
 
-    // Title
+    // Title – move up to avoid page number overlap
     doc.setFontSize(16);
-    doc.text('Senarai Tempahan', 14, 20);
+    doc.text('Senarai Tempahan', 14, 15);
+    doc.setFontSize(10);
+    doc.text(`Dijana pada: ${new Date().toLocaleString()}`, 14, 22);
+    // Headers – add "Tarikh Tempahan Dibuat"
+    const headers = ['Index', 'Program', 'Lokasi Bilik', 'Status', 'Institusi', 'Bil Peserta', 
+                     'Tarikh & Masa', 'Kategori', 'Butiran Penempah', 'Tarikh Tempahan Dibuat'];
 
-    // Prepare table data
     const tableRows = [];
-    const headers = ['Index', 'Program', 'Lokasi Bilik', 'Status', 'Institusi', 'Bil Peserta', 'Tarikh & Masa', 'Kategori', 'Butiran Penempah'];
-
-    // Loop through ALL rows in datas7
     for (let i = 0; i < datas7.length; i++) {
         const row = datas7[i];
-        const namaPenempah = row.c[1] ? row.c[1].v : '';
-        const telefon = row.c[3] ? row.c[3].f : '';
-        const tajukProgram = row.c[4] ? row.c[4].v : '';
-        const kategoriTujuan = row.c[5] ? row.c[5].v : '';
-        const namaBilik = row.c[6] ? row.c[6].v : '';
-        const institusiPeserta = row.c[7] ? row.c[7].v : '';
-        const bilanganPeserta = row.c[8] ? row.c[8].f : '';
-        const tarikhTempahMula = row.c[9] ? row.c[9].f : '';
-        const masaTempahMula = row.c[10] ? row.c[10].f : '';
-        const tarikhTempahTamat = row.c[11] ? row.c[11].f : '';
-        const masaTempahTamat = row.c[12] ? row.c[12].f : '';
-        const statusTempah = row.c[15] ? row.c[15].v : '';
+        const namaPenempah = row.c[1]?.v || '';
+        const telefon = row.c[3]?.f || '';
+        const tajukProgram = row.c[4]?.v || '';
+        const kategoriTujuan = row.c[5]?.v || '';
+        const namaBilik = row.c[6]?.v || '';
+        const institusiPeserta = row.c[7]?.v || '';
+        const bilanganPeserta = row.c[8]?.f || '';
+        const tarikhTempahMula = row.c[9]?.f || '';
+        const masaTempahMula = row.c[10]?.f || '';
+        const tarikhTempahTamat = row.c[11]?.f || '';
+        const masaTempahTamat = row.c[12]?.f || '';
+        const statusTempah = row.c[15]?.v || '';
+        const tarikhTempahan = row.c[13]?.f || '';   // date created
+        const masaTempahan = row.c[14]?.f || '';     // time created
 
         let tarikhDisp, masaDisp;
         if (tarikhTempahMula == tarikhTempahTamat) {
@@ -3573,43 +3795,43 @@ function exportPDF() {
             bilanganPeserta,
             tarikhDisp + "\n" + masaDisp,
             kategoriTujuan,
-            namaPenempah + "\nTel: 60" + telefon
+            namaPenempah + "\nTel: 60" + telefon,
+            tarikhTempahan + " " + masaTempahan   // combined date & time
         ]);
     }
 
-    // Generate table
     doc.autoTable({
         head: [headers],
         body: tableRows,
-        startY: 25,
+        startY: 28,  // start below title
         theme: 'striped',
         headStyles: { fillColor: [10, 138, 242], textColor: [255, 255, 255], fontSize: 8 },
         bodyStyles: { fontSize: 7 },
         columnStyles: {
-            0: { cellWidth: 10 }, // Index
-            1: { cellWidth: 30 }, // Program
-            2: { cellWidth: 25 }, // Bilik
-            3: { cellWidth: 20 }, // Status
-            4: { cellWidth: 25 }, // Institusi
-            5: { cellWidth: 15 }, // Bil Peserta
-            6: { cellWidth: 30 }, // Tarikh & Masa
-            7: { cellWidth: 25 }, // Kategori
-            8: { cellWidth: 30 }  // Butiran
+            0: { cellWidth: 12 },
+            1: { cellWidth: 28 },
+            2: { cellWidth: 22 },
+            3: { cellWidth: 18 },
+            4: { cellWidth: 22 },
+            5: { cellWidth: 14 },
+            6: { cellWidth: 28 },
+            7: { cellWidth: 22 },
+            8: { cellWidth: 28 },
+            9: { cellWidth: 28 }  // new column
         },
-        margin: { top: 25 },
+        margin: { top: 22 },
         pageBreak: 'auto',
-        rowPageBreak: 'avoid', // avoid splitting rows across pages
+        rowPageBreak: 'avoid',
         didDrawPage: function(data) {
-            // Optional: add page number
+            // Page number at bottom right to avoid title overlap
             doc.setFontSize(8);
-            doc.text('Muka surat ' + data.pageNumber, 14, data.settings.margin.top - 5);
+            const pageSize = doc.internal.pageSize;
+            doc.text('Muka surat ' + data.pageNumber, pageSize.getWidth() - 20, pageSize.getHeight() - 10);
         }
     });
 
-    // Save PDF
-    doc.save('Senarai_Tempahan.pdf');
-
-    // Reset button
+const timestamp = getTimestamp();
+doc.save(`Senarai_Tempahan_${timestamp}.pdf`);
     btn.innerHTML = originalText;
     btn.disabled = false;
 }
@@ -3622,28 +3844,27 @@ function exportExcel() {
     btn.disabled = true;
 
     try {
-        // Prepare data array for SheetJS
         const data = [];
-
-        // Header row
-        const headers = ['Index', 'Program', 'Lokasi Bilik', 'Status', 'Institusi', 'Bil Peserta', 'Tarikh & Masa', 'Kategori', 'Butiran Penempah'];
+        const headers = ['Index', 'Program', 'Lokasi Bilik', 'Status', 'Institusi', 'Bil Peserta',
+                         'Tarikh & Masa', 'Kategori', 'Butiran Penempah', 'Tarikh Tempahan Dibuat'];
         data.push(headers);
 
-        // Loop through ALL rows in datas7
         for (let i = 0; i < datas7.length; i++) {
             const row = datas7[i];
-            const namaPenempah = row.c[1] ? row.c[1].v : '';
-            const telefon = row.c[3] ? row.c[3].f : '';
-            const tajukProgram = row.c[4] ? row.c[4].v : '';
-            const kategoriTujuan = row.c[5] ? row.c[5].v : '';
-            const namaBilik = row.c[6] ? row.c[6].v : '';
-            const institusiPeserta = row.c[7] ? row.c[7].v : '';
-            const bilanganPeserta = row.c[8] ? row.c[8].f : '';
-            const tarikhTempahMula = row.c[9] ? row.c[9].f : '';
-            const masaTempahMula = row.c[10] ? row.c[10].f : '';
-            const tarikhTempahTamat = row.c[11] ? row.c[11].f : '';
-            const masaTempahTamat = row.c[12] ? row.c[12].f : '';
-            const statusTempah = row.c[15] ? row.c[15].v : '';
+            const namaPenempah = row.c[1]?.v || '';
+            const telefon = row.c[3]?.f || '';
+            const tajukProgram = row.c[4]?.v || '';
+            const kategoriTujuan = row.c[5]?.v || '';
+            const namaBilik = row.c[6]?.v || '';
+            const institusiPeserta = row.c[7]?.v || '';
+            const bilanganPeserta = row.c[8]?.f || '';
+            const tarikhTempahMula = row.c[9]?.f || '';
+            const masaTempahMula = row.c[10]?.f || '';
+            const tarikhTempahTamat = row.c[11]?.f || '';
+            const masaTempahTamat = row.c[12]?.f || '';
+            const statusTempah = row.c[15]?.v || '';
+            const tarikhTempahan = row.c[13]?.f || '';
+            const masaTempahan = row.c[14]?.f || '';
 
             let tarikhDisp, masaDisp;
             if (tarikhTempahMula == tarikhTempahTamat) {
@@ -3663,39 +3884,25 @@ function exportExcel() {
                 bilanganPeserta,
                 tarikhDisp + " (" + masaDisp + ")",
                 kategoriTujuan,
-                namaPenempah + " (Tel: 60" + telefon + ")"
+                namaPenempah + " (Tel: 60" + telefon + ")",
+                tarikhTempahan + " " + masaTempahan
             ]);
         }
 
-        // Create workbook
         const wb = XLSX.utils.book_new();
         const ws = XLSX.utils.aoa_to_sheet(data);
-
-        // Auto column widths (optional)
-        const colWidths = [
-            { wch: 8 },  // Index
-            { wch: 30 }, // Program
-            { wch: 20 }, // Bilik
-            { wch: 15 }, // Status
-            { wch: 25 }, // Institusi
-            { wch: 12 }, // Bil Peserta
-            { wch: 35 }, // Tarikh & Masa
-            { wch: 20 }, // Kategori
-            { wch: 35 }  // Butiran
+        ws['!cols'] = [
+            { wch: 8 }, { wch: 30 }, { wch: 20 }, { wch: 15 }, { wch: 25 },
+            { wch: 12 }, { wch: 35 }, { wch: 20 }, { wch: 35 }, { wch: 30 }
         ];
-        ws['!cols'] = colWidths;
-
         XLSX.utils.book_append_sheet(wb, ws, 'Senarai Tempahan');
-
-        // Generate Excel file as binary
         const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-
-        // Create Blob and download
         const blob = new Blob([wbout], { type: 'application/octet-stream' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'Senarai_Tempahan.xlsx';
+const timestamp = getTimestamp();
+link.download = `Senarai_Tempahan_${timestamp}.xlsx`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
